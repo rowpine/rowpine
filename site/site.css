@@ -171,3 +171,7 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 40px; font-size: 14p
   section { padding: 56px 0; }
   .cards, .tiles, .works, .price { grid-template-columns: 1fr; }
 }
+
+/* The last demos card: a link to the feature examples, without a picture. */
+.card.features { background: var(--accent-soft); border-color: transparent; justify-content: center; }
+.card.features .body { padding: 28px; }

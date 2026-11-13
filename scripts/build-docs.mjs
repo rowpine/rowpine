@@ -104,6 +104,10 @@ function page({ title, description, body, current }) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}">
+<meta property="og:image" content="https://rowpine.com/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
 ${current ? `<link rel="alternate" type="text/markdown" href="${current}.md">` : ''}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,7 +117,7 @@ ${current ? `<link rel="alternate" type="text/markdown" href="${current}.md">` :
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="../">${LOGO} Rowpine <span class="for">for TanStack Table</span></a>
-  <nav class="top"><a href="./" aria-current="page">Docs</a><a href="../examples/">Examples</a><a href="../pricing.html">Pricing</a><a href="https://github.com/rowpine/rowpine">GitHub</a></nav>
+  <nav class="top"><a href="./" aria-current="page">Docs</a><a href="../examples/">Demos</a><a href="../pricing.html">Pricing</a><a href="https://github.com/rowpine/rowpine">GitHub</a></nav>
 </div></header>
 <div class="wrap layout">
   <aside class="side" aria-label="Help topics">${sidebar(current)}</aside>

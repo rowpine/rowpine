@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rowpine for TanStack Table - pivot tables and Excel export</title>
 <meta name="description" content="Rowpine adds pivot tables, a pivot designer and Excel and PDF export to TanStack Table and shadcn/ui data tables. It works from the table instance you already have.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rowpine">
+<meta property="og:title" content="Rowpine for TanStack Table">
+<meta property="og:description" content="Pivot tables, a pivot designer, and Excel and PDF export for TanStack Table and shadcn/ui.">
+<meta property="og:url" content="https://rowpine.com/">
+<meta property="og:image" content="https://rowpine.com/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://rowpine.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +33,7 @@
     </a>
     <nav class="top">
       <a href="docs/">Docs</a>
-      <a href="examples/">Examples</a>
+      <a href="examples/">Demos</a>
       <a href="pricing.html" class="hide-sm">Pricing</a>
       <a href="https://github.com/rowpine/rowpine" class="hide-sm">GitHub</a>
       <button class="theme" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()">
@@ -51,7 +59,7 @@
       <p class="lead">A <b>pivot designer</b> your users drive themselves, and <b>Excel and PDF files</b> that match the screen: groups, filters, sort, pinned columns and formats.</p>
       <div class="buttons">
         <a class="btn primary" href="docs/">Read the docs</a>
-        <a class="btn secondary" href="examples/">Try the examples</a>
+        <a class="btn secondary" href="#demos">Watch the demos</a>
       </div>
       <p class="shot-caption" style="margin:40px 0 -32px;font-weight:600;color:var(--fg)">Try it: follow the balloons, or use it any way you like.</p>
       <figure class="shot">
@@ -68,6 +76,46 @@
       </script>
     </div>
   </div>
+
+  <section class="soft" id="demos">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">Demos</span>
+        <h2>Watch it work on real data</h2>
+        <p class="sub">Each demo plays a short story on the live component and ends with the exported file, open in the page. Pause it, skip to a step, or take over at any point.</p>
+      </div>
+      <div class="cards">
+        <a class="card" href="examples/#/demo/sales-pivot">
+          <div class="thumb"><img src="img/demos/sales-pivot.jpg" alt="The Sales pivot demo ending with its exported file" loading="lazy" width="984" height="520"></div>
+          <div class="body"><span class="tag">6 steps</span><h3>Sales pivot</h3><p>Regions and countries down the side, quarters across, overdue orders only, then to Excel.</p></div>
+        </a>
+        <a class="card" href="examples/#/demo/orders-to-excel">
+          <div class="thumb"><img src="img/demos/orders-to-excel.jpg" alt="The Orders to Excel demo ending with its exported file" loading="lazy" width="984" height="520"></div>
+          <div class="body"><span class="tag">5 steps</span><h3>Orders to Excel</h3><p>Sort, group, hide and pin, then export. The file opens the way the table looked.</p></div>
+        </a>
+        <a class="card" href="examples/#/demo/month-end-pdf">
+          <div class="thumb"><img src="img/demos/month-end-pdf.jpg" alt="The Month-end PDF demo ending with its exported file" loading="lazy" width="984" height="520"></div>
+          <div class="body"><span class="tag">5 steps</span><h3>Month-end PDF</h3><p>Receivables grouped by status, headline numbers on top, Letter landscape, marked DRAFT.</p></div>
+        </a>
+        <a class="card" href="examples/#/demo/budget-tree">
+          <div class="thumb"><img src="img/demos/budget-tree.jpg" alt="The Budget by department demo ending with its exported file" loading="lazy" width="984" height="520"></div>
+          <div class="body"><span class="tag">5 steps</span><h3>Budget by department</h3><p>A tree of departments and teams, overspend in red, to Excel and PDF with its levels.</p></div>
+        </a>
+        <a class="card" href="examples/#/demo/support-tickets">
+          <div class="thumb"><img src="img/demos/support-tickets.jpg" alt="The Support tickets demo ending with its exported file" loading="lazy" width="984" height="520"></div>
+          <div class="body"><span class="tag">5 steps</span><h3>Support tickets</h3><p>Open tickets by team and priority, with the average hours to resolve, printed for review.</p></div>
+        </a>
+        <a class="card features" href="examples/#/01-export-menu">
+          <div class="body">
+            <span class="tag">16 examples</span>
+            <h3>Feature examples</h3>
+            <p>One feature each, with its source: export menu, grouping, pinned columns, selected rows, formats and colors, tree data, PDF reports, pivots, custom aggregations, wide PDFs, other languages.</p>
+            <p style="margin-top:14px;color:var(--brand);font-weight:700">Browse the examples &rarr;</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <section>
     <div class="wrap">
@@ -222,7 +270,7 @@ await exportPdf(table, { title: <span class="s">"Orders"</span> })</pre>
         <h2>Ready to try it?</h2>
         <p>Install it from npm, add the components from the shadcn registry, and use everything before you buy. Without a key, files carry one notice line.</p>
         <div class="buttons">
-          <a class="btn primary" href="examples/">Open the examples</a>
+          <a class="btn primary" href="examples/">Open the demos</a>
           <a class="btn ghost" href="docs/installation.html">Install</a>
         </div>
       </div>
@@ -263,7 +311,7 @@ await exportPdf(table, { title: <span class="s">"Orders"</span> })</pre>
       </div>
       <div>
         <h4>More</h4>
-        <a href="examples/">Examples</a>
+        <a href="examples/">Demos</a>
         <a href="https://github.com/rowpine/rowpine">GitHub</a>
         <a href="llms.txt">llms.txt</a>
         <a href="pricing.html">Pricing</a>

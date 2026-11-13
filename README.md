@@ -33,7 +33,7 @@ CSV export is free. Pivoting and Excel and PDF export come in one Pro license: $
 ## Docs and examples
 
 - [Help topics](https://rowpine.com/docs/): 30 pages, sources in [`docs/`](docs/), each with an image from a real export or a running example.
-- [Live examples](https://rowpine.com/examples/): 10 examples with their source.
+- [Demos](https://rowpine.com/examples/): 5 use-case demos that play themselves and 16 feature examples, each with its source.
 
 ## Website
 

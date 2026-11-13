@@ -8,7 +8,7 @@ import { join, extname, dirname, normalize } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const site = join(dirname(fileURLToPath(import.meta.url)), '..', 'site')
-const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.md': 'text/markdown', '.txt': 'text/plain', '.woff2': 'font/woff2' }
+const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.md': 'text/markdown', '.txt': 'text/plain', '.woff2': 'font/woff2', '.mjs': 'text/javascript', '.jpg': 'image/jpeg', '.json': 'application/json' }
 const PORT = 5360
 
 const server = createServer(async (req, res) => {
