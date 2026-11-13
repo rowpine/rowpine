@@ -39,7 +39,7 @@ const CSS = `
   :root { --bg:#fbfaf7; --surface:#fff; --fg:#1c1f1a; --muted:#5b6157; --line:#e2e0d8; --accent:#2f6b4f; --accent-soft:#e6efe9; --code-bg:#f2f1ec; }
   @media (prefers-color-scheme: dark) { :root { --bg:#121512; --surface:#191d19; --fg:#e6e8e3; --muted:#9ba294; --line:#2b302a; --accent:#7fbf9b; --accent-soft:#1f2d24; --code-bg:#1c211c; } }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 Manrope,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
   a { color:var(--accent); }
   code, pre { font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; font-size:.88em; }
   :not(pre) > code { background:var(--code-bg); padding:.1em .35em; border-radius:4px; }
@@ -47,8 +47,11 @@ const CSS = `
   .wrap { max-width:1120px; margin:0 auto; padding:0 16px; }
   header.top { border-bottom:1px solid var(--line); }
   header.top .wrap { display:flex; align-items:center; justify-content:space-between; height:56px; }
-  .brand { display:flex; align-items:center; gap:8px; font-weight:650; color:var(--fg); text-decoration:none; }
-  .brand svg { width:22px; height:22px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; color:var(--fg); text-decoration:none; white-space:nowrap; }
+  .brand .for { font-weight:600; color:var(--muted); }
+  .mark { width:30px; height:30px; border-radius:8px; background:#1f5b40; display:grid; place-items:center; }
+  .mark svg { width:19px; height:19px; color:#fff; }
+  @media (max-width: 640px) { .brand .for { display:none; } }
   nav.top a { color:var(--muted); text-decoration:none; margin-left:20px; font-size:15px; }
   nav.top a:hover, nav.top a[aria-current] { color:var(--fg); }
   .layout { display:grid; grid-template-columns:230px minmax(0,1fr); gap:40px; padding:28px 0 60px; }
@@ -82,7 +85,7 @@ const CSS = `
     article h1 { font-size:26px; }
   }`
 
-const LOGO = `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" style="color:var(--accent)" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg>`
+const LOGO = `<span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>`
 
 function sidebar(current) {
   return SECTIONS.map((s) => {
@@ -102,11 +105,14 @@ function page({ title, description, body, current }) {
 <meta name="description" content="${esc(description)}">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 ${current ? `<link rel="alternate" type="text/markdown" href="${current}.md">` : ''}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>${CSS}</style>
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="brand" href="../">${LOGO} Rowpine</a>
+  <a class="brand" href="../">${LOGO} Rowpine <span class="for">for TanStack Table</span></a>
   <nav class="top"><a href="./" aria-current="page">Docs</a><a href="../examples/">Examples</a><a href="../#pricing">Pricing</a><a href="https://github.com/rowpine/rowpine">GitHub</a></nav>
 </div></header>
 <div class="wrap layout">
