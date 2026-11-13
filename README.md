@@ -33,12 +33,12 @@ CSV export is free. Pivoting and Excel and PDF export come in one Pro license: a
 
 ## Docs and examples
 
-- [Help topics](https://rowpine.github.io/rowpine/docs/): 30 pages, sources in [`docs/`](docs/), each with an image from a real export or a running example.
-- [Live examples](https://rowpine.github.io/rowpine/examples/): 10 examples with their source.
+- [Help topics](https://rowpine.com/docs/): 30 pages, sources in [`docs/`](docs/), each with an image from a real export or a running example.
+- [Live examples](https://rowpine.com/examples/): 10 examples with their source.
 
 ## Website
 
-https://rowpine.github.io/rowpine/ (source in [`site/`](site/), deployed by [`.github/workflows/pages.yml`](.github/workflows/pages.yml)).
+https://rowpine.com/ (source in [`site/`](site/), deployed by [`.github/workflows/pages.yml`](.github/workflows/pages.yml)).
 
 ```bash
 npm install
