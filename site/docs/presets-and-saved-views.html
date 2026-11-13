@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presets and saved views - Rowpine docs</title>
+<meta name="description" content="A designer layout is plain JSON:">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="presets-and-saved-views.md">
+<style>
+  :root { --bg:#fbfaf7; --surface:#fff; --fg:#1c1f1a; --muted:#5b6157; --line:#e2e0d8; --accent:#2f6b4f; --accent-soft:#e6efe9; --code-bg:#f2f1ec; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#121512; --surface:#191d19; --fg:#e6e8e3; --muted:#9ba294; --line:#2b302a; --accent:#7fbf9b; --accent-soft:#1f2d24; --code-bg:#1c211c; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  a { color:var(--accent); }
+  code, pre { font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; font-size:.88em; }
+  :not(pre) > code { background:var(--code-bg); padding:.1em .35em; border-radius:4px; }
+  pre { background:var(--code-bg); border:1px solid var(--line); border-radius:8px; padding:12px 14px; overflow-x:auto; line-height:1.5; }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 16px; }
+  header.top { border-bottom:1px solid var(--line); }
+  header.top .wrap { display:flex; align-items:center; justify-content:space-between; height:56px; }
+  .brand { display:flex; align-items:center; gap:8px; font-weight:650; color:var(--fg); text-decoration:none; }
+  .brand svg { width:22px; height:22px; }
+  nav.top a { color:var(--muted); text-decoration:none; margin-left:20px; font-size:15px; }
+  nav.top a:hover, nav.top a[aria-current] { color:var(--fg); }
+  .layout { display:grid; grid-template-columns:230px minmax(0,1fr); gap:40px; padding:28px 0 60px; }
+  aside.side { position:sticky; top:16px; align-self:start; font-size:14px; max-height:calc(100vh - 32px); overflow:auto; }
+  aside.side h2 { font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin:18px 0 6px; }
+  aside.side h2:first-child { margin-top:0; }
+  aside.side a { display:block; padding:4px 8px; border-radius:6px; color:var(--fg); text-decoration:none; }
+  aside.side a:hover { background:var(--accent-soft); }
+  aside.side a[aria-current] { background:var(--accent-soft); color:var(--accent); font-weight:600; }
+  article { max-width:760px; min-width:0; }
+  main { min-width:0; }
+  article h1 { font-size:32px; line-height:1.2; margin:0 0 6px; }
+  .crumb { color:var(--muted); font-size:14px; margin:0 0 18px; }
+  figure { margin:18px 0 24px; }
+  figure img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:8px; background:#fff; display:block; }
+  figcaption { color:var(--muted); font-size:13px; margin-top:6px; }
+  article h2 { font-size:20px; margin:28px 0 8px; }
+  table { border-collapse:collapse; width:100%; font-size:14px; margin:12px 0; display:block; overflow-x:auto; }
+  th, td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { font-weight:600; }
+  .live { display:inline-block; margin:6px 0 0; padding:6px 12px; border:1px solid var(--line); border-radius:8px; text-decoration:none; font-size:14px; background:var(--surface); }
+  .pager { display:flex; justify-content:space-between; gap:16px; margin-top:40px; padding-top:16px; border-top:1px solid var(--line); font-size:14px; }
+  .index-section { margin-bottom:28px; }
+  .index-section ul { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:4px 24px; }
+  .index-section li a { text-decoration:none; }
+  footer { border-top:1px solid var(--line); padding:20px 0 36px; color:var(--muted); font-size:14px; }
+  @media (max-width: 820px) {
+    .layout { grid-template-columns:minmax(0,1fr); gap:16px; }
+    aside.side { position:static; max-height:none; }
+    nav.top a { margin-left:12px; }
+    article h1 { font-size:26px; }
+  }</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" style="color:var(--accent)" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg> Rowpine</a>
+  <nav class="top"><a href="./" aria-current="page">Docs</a><a href="../examples/">Examples</a><a href="../#pricing">Pricing</a><a href="https://github.com/rowpine/rowpine">GitHub</a></nav>
+</div></header>
+<div class="wrap layout">
+  <aside class="side" aria-label="Help topics"><h2>Getting started</h2><a href="installation.html">Installation</a><a href="add-an-export-menu.html">Add an export menu</a><a href="license-keys.html">License keys</a><a href="column-settings.html">Column settings for exports</a><a href="your-own-export-buttons.html">Export from your own buttons</a><h2>Excel</h2><a href="export-to-excel.html">Export to Excel</a><a href="which-rows-are-exported.html">Which rows are exported</a><a href="number-and-date-formats.html">Number and date formats</a><a href="cell-colors.html">Cell colors</a><a href="hidden-and-excluded-columns.html">Hidden and excluded columns</a><a href="pinned-columns-frozen-panes.html">Pinned columns become frozen panes</a><a href="grouped-rows-as-outlines.html">Grouped rows become Excel outlines</a><a href="subtotal-formulas.html">Group totals as SUBTOTAL formulas</a><a href="tree-data.html">Tree data</a><a href="tree-data-in-excel.html">Tree data in Excel</a><a href="headers-and-widths.html">Headers and column widths</a><h2>PDF</h2><a href="export-to-pdf.html">Export to PDF</a><a href="pdf-page-setup.html">PDF page setup</a><a href="pdf-title-kpis-watermark.html">Title, headline numbers and watermark</a><a href="pdf-grouped-rows.html">Groups in a PDF</a><h2>CSV</h2><a href="csv-export.html">CSV export</a><h2>Pivot</h2><a href="pivot-basics.html">Pivot tables</a><a href="aggregations.html">Aggregations</a><a href="subtotals-and-grand-totals.html">Subtotals and grand totals</a><a href="expand-and-collapse.html">Expand and collapse groups</a><a href="pivot-designer.html">Pivot designer</a><a href="fields-and-wells.html">Fields and wells</a><a href="pivot-filters.html">Filters in the pivot designer</a><a href="presets-and-saved-views.html" aria-current="page">Presets and saved views</a><a href="exporting-a-pivot.html">Export a pivot</a></aside>
+  <main><article>
+  <h1>Presets and saved views</h1>
+  <p class="crumb">Pivot</p>
+  <figure>
+    <img src="img/presets-and-saved-views.png" alt="The Presets menu listing a saved layout named Units by product" loading="lazy">
+    <figcaption>The Presets menu listing a saved layout named Units by product. <a href="../examples/#/10-saved-layouts">Open the live example</a></figcaption>
+  </figure>
+  <p>A designer layout is plain JSON:</p>
+<pre><code class="language-json">{
+  &quot;rows&quot;: [&quot;region&quot;, &quot;country&quot;],
+  &quot;cols&quot;: [&quot;quarter&quot;],
+  &quot;values&quot;: [{ &quot;field&quot;: &quot;amount&quot;, &quot;agg&quot;: &quot;sum&quot;, &quot;label&quot;: &quot;Sum of Amount&quot; }],
+  &quot;filters&quot;: [{ &quot;field&quot;: &quot;status&quot;, &quot;allowed&quot;: [&quot;Overdue&quot;] }],
+  &quot;hideSubtotals&quot;: false,
+  &quot;hideGrandTotals&quot;: false
+}
+</code></pre>
+<p>Pass layouts as <code>presets</code> and they appear in the Presets menu:</p>
+<pre><code class="language-tsx">const presets = [{ name: &quot;Revenue by region and quarter&quot;, layout: revenueLayout }]
+
+&lt;PivotDesigner data={orders} fields={fields} presets={presets} /&gt;
+</code></pre>
+<p>To let users save their own views, control the layout and store it wherever your app keeps settings: localStorage, your database, the URL.</p>
+<pre><code class="language-tsx">const [layout, setLayout] = useState(() =&gt; defaultLayoutFor(fields))
+const [views, setViews] = useState&lt;PivotPreset[]&gt;(loadViews)
+
+&lt;PivotDesigner data={orders} fields={fields} layout={layout} onLayoutChange={setLayout} presets={views} /&gt;
+&lt;button onClick={() =&gt; saveViews([...views, { name, layout }])}&gt;Save view&lt;/button&gt;
+</code></pre>
+<p>The <a href="../examples/#/10-saved-layouts">saved views example</a> keeps them in localStorage.</p>
+
+  <p><a class="live" href="../examples/#/10-saved-layouts">Live example and source</a></p>
+  <nav class="pager" aria-label="Previous and next topic">
+    <span><a href="pivot-filters.html">&larr; Filters in the pivot designer</a></span>
+    <span><a href="exporting-a-pivot.html">Export a pivot &rarr;</a></span>
+  </nav>
+</article></main>
+</div>
+<footer><div class="wrap">Rowpine. TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</div></footer>
+</body>
+</html>

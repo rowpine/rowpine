@@ -31,8 +31,21 @@ The API may change before the first release.
 
 CSV export is free. Pivoting and Excel and PDF export come in one Pro license: a one-time payment per developer that includes a year of updates.
 
+## Docs and examples
+
+- [Help topics](https://rowpine.github.io/rowpine/docs/): 30 pages, sources in [`docs/`](docs/), each with an image from a real export or a running example.
+- [Live examples](https://rowpine.github.io/rowpine/examples/): 10 examples with their source.
+
 ## Website
 
 https://rowpine.github.io/rowpine/ (source in [`site/`](site/), deployed by [`.github/workflows/pages.yml`](.github/workflows/pages.yml)).
+
+```bash
+npm install
+npm run build:docs   # docs/*.md -> site/docs/*.html, a .md copy of each, and the docs list in site/llms.txt
+npm run check        # every local link, image and script on every page resolves
+```
+
+`site/examples/` is the build of the examples app, and `site/docs/img/` comes from `scripts/capture-docs.cjs`; both live in the private repo.
 
 TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.

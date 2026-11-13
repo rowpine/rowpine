@@ -1,0 +1,13 @@
+{
+  "name": "rowpine-site",
+  "private": true,
+  "description": "rowpine.com: the site, help topics and hosted examples",
+  "type": "module",
+  "scripts": {
+    "build:docs": "node scripts/build-docs.mjs",
+    "check": "node scripts/check-site.mjs"
+  },
+  "devDependencies": {
+    "marked": "^18.2.0"
+  }
+}

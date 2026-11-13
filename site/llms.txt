@@ -9,3 +9,38 @@ Status: in development. No npm package or registry item is published yet. Do not
 - Planned install: `npx shadcn add @rowpine/pivot @rowpine/export`
 - CSV export will be free. Pivot, Excel and PDF will be one Pro license: one-time per developer with a year of updates.
 - Source and issues: https://github.com/rowpine/rowpine
+
+<!-- docs:start -->
+## Docs
+
+- [Installation](https://rowpine.com/docs/installation.md): Rowpine has two parts. The rowpine npm package does the work: it reads your TanStack table and writes the files, and it builds pivots.
+- [Add an export menu](https://rowpine.com/docs/add-an-export-menu.md): Pass the table you already render to ExportMenu. It works with the object useReactTable (v8) or useTable (v9) returns.
+- [License keys](https://rowpine.com/docs/license-keys.md): Excel export, PDF export and pivots need a license. CSV export is free.
+- [Column settings for exports](https://rowpine.com/docs/column-settings.md): Per-column export settings go in the column's meta.rowpine. Your table renders as before; Rowpine reads these only when it writes a file.
+- [Export from your own buttons](https://rowpine.com/docs/your-own-export-buttons.md): The export menu is optional. Call the export functions from any button, a keyboard shortcut or a scheduled job in the browser.
+- [Export to Excel](https://rowpine.com/docs/export-to-excel.md): exportXlsx writes a real .xlsx workbook, not a CSV renamed. What you get in Excel:
+- [Which rows are exported](https://rowpine.com/docs/which-rows-are-exported.md): By default an export holds every row that passes the table's filters, on every page, in the current sort. Paging is a screen concern; the file gets the whole result.
+- [Number and date formats](https://rowpine.com/docs/number-and-date-formats.md): Excel and PDF need formats in different shapes, so a column can set both.
+- [Cell colors](https://rowpine.com/docs/cell-colors.md): cellStyle colors a cell in the Excel and PDF files. It gets the cell value and the row's original data and returns a fill, a text color and bold, or undefined for a plain cell.
+- [Hidden and excluded columns](https://rowpine.com/docs/hidden-and-excluded-columns.md): The file has the columns the user can see, in the order they see them.
+- [Pinned columns become frozen panes](https://rowpine.com/docs/pinned-columns-frozen-panes.md): Columns pinned to the start (TanStack v9) or to the left (v8) are frozen in Excel, so they stay in view while the user scrolls right. The header row is always frozen.
+- [Grouped rows become Excel outlines](https://rowpine.com/docs/grouped-rows-as-outlines.md): When the table is grouped with TanStack's grouping feature, the file keeps the groups.
+- [Group totals as SUBTOTAL formulas](https://rowpine.com/docs/subtotal-formulas.md): A group row's aggregates are written as live formulas over the rows below it, not as pasted numbers. If someone edits an amount in Excel, the group total updates.
+- [Tree data](https://rowpine.com/docs/tree-data.md): Rows nested with getSubRows export with their hierarchy.
+- [Tree data in Excel](https://rowpine.com/docs/tree-data-in-excel.md): In Excel, tree rows get one outline level per depth. In the image, Platform, Web and Data are level 1 under Engineering, and Analytics and Pipelines are level 2 under Data.
+- [Headers and column widths](https://rowpine.com/docs/headers-and-widths.md): The header row is built from your column definitions:
+- [Export to PDF](https://rowpine.com/docs/export-to-pdf.md): exportPdf lays the table out on pages: the header row repeats on every page, rows are striped, and the footer shows the date and "Page X of Y".
+- [PDF page setup](https://rowpine.com/docs/pdf-page-setup.md): Page size, orientation, margins and how a wide table fits the page are all options of exportPdf.
+- [Title, headline numbers and watermark](https://rowpine.com/docs/pdf-title-kpis-watermark.md): A PDF report usually needs more than the table. These options go above it:
+- [Groups in a PDF](https://rowpine.com/docs/pdf-grouped-rows.md): Grouped tables print their group rows bold on a light fill, with their aggregates, above the rows they group. Nested groups and tree rows are indented in the first column, one step per level.
+- [CSV export](https://rowpine.com/docs/csv-export.md): CSV export is free and needs no license key.
+- [Pivot tables](https://rowpine.com/docs/pivot-basics.md): TanStack Table can group rows but has no pivot. Rowpine's pivot turns flat rows into a cross-tab: fields down the side, fields across the top, and aggregated values where they meet.
+- [Aggregations](https://rowpine.com/docs/aggregations.md): Each value in a pivot has an aggregation:
+- [Subtotals and grand totals](https://rowpine.com/docs/subtotals-and-grand-totals.md): A pivot with more than one row field shows a subtotal on each group row, a Grand total row at the bottom and a Total column on the right.
+- [Expand and collapse groups](https://rowpine.com/docs/expand-and-collapse.md): Group rows in PivotTable have a chevron. Clicking it hides or shows the rows under the group. The group keeps its subtotal, so a collapsed pivot still adds up.
+- [Pivot designer](https://rowpine.com/docs/pivot-designer.md): PivotDesigner lets users build the pivot themselves, the way they would in Excel: a field list on the left, four wells (Filters, Columns, Rows, Values) and the pivot under them.
+- [Fields and wells](https://rowpine.com/docs/fields-and-wells.md): Users move fields in three ways:
+- [Filters in the pivot designer](https://rowpine.com/docs/pivot-filters.md): A field in the Filters well limits which rows the pivot counts. When a field is dropped there, its value list opens: untick the values to leave out.
+- [Presets and saved views](https://rowpine.com/docs/presets-and-saved-views.md): A designer layout is plain JSON:
+- [Export a pivot](https://rowpine.com/docs/exporting-a-pivot.md): A pivot exports like any table. pivot.table is a table view of the pivot for the exporters:
+<!-- docs:end -->
