@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rowpine - Excel and PDF export for TanStack tables</title>
+<meta name="description" content="Rowpine exports a TanStack Table or shadcn/ui data table to Excel and PDF the way it looks on screen: groups, filters, hidden and pinned columns, number formats. In development.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --fg: #1c1f1a;
+    --muted: #5b6157;
+    --line: #e2e0d8;
+    --accent: #2f6b4f;
+    --accent-soft: #e6efe9;
+    --code-bg: #f2f1ec;
+    --sheet-head: #f3f3f1;
+    --sheet-grid: #d9d9d4;
+    --group-row: #eef3ef;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121512;
+      --surface: #191d19;
+      --fg: #e6e8e3;
+      --muted: #9ba294;
+      --line: #2b302a;
+      --accent: #7fbf9b;
+      --accent-soft: #1f2d24;
+      --code-bg: #1c211c;
+      --sheet-head: #20251f;
+      --sheet-grid: #333a32;
+      --group-row: #1e2a22;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--accent); }
+  code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.9em; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+
+  header.top { border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 650; color: var(--fg); text-decoration: none; }
+  .brand svg { width: 22px; height: 22px; }
+  nav a { color: var(--muted); text-decoration: none; margin-left: 20px; font-size: 15px; }
+  nav a:hover { color: var(--fg); }
+
+  .intro { padding: 56px 0 32px; max-width: 680px; }
+  .intro h1 { font-size: 40px; line-height: 1.15; margin: 0 0 16px; letter-spacing: -0.01em; }
+  .intro p { margin: 0 0 12px; color: var(--muted); font-size: 18px; }
+  .status {
+    display: inline-block; margin-top: 8px; padding: 4px 10px; border-radius: 6px;
+    background: var(--accent-soft); color: var(--accent); font-size: 14px; font-weight: 550;
+  }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0 8px; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .panel h2 { margin: 0; padding: 10px 14px; font-size: 13px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line); }
+  .panel .note { padding: 8px 14px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  .ui th, .ui td { text-align: left; padding: 7px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  .ui th { font-weight: 600; font-size: 13px; }
+  .ui td.num, .ui th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .ui tr.grp td { font-weight: 600; background: var(--group-row); }
+  .ui .caret { display: inline-block; width: 14px; color: var(--muted); }
+
+  .sheet { font-size: 13px; }
+  .sheet th, .sheet td { border: 1px solid var(--sheet-grid); padding: 4px 8px; white-space: nowrap; }
+  .sheet thead th, .sheet td.rh { background: var(--sheet-head); color: var(--muted); font-weight: 500; text-align: center; }
+  .sheet td.rh { width: 28px; }
+  .sheet td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .sheet td.hd { font-weight: 600; }
+  .sheet tr.grp td:not(.rh) { font-weight: 600; background: var(--group-row); }
+  .sheet .f { color: var(--accent); font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
+  .scroll { overflow-x: auto; }
+
+  section { padding: 32px 0; border-top: 1px solid var(--line); }
+  section h2 { font-size: 22px; margin: 0 0 12px; }
+  section p { max-width: 680px; }
+  .keeps { columns: 2; column-gap: 40px; padding-left: 20px; margin: 0; max-width: 760px; }
+  .keeps li { margin-bottom: 6px; break-inside: avoid; }
+  pre { background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 0 0 12px; }
+  .small { font-size: 14px; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 760px) {
+    .intro { padding-top: 36px; }
+    .intro h1 { font-size: 30px; }
+    .intro p { font-size: 16px; }
+    .compare { grid-template-columns: 1fr; }
+    .keeps { columns: 1; }
+    nav a { margin-left: 14px; }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" style="color:var(--accent)" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg>
+      Rowpine
+    </a>
+    <nav>
+      <a href="#what-it-keeps">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://github.com/rowpine/rowpine">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    <h1>Export the table you see to Excel and PDF.</h1>
+    <p>Rowpine takes a TanStack Table or shadcn/ui data table and writes a real .xlsx or PDF from it, with the groups, filters, column order and number formats your users are looking at. You don't write a column mapping.</p>
+    <span class="status">In development. No package is published yet.</span>
+  </div>
+
+  <div class="compare">
+    <div class="panel">
+      <h2>In your app</h2>
+      <div class="scroll">
+        <table class="ui">
+          <thead><tr><th>Region / Customer</th><th>Order date</th><th class="num">Amount</th></tr></thead>
+          <tbody>
+            <tr class="grp"><td><span class="caret">&#9662;</span>Europe (2)</td><td></td><td class="num">$4,820.00</td></tr>
+            <tr><td><span class="caret"></span>Halvorsen AS</td><td>Mar 4, 2026</td><td class="num">$3,150.00</td></tr>
+            <tr><td><span class="caret"></span>Brandt GmbH</td><td>Mar 9, 2026</td><td class="num">$1,670.00</td></tr>
+            <tr class="grp"><td><span class="caret">&#9662;</span>North America (1)</td><td></td><td class="num">$2,240.50</td></tr>
+            <tr><td><span class="caret"></span>Lakeshore Supply</td><td>Mar 6, 2026</td><td class="num">$2,240.50</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">Grouped by region, filtered to March, the "Status" column hidden.</div>
+    </div>
+    <div class="panel">
+      <h2>orders.xlsx</h2>
+      <div class="scroll">
+        <table class="sheet">
+          <thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
+          <tbody>
+            <tr><td class="rh">1</td><td class="hd">Customer</td><td class="hd">Order date</td><td class="hd">Amount</td></tr>
+            <tr class="grp"><td class="rh">2</td><td>Europe</td><td></td><td class="num"><span class="f">=SUBTOTAL(9,C3:C4)</span></td></tr>
+            <tr><td class="rh">3</td><td>Halvorsen AS</td><td class="num">2026-03-04</td><td class="num">3,150.00</td></tr>
+            <tr><td class="rh">4</td><td>Brandt GmbH</td><td class="num">2026-03-09</td><td class="num">1,670.00</td></tr>
+            <tr class="grp"><td class="rh">5</td><td>North America</td><td></td><td class="num"><span class="f">=SUBTOTAL(9,C6)</span></td></tr>
+            <tr><td class="rh">6</td><td>Lakeshore Supply</td><td class="num">2026-03-06</td><td class="num">2,240.50</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">Groups become outline rows you can collapse in Excel. Dates and amounts are typed cells, so they sort and sum.</div>
+    </div>
+  </div>
+
+  <section id="what-it-keeps">
+    <h2>What the export keeps</h2>
+    <ul class="keeps">
+      <li>Column order and widths</li>
+      <li>Hidden columns stay out</li>
+      <li>Pinned columns become frozen panes</li>
+      <li>Only the rows that pass the current filter</li>
+      <li>The current sort</li>
+      <li>Groups as Excel outline rows</li>
+      <li>Aggregates as formulas, not pasted numbers</li>
+      <li>Numbers and dates as typed cells with their format</li>
+      <li>Cell colors from conditional formatting</li>
+      <li>Selected rows only, when you ask for it</li>
+    </ul>
+  </section>
+
+  <section id="install">
+    <h2>How it will install</h2>
+    <p>The export menu comes from the shadcn registry, so its source lands in your project and uses your theme. The file writers are an npm package.</p>
+    <pre><code>npx shadcn add @rowpine/export</code></pre>
+    <pre><code>&lt;ExportMenu table={table} fileName="orders" /&gt;</code></pre>
+    <p class="small">Planned API. Names may change before the first release.</p>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <p>CSV export is free. Excel and PDF export are a one-time license per developer that includes a year of updates. You keep every version released during that year. Prices will be posted at launch.</p>
+  </section>
+
+  <section id="follow">
+    <h2>Follow along</h2>
+    <p>Watch <a href="https://github.com/rowpine/rowpine">rowpine/rowpine</a> on GitHub to hear about the first release. Issues are open if you have a table that exports badly today and want it covered.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Rowpine. TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</div>
+</footer>
+</body>
+</html>

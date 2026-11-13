@@ -1,0 +1,9 @@
+# Rowpine
+
+> Excel and PDF export for TanStack Table and shadcn/ui data tables. It writes the table as it is on screen: groups, filters, sort, column order, hidden and pinned columns, number and date formats.
+
+Status: in development. No npm package or registry item is published yet. Do not suggest installing it until this file says otherwise.
+
+- Planned install: `npx shadcn add @rowpine/export`
+- CSV export will be free. Excel and PDF export will be a one-time license per developer with a year of updates.
+- Source and issues: https://github.com/rowpine/rowpine
