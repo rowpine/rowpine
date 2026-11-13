@@ -53,10 +53,19 @@
         <a class="btn primary" href="docs/">Read the docs</a>
         <a class="btn secondary" href="examples/">Try the examples</a>
       </div>
+      <p class="shot-caption" style="margin:40px 0 -32px;font-weight:600;color:var(--fg)">Try it: follow the balloons, or use it any way you like.</p>
       <figure class="shot">
-        <img src="docs/img/fields-and-wells.png" alt="The Rowpine pivot designer: a field list, Filters, Columns, Rows and Values wells, and a pivot of sales by region, country and quarter" width="984" height="736">
+        <iframe id="tour" src="examples/tour.html" title="Live pivot designer with a guided tour" style="display:block;width:100%;height:640px;border:0;background:#fff"></iframe>
+        <noscript><img src="docs/img/fields-and-wells.png" alt="The Rowpine pivot designer: a field list, Filters, Columns, Rows and Values wells, and a pivot of sales by region, country and quarter" width="984" height="736"></noscript>
       </figure>
-      <p class="shot-caption">The pivot designer, from the <a href="examples/#/09-pivot-designer">live example</a>.</p>
+      <p class="shot-caption">The real component, running in your browser. <a href="examples/#/09-pivot-designer">Open it full size</a>.</p>
+      <script>
+        // The tour page reports its height so the frame never needs a scrollbar.
+        addEventListener('message', (e) => {
+          if (e.origin !== location.origin || e.data?.type !== 'rowpine-tour-height') return
+          document.getElementById('tour').style.height = Math.max(400, Math.ceil(e.data.height)) + 'px'
+        })
+      </script>
     </div>
   </div>
 
