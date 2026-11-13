@@ -31,7 +31,12 @@
   .plan li { display: flex; gap: 8px; }
   .plan li svg { width: 18px; height: 18px; flex: none; color: var(--accent); margin-top: 3px; }
   .plan .btn { margin-top: auto; justify-content: center; }
-  .btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
+  .buy { margin-top: auto; display: grid; }
+  .buy .btn { justify-content: center; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+  .buy .btn.ghost { border: 1px solid var(--line); }
+  .renew { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; margin-top: 14px; font-size: 14px; color: var(--muted); }
+  .renew .buy { margin: 0; }
+  .renew .btn { padding: 8px 14px; font-size: 14px; }
   .note { text-align: center; color: var(--muted); font-size: 14px; margin-top: 18px; }
   .faq { max-width: 780px; margin: 0 auto; }
   .faq details { border-bottom: 1px solid var(--line); padding: 16px 0; }
@@ -98,7 +103,21 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Use in any number of apps</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Bug reports answered by the people who write it</li>
           </ul>
-          <a class="btn primary" data-plan="developer" href="#" aria-disabled="true">Checkout opens soon</a>
+          <form class="buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="info@jqwidgets.com">
+            <input type="hidden" name="item_name" value="Rowpine Developer License (1 developer, 1 year of updates)">
+            <input type="hidden" name="item_number" value="RP-DEV">
+            <input type="hidden" name="amount" value="149.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="no_shipping" value="1">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="cn" value="Company name and the developer email for the license key">
+            <input type="hidden" name="charset" value="utf-8">
+            <input type="hidden" name="return" value="https://rowpine.com/thanks.html">
+            <input type="hidden" name="cancel_return" value="https://rowpine.com/pricing.html">
+            <button type="submit" class="btn primary">Buy for $149</button>
+          </form>
         </div>
 
         <div class="plan">
@@ -111,10 +130,57 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>One key for the whole team</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Up to 10 developers in one company</li>
           </ul>
-          <a class="btn secondary" data-plan="team" href="#" aria-disabled="true">Checkout opens soon</a>
+          <form class="buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="info@jqwidgets.com">
+            <input type="hidden" name="item_name" value="Rowpine Team License (up to 10 developers, 1 year of updates)">
+            <input type="hidden" name="item_number" value="RP-TEAM">
+            <input type="hidden" name="amount" value="499.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="no_shipping" value="1">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="cn" value="Company name and the developer email for the license key">
+            <input type="hidden" name="charset" value="utf-8">
+            <input type="hidden" name="return" value="https://rowpine.com/thanks.html">
+            <input type="hidden" name="cancel_return" value="https://rowpine.com/pricing.html">
+            <button type="submit" class="btn secondary">Buy for $499</button>
+          </form>
         </div>
       </div>
-      <p class="note">Prices in US dollars. Payment by card through Stripe. Your license key arrives by email.</p>
+      <p class="note">Prices in US dollars. Pay with a PayPal account or a card through PayPal. Your license key arrives by email.</p>
+      <div class="renew">
+        <span>Renewing a year of updates?</span>
+        <form class="buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="info@jqwidgets.com">
+            <input type="hidden" name="item_name" value="Rowpine Developer License renewal (1 more year of updates)">
+            <input type="hidden" name="item_number" value="RP-DEV-RENEW">
+            <input type="hidden" name="amount" value="75.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="no_shipping" value="1">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="cn" value="Company name and the developer email for the license key">
+            <input type="hidden" name="charset" value="utf-8">
+            <input type="hidden" name="return" value="https://rowpine.com/thanks.html">
+            <input type="hidden" name="cancel_return" value="https://rowpine.com/pricing.html">
+            <button type="submit" class="btn ghost">Developer, $75</button>
+          </form>
+        <form class="buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="info@jqwidgets.com">
+            <input type="hidden" name="item_name" value="Rowpine Team License renewal (1 more year of updates)">
+            <input type="hidden" name="item_number" value="RP-TEAM-RENEW">
+            <input type="hidden" name="amount" value="249.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="no_shipping" value="1">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="cn" value="Company name and the developer email for the license key">
+            <input type="hidden" name="charset" value="utf-8">
+            <input type="hidden" name="return" value="https://rowpine.com/thanks.html">
+            <input type="hidden" name="cancel_return" value="https://rowpine.com/pricing.html">
+            <button type="submit" class="btn ghost">Team, $249</button>
+          </form>
+      </div>
     </div>
   </section>
 
@@ -137,6 +203,10 @@
         <details>
           <summary>How is the key checked?</summary>
           <p>In the browser, against a public key in the package. Rowpine never calls a server, so it works offline and behind firewalls.</p>
+        </details>
+        <details>
+          <summary>How do I pay, and when do I get the key?</summary>
+          <p>Checkout is on PayPal: pay with a PayPal account, or with a card without one where PayPal offers it. Put the developer's email in the note if it differs from the payer's. The license key is sent by email to that address.</p>
         </details>
         <details>
           <summary>Do I get the source?</summary>

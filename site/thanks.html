@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you - Rowpine</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
+</script>
+<link rel="stylesheet" href="site.css">
+<style>
+  .thanks { max-width: 680px; margin: 0 auto; padding: 72px 16px 80px; }
+  .thanks h1 { font-size: 38px; line-height: 1.15; margin: 0 0 14px; }
+  .thanks p { color: var(--muted); font-size: 17px; }
+  .thanks ol { padding-left: 22px; color: var(--muted); }
+  .thanks li { margin-bottom: 14px; }
+  .thanks li b { color: var(--fg); }
+  pre.code { margin: 8px 0 0; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
+      Rowpine <span class="for">for TanStack Table</span>
+    </a>
+    <nav class="top">
+      <a href="docs/">Docs</a>
+      <a href="examples/">Demos</a>
+      <a href="pricing.html" class="hide-sm">Pricing</a>
+    </nav>
+  </div>
+</header>
+
+<main class="thanks">
+  <span class="eyebrow">Payment received</span>
+  <h1>Thank you for buying Rowpine.</h1>
+  <p>PayPal has emailed your receipt. Your license key comes by separate email, to the developer address in your note, or to your PayPal email if you left the note empty.</p>
+  <ol>
+    <li><b>Install the package and the components</b>, if you have not yet:
+<pre class="code">npm install rowpine
+npx shadcn add https://rowpine.com/r/export-menu.json
+npx shadcn add https://rowpine.com/r/pivot.json</pre></li>
+    <li><b>Set the key once</b>, before the first export, for example from an environment variable:
+<pre class="code">import { setLicenseKey } from "rowpine"
+
+setLicenseKey(import.meta.env.VITE_ROWPINE_KEY)</pre></li>
+    <li><b>That's it.</b> The notice line leaves your Excel and PDF files, and the console message stops. The key covers every version released during your year of updates, for good.</li>
+  </ol>
+  <p>No key yet, or a question? Write to <a href="mailto:info@jqwidgets.com?subject=Rowpine%20license">info@jqwidgets.com</a> with your PayPal transaction ID.</p>
+  <div class="buttons" style="justify-content:flex-start">
+    <a class="btn primary" href="docs/license-keys.html">License keys in the docs</a>
+    <a class="btn ghost" href="examples/">Open the demos</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="fine" style="margin-top:0">Rowpine. TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
+  </div>
+</footer>
+</body>
+</html>
