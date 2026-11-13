@@ -113,7 +113,7 @@ ${current ? `<link rel="alternate" type="text/markdown" href="${current}.md">` :
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="../">${LOGO} Rowpine <span class="for">for TanStack Table</span></a>
-  <nav class="top"><a href="./" aria-current="page">Docs</a><a href="../examples/">Examples</a><a href="../#pricing">Pricing</a><a href="https://github.com/rowpine/rowpine">GitHub</a></nav>
+  <nav class="top"><a href="./" aria-current="page">Docs</a><a href="../examples/">Examples</a><a href="../pricing.html">Pricing</a><a href="https://github.com/rowpine/rowpine">GitHub</a></nav>
 </div></header>
 <div class="wrap layout">
   <aside class="side" aria-label="Help topics">${sidebar(current)}</aside>

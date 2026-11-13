@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rowpine pricing - pay once, keep what you get</title>
+<meta name="description" content="Rowpine pricing: CSV export is free. Pivot tables, the pivot designer and Excel and PDF export are a one-time license per developer with a year of updates.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
+</script>
+<link rel="stylesheet" href="site.css">
+<style>
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; }
+  .plan.featured { border: 2px solid var(--accent); box-shadow: var(--shadow); }
+  .plan h2 { font-size: 22px; margin: 0 0 4px; }
+  .plan .who { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .amount { font-size: 44px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .amount small { font-size: 15px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+  .terms { color: var(--muted); font-size: 14px; margin: 8px 0 20px; min-height: 42px; }
+  .plan ul { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 8px; font-size: 15px; }
+  .plan li { display: flex; gap: 8px; }
+  .plan li svg { width: 18px; height: 18px; flex: none; color: var(--accent); margin-top: 3px; }
+  .plan .btn { margin-top: auto; justify-content: center; }
+  .btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
+  .note { text-align: center; color: var(--muted); font-size: 14px; margin-top: 18px; }
+  .faq { max-width: 780px; margin: 0 auto; }
+  .faq details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+  .faq summary { cursor: pointer; font-weight: 700; font-size: 17px; }
+  .faq p { color: var(--muted); margin: 10px 0 0; }
+  pre.install { background: #0f1f16; color: #d7eadf; border-radius: 10px; padding: 12px 14px; font-size: 13px; overflow-x: auto; margin: 0 0 24px; }
+  @media (max-width: 920px) { .plans { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } .terms { min-height: 0; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
+      Rowpine <span class="for">for TanStack Table</span>
+    </a>
+    <nav class="top">
+      <a href="docs/">Docs</a>
+      <a href="examples/">Examples</a>
+      <a href="pricing.html" class="hide-sm" aria-current="page">Pricing</a>
+      <a href="https://github.com/rowpine/rowpine" class="hide-sm">GitHub</a>
+      <button class="theme" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero center" style="padding-bottom:40px">
+    <div class="wrap">
+      <span class="eyebrow">Pricing</span>
+      <h1>Pay once, keep what you get</h1>
+      <p class="lead">One payment per developer covers every Rowpine version released in the next twelve months. Those versions are yours to keep. Renew only if you want the next year of updates.</p>
+    </div>
+  </div>
+
+  <section style="padding-top:48px">
+    <div class="wrap">
+      <div class="plans">
+        <div class="plan">
+          <h2>Free</h2>
+          <p class="who">For CSV export</p>
+          <div class="amount">$0</div>
+          <p class="terms">No license key, no notice in the file.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>CSV export from any TanStack table</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Filtered and sorted rows, visible columns</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Try every Pro feature: it runs, with a notice line</li>
+          </ul>
+          <pre class="install">npm install rowpine</pre>
+          <a class="btn ghost" href="docs/installation.html">Install</a>
+        </div>
+
+        <div class="plan featured">
+          <h2>Developer</h2>
+          <p class="who">For one developer</p>
+          <div class="amount">$149 <small>one-time</small></div>
+          <p class="terms">Includes a year of updates. Renew updates for $75.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Excel export with outlines and formulas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>PDF export and reports</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Pivot tables and the pivot designer</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Use in any number of apps</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Bug reports answered by the people who write it</li>
+          </ul>
+          <a class="btn primary" data-plan="developer" href="#" aria-disabled="true">Checkout opens soon</a>
+        </div>
+
+        <div class="plan">
+          <h2>Team</h2>
+          <p class="who">For up to 10 developers</p>
+          <div class="amount">$499 <small>one-time</small></div>
+          <p class="terms">Includes a year of updates. Renew updates for $249.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Everything in Developer</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>One key for the whole team</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Up to 10 developers in one company</li>
+          </ul>
+          <a class="btn secondary" data-plan="team" href="#" aria-disabled="true">Checkout opens soon</a>
+        </div>
+      </div>
+      <p class="note">Prices in US dollars. Payment by card through Stripe. Your license key arrives by email.</p>
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap">
+      <div class="center"><h2>Questions</h2></div>
+      <div class="faq">
+        <details open>
+          <summary>Who needs a license?</summary>
+          <p>Each developer who writes code that uses Rowpine's Pro features. The people who use your app do not, and there is no limit on apps, users or servers.</p>
+        </details>
+        <details>
+          <summary>What happens after the year of updates?</summary>
+          <p>Everything keeps working. Your key covers every version released during your year, for good. A version released after it runs too, with the notice line, until you renew updates.</p>
+        </details>
+        <details>
+          <summary>Can I try it before buying?</summary>
+          <p>Yes. Install it and use everything. Without a key, Excel and PDF files carry one notice line and the console shows a message once. Nothing is switched off.</p>
+        </details>
+        <details>
+          <summary>How is the key checked?</summary>
+          <p>In the browser, against a public key in the package. Rowpine never calls a server, so it works offline and behind firewalls.</p>
+        </details>
+        <details>
+          <summary>Do I get the source?</summary>
+          <p>The export menu, pivot table and pivot designer install from the shadcn registry as source in your project. The engine (file writers and pivot) is the <code>rowpine</code> npm package.</p>
+        </details>
+        <details>
+          <summary>Which versions of TanStack Table and shadcn/ui?</summary>
+          <p>TanStack Table v8 and v9, and shadcn/ui on Base UI or Radix. The test suite runs on each.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="fine" style="margin-top:0">Rowpine. TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    const root = document.documentElement
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches
+    root.dataset.theme = dark ? 'light' : 'dark'
+    try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
+  }
+</script>
+</body>
+</html>

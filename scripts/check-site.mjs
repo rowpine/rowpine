@@ -44,7 +44,11 @@ for (const file of pages) {
   for (const [, ref] of html.matchAll(/(?:href|src)="([^"#][^"]*)"/g)) {
     if (/^(https?:|mailto:|data:)/.test(ref)) continue
     const url = new URL(ref, pageUrl)
-    const r = await fetch(url)
+    let r
+    // Retry a dropped connection; a reset is the local server, not a broken link.
+    for (let attempt = 0; ; attempt++) {
+      try { r = await fetch(url); break } catch (e) { if (attempt === 2) throw e }
+    }
     checked++
     if (!r.ok) bad.push(`${rel}: ${ref} -> ${r.status}`)
   }
