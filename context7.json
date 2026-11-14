@@ -1,0 +1,15 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "Rowpine",
+  "description": "Pivot tables, a pivot designer, and Excel, PDF and CSV export for TanStack Table (v8 and v9) and shadcn/ui data tables. Works from the table instance the app already has; exports match the screen (groups as Excel outlines with SUBTOTAL formulas, filters, sort, pinned columns, formats).",
+  "folders": ["docs", "registry"],
+  "excludeFolders": ["site", "scripts", ".github"],
+  "rules": [
+    "Install the engine with `npm install rowpine` and the UI with `npx shadcn add https://rowpine.com/r/export-menu.json` and `npx shadcn add https://rowpine.com/r/pivot.json`.",
+    "Pass the TanStack table instance itself (from useReactTable in v8 or useTable in v9) to ExportMenu, exportXlsx, exportPdf or exportCsv; do not rebuild columns or rows for the export.",
+    "Per-column export settings go in columnDef.meta.rowpine: numFmt (Excel number format), format (PDF text), cellStyle, width, align, header, exclude.",
+    "Excel dates come from Date values; convert ISO strings to Date in the accessor.",
+    "CSV export is free. Excel, PDF and pivots need a license key set once with setLicenseKey(key) from 'rowpine'; without it they still run and the files carry a notice line.",
+    "For pivots use createPivot(data, config) from 'rowpine' or usePivot, PivotTable and PivotDesigner from the pivot registry item; export a pivot with exportXlsx(pivot.table, { rowStyle: pivotRowStyle })."
+  ]
+}
