@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rowpine security</title>
+<meta name="description" content="Rowpine security facts for a vendor review: no network calls, three runtime dependencies, no install scripts, an offline Ed25519 license check, and how to report a vulnerability.">
+<link rel="canonical" href="https://rowpine.com/security.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
+</script>
+<link rel="stylesheet" href="site.css">
+<script src="analytics.js" defer></script>
+<style>
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 8px; }
+  .fact { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; background: var(--surface); }
+  .fact b { display: block; font-size: 28px; font-weight: 650; letter-spacing: -0.03em; line-height: 1.1; color: var(--fg); }
+  .fact span { color: var(--muted); font-size: 14px; }
+  .prose table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 12px 0 8px; }
+  .prose th, .prose td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+  .prose td { color: var(--muted); }
+  .prose td:first-child { color: var(--fg); font-family: "Geist Mono", ui-monospace, monospace; font-size: 13.5px; white-space: nowrap; }
+  .prose ul { padding-left: 20px; }
+  @media (max-width: 640px) { .facts { grid-template-columns: 1fr; } .prose td:first-child { white-space: normal; } }
+</style>
+</head>
+<body>
+<!-- header -->
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Rowpine home">
+      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
+      Rowpine <span class="for">for TanStack Table</span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="examples/">Demos</a>
+      <a href="docs/">Docs</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="license.html" class="hide-sm">License</a>
+    </nav>
+    <div class="actions">
+      <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+      <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a class="btn sm primary" href="pricing.html" data-umami-event="Header buy">Buy a license</a>
+    </div>
+  </div>
+</header>
+<!-- /header -->
+
+<main>
+  <div class="page-head">
+    <div class="wrap">
+      <span class="label">Security</span>
+      <h1>Security and data handling</h1>
+      <p class="lead">The facts a vendor review asks for, in one page. Each one can be checked in the published package.</p>
+    </div>
+  </div>
+  <div class="prose">
+    <div class="facts">
+      <div class="fact"><b>0</b><span>network calls from the package</span></div>
+      <div class="fact"><b>3</b><span>runtime dependencies</span></div>
+      <div class="fact"><b>0</b><span>install scripts</span></div>
+    </div>
+
+    <h2>Where your data goes</h2>
+    <p>Nowhere. Excel, PDF and CSV files are built in the user's browser from the rows the table already holds, and saved with the browser's own download. The <code>rowpine</code> package has no telemetry and makes <b>no network calls</b>, including for the license check.</p>
+
+    <h2>Runtime dependencies</h2>
+    <p>Three, as listed in the package's <code>package.json</code>. The two file writers are loaded with a dynamic import on the first Excel or PDF export, so a page that never exports never loads them.</p>
+    <table>
+      <thead><tr><th>Package</th><th>Range</th><th>License</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td>jszip</td><td>^3.10.2</td><td>MIT or GPL-3.0-or-later</td><td>Writing the .xlsx zip container</td></tr>
+        <tr><td>pdfmake</td><td>^0.3.14</td><td>MIT</td><td>Laying out PDF pages</td></tr>
+        <tr><td>@noble/ed25519</td><td>^3.2.0</td><td>MIT</td><td>Verifying the license key signature</td></tr>
+      </tbody>
+    </table>
+    <p>The package has no <code>preinstall</code>, <code>install</code> or <code>postinstall</code> scripts. It ships as ES modules with TypeScript definitions and is marked free of side effects, so bundlers drop what you do not import.</p>
+
+    <h2>The license check</h2>
+    <p>A key is a short signed string: the licensed company, the plan, the number of seats and the last day of the update period, signed with Ed25519. The package verifies the signature in the browser against a public key built into it. There is no license server, no activation and no phone-home, so it works offline, behind firewalls and in air-gapped networks.</p>
+    <p>A missing or expired key never stops anything. Files carry one notice line and the console shows a message once.</p>
+
+    <h2>Source you can read</h2>
+    <p>The export menu, pivot table and pivot designer install through the shadcn CLI as MIT-licensed source files in your own repository, where your normal code review applies. Their source is public at <a href="https://github.com/rowpine/rowpine/tree/main/registry">github.com/rowpine/rowpine</a>.</p>
+
+    <h2>This website</h2>
+    <p>rowpine.com is a static site on GitHub Pages and counts visits with cookieless analytics. See the <a href="privacy.html">privacy page</a>.</p>
+
+    <h2>Reporting a vulnerability</h2>
+    <p>Write to <a href="mailto:info@jqwidgets.com?subject=Rowpine%20security">info@jqwidgets.com</a> with "Rowpine security" in the subject. Please include the version, the steps to reproduce, and what an attacker could do. Do not open a public issue for a security report.</p>
+
+    <h2>Company</h2>
+    <p>Rowpine is a brand of jQWidgets LTD, which publishes the package on npm and sells the licenses.</p>
+  </div>
+</main>
+
+<!-- footer -->
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="brand" href="./"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span> Rowpine</a>
+        <p>Pivot tables and Excel and PDF export for TanStack Table and shadcn/ui.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="examples/">Demos</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="license.html">License</a>
+        <a href="security.html">Security</a>
+        <a href="https://www.npmjs.com/package/rowpine">npm</a>
+        <a href="https://github.com/rowpine/rowpine">GitHub</a>
+      </div>
+      <div>
+        <h4>Get started</h4>
+        <a href="docs/installation.html">Installation</a>
+        <a href="docs/add-an-export-menu.html">Export menu</a>
+        <a href="docs/license-keys.html">License keys</a>
+        <a href="docs/">All help topics</a>
+      </div>
+      <div>
+        <h4>Export</h4>
+        <a href="docs/export-to-excel.html">Excel</a>
+        <a href="docs/export-to-pdf.html">PDF</a>
+        <a href="docs/csv-export.html">CSV</a>
+        <a href="docs/grouped-rows-as-outlines.html">Grouped rows</a>
+      </div>
+      <div>
+        <h4>Pivot</h4>
+        <a href="docs/pivot-basics.html">Pivot tables</a>
+        <a href="docs/pivot-designer.html">Pivot designer</a>
+        <a href="docs/aggregations.html">Aggregations</a>
+        <a href="docs/exporting-a-pivot.html">Export a pivot</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 jQWidgets LTD. Rowpine is a brand of jQWidgets LTD.</span>
+      <nav aria-label="Legal"><a href="license.html">License</a><a href="security.html">Security</a><a href="privacy.html">Privacy</a><a href="mailto:info@jqwidgets.com?subject=Rowpine">Contact</a><a href="llms.txt">llms.txt</a></nav>
+    </div>
+    <p class="fine">TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
+  </div>
+</footer>
+<script>
+  function toggleTheme() {
+    const root = document.documentElement
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches
+    root.dataset.theme = dark ? 'light' : 'dark'
+    try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
+  }
+</script>
+<!-- /footer -->
+</body>
+</html>

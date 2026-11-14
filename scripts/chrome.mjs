@@ -63,6 +63,7 @@ export function footer({ base = '' } = {}) {
         ${a('examples/', 'Demos')}
         ${a('pricing.html', 'Pricing')}
         ${a('license.html', 'License')}
+        ${a('security.html', 'Security')}
         ${a('https://www.npmjs.com/package/rowpine', 'npm')}
         ${a('https://github.com/rowpine/rowpine', 'GitHub')}
       </div>
@@ -90,7 +91,7 @@ export function footer({ base = '' } = {}) {
     </div>
     <div class="legal">
       <span>&copy; 2026 jQWidgets LTD. Rowpine is a brand of jQWidgets LTD.</span>
-      <nav aria-label="Legal">${a('license.html', 'License')}${a('privacy.html', 'Privacy')}${a('mailto:info@jqwidgets.com?subject=Rowpine', 'Contact')}${a('llms.txt', 'llms.txt')}</nav>
+      <nav aria-label="Legal">${a('license.html', 'License')}${a('security.html', 'Security')}${a('privacy.html', 'Privacy')}${a('mailto:info@jqwidgets.com?subject=Rowpine', 'Contact')}${a('llms.txt', 'llms.txt')}</nav>
     </div>
     <p class="fine">TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
   </div>

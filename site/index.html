@@ -93,7 +93,72 @@
     </div>
   </div>
 
-  <section>
+  <section class="match">
+    <div class="wrap">
+      <div class="head-row">
+        <div>
+          <span class="label">Screen to file</span>
+          <h2>The export is the table your user built</h2>
+          <p class="sub">Rowpine reads the table's state, not its data array. Whatever the user filtered, grouped, sorted and pinned is what lands in the file, with Excel's own features doing the work.</p>
+        </div>
+      </div>
+      <div class="pair">
+        <figure class="pane" aria-label="The table on screen">
+          <figcaption><span class="dot"></span>On screen <span class="muted">orders-table.tsx</span></figcaption>
+          <div class="ui">
+            <div class="ui-bar">
+              <span class="chip"><i class="n">1</i>Status is Overdue <b aria-hidden="true">&times;</b></span>
+              <span class="ui-btn">Export</span>
+            </div>
+            <table class="mini">
+              <thead><tr><th><i class="n">4</i>Region <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 3l5 5-3 1-4 4 1 5-2 2-4-4-5 5-1-1 5-5-4-4 2-2 5 1 4-4z"/></svg></th><th>Customer</th><th class="r">Amount &darr;</th></tr></thead>
+              <tbody>
+                <tr class="g"><td><i class="n">2</i><span class="chev">&#9662;</span>Europe <span class="cnt">3</span></td><td></td><td class="r"><i class="n">3</i>&euro;7,442.58</td></tr>
+                <tr><td></td><td>Brandt GmbH</td><td class="r"><i class="n">5</i>&euro;4,432.76</td></tr>
+                <tr><td></td><td>Halvorsen AS</td><td class="r">&euro;2,344.74</td></tr>
+                <tr><td></td><td>Nordvik AB</td><td class="r">&euro;665.08</td></tr>
+                <tr class="g"><td><span class="chev">&#9662;</span>North America <span class="cnt">2</span></td><td></td><td class="r">&euro;7,417.26</td></tr>
+                <tr><td></td><td>Redwood Tools</td><td class="r">&euro;6,518.14</td></tr>
+                <tr><td></td><td>Lakeside Supply</td><td class="r">&euro;899.12</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </figure>
+        <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>exportXlsx(table)</span></div>
+        <figure class="pane" aria-label="The exported workbook">
+          <figcaption><span class="dot xl"></span>In Excel <span class="muted">orders.xlsx</span></figcaption>
+          <div class="xl-sheet">
+            <div class="fx"><span>C2</span><code>=SUBTOTAL(9,C3:C5)</code></div>
+            <div class="grid-x">
+              <div class="ol" aria-hidden="true"><span>1</span><span>2</span></div>
+              <table class="sheet">
+                <thead><tr><th class="rn"></th><th class="frozen">A</th><th>B</th><th>C</th></tr></thead>
+                <tbody>
+                  <tr class="h"><td class="rn">1</td><td class="frozen">Region</td><td>Customer</td><td class="r">Amount</td></tr>
+                  <tr class="g"><td class="rn">2</td><td class="frozen">Europe</td><td></td><td class="r sel">€7,442.58</td></tr>
+                  <tr class="c"><td class="rn">3</td><td class="frozen"></td><td>Brandt GmbH</td><td class="r">€4,432.76</td></tr>
+                  <tr class="c"><td class="rn">4</td><td class="frozen"></td><td>Halvorsen AS</td><td class="r">€2,344.74</td></tr>
+                  <tr class="c"><td class="rn">5</td><td class="frozen"></td><td>Nordvik AB</td><td class="r">€665.08</td></tr>
+                  <tr class="g"><td class="rn">6</td><td class="frozen">North America</td><td></td><td class="r">€7,417.26</td></tr>
+                  <tr class="c"><td class="rn">7</td><td class="frozen"></td><td>Redwood Tools</td><td class="r">€6,518.14</td></tr>
+                  <tr class="c"><td class="rn">8</td><td class="frozen"></td><td>Lakeside Supply</td><td class="r">€899.12</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </figure>
+      </div>
+      <ol class="legend">
+        <li><i class="n">1</i><div><b>Filters kept</b><span>Only the rows that pass, on every page, not only the visible one.</span></div></li>
+        <li><i class="n">2</i><div><b>Groups as outlines</b><span>Each level is an Excel outline level that collapses with the 1 and 2 buttons.</span></div></li>
+        <li><i class="n">3</i><div><b>Totals as formulas</b><span>SUBTOTAL formulas, so a total updates when someone edits the sheet.</span></div></li>
+        <li><i class="n">4</i><div><b>Pinned is frozen</b><span>A pinned column becomes a frozen pane, so it stays put on scroll.</span></div></li>
+        <li><i class="n">5</i><div><b>Real formats</b><span>Typed numbers and dates with their formats. They sort and sum.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="soft">
     <div class="wrap">
       <span class="label">What you get</span>
       <h2>Three jobs TanStack Table leaves to you</h2>
@@ -150,13 +215,13 @@
       <div class="stats" style="margin-top:72px">
         <div class="stat"><b>8</b><span>pivot aggregations, plus your own</span></div>
         <div class="stat"><b>26</b><span>live demos with their source</span></div>
-        <div class="stat"><b>30</b><span>help topics with pictures</span></div>
+        <div class="stat"><b>3</b><span>runtime dependencies; the file writers load on first export</span></div>
         <div class="stat"><b>0</b><span>network calls, license check included</span></div>
       </div>
     </div>
   </section>
 
-  <section class="soft" id="demos">
+  <section id="demos">
     <div class="wrap">
       <div class="head-row">
         <div>
@@ -203,34 +268,38 @@
     </div>
   </section>
 
-  <section>
+  <section class="soft" id="how">
     <div class="wrap">
       <div class="split">
         <div class="text">
-          <span class="label">Developer experience</span>
-          <h2>One component on the table you have</h2>
-          <p>Add the export menu from the shadcn registry and pass it your table, or call the export functions from your own buttons. The file follows whatever the user set up on screen.</p>
-          <ul class="ticks">
-            <li>Every filtered row, on every page, in the current sort</li>
-            <li>Selected rows only, when asked</li>
-            <li>Typed: TypeScript definitions ship in the package</li>
-            <li>The components install as source you can read and change</li>
-          </ul>
-          <a class="link-arrow" href="docs/add-an-export-menu.html">Add an export menu</a>
+          <span class="label">How it works</span>
+          <h2>Three steps on the table you already have</h2>
+          <ol class="steps">
+            <li><b>Install the package</b><span>The file writers and the pivot engine, typed, with three runtime dependencies.</span><code>npm install rowpine</code></li>
+            <li><b>Add the components</b><span>The export menu and the pivot designer arrive as source in your project, styled by your shadcn theme.</span><code>npx shadcn add https://rowpine.com/r/export-menu.json</code></li>
+            <li><b>Pass your table</b><span>No column definitions to repeat. Or call the export functions from your own buttons.</span><code>&lt;ExportMenu table={table} /&gt;</code></li>
+          </ol>
+          <a class="link-arrow" href="docs/installation.html">Installation guide</a>
         </div>
         <div class="editor">
-          <div class="editor-bar" aria-hidden="true"><span class="on">orders-table.tsx</span><span>terminal</span></div>
-<pre class="code"><span class="c">// npx shadcn add https://rowpine.com/r/export-menu.json</span>
-<span class="k">import</span> { ExportMenu } <span class="k">from</span> <span class="s">"@/components/export-menu"</span>
+          <div class="editor-bar" aria-hidden="true"><span class="on">orders-table.tsx</span><span>main.tsx</span></div>
+<pre class="code"><span class="k">import</span> { ExportMenu } <span class="k">from</span> <span class="s">"@/components/export-menu"</span>
 <span class="k">import</span> { exportXlsx, exportPdf } <span class="k">from</span> <span class="s">"rowpine"</span>
 
-<span class="k">const</span> table = <span class="t">useTable</span>({ features, columns, data })
+<span class="k">export function</span> <span class="t">OrdersTable</span>() {
+  <span class="k">const</span> table = <span class="t">useTable</span>({ features, columns, data })
 
-&lt;<span class="t">ExportMenu</span> table={table} fileName=<span class="s">"orders"</span> /&gt;
+  <span class="k">return</span> (
+    &lt;<span class="t">div</span>&gt;
+      &lt;<span class="t">ExportMenu</span> table={table} fileName=<span class="s">"orders"</span> /&gt;
+      <span class="c">{/* your shadcn &lt;Table&gt; */}</span>
+    &lt;/<span class="t">div</span>&gt;
+  )
+}
 
 <span class="c">// or from your own button</span>
 <span class="k">await</span> <span class="t">exportXlsx</span>(table, { fileName: <span class="s">"orders"</span> })
-<span class="k">await</span> <span class="t">exportPdf</span>(table, { title: <span class="s">"Orders"</span> })</pre>
+<span class="k">await</span> <span class="t">exportPdf</span>(table, { title: <span class="s">"Orders"</span>, pageSize: <span class="s">"A4"</span> })</pre>
         </div>
       </div>
     </div>
@@ -240,7 +309,7 @@
     <div class="wrap">
       <span class="label">Built for production</span>
       <h2>Ready for your security and procurement review</h2>
-      <p class="sub">Rowpine runs entirely in the browser, checks its license offline, and never switches anything off.</p>
+      <p class="sub">Rowpine runs entirely in the browser, checks its license offline, and never switches anything off. The details are on the <a href="security.html">security page</a>.</p>
       <div class="trust">
         <div>
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Nothing leaves the browser</h3>
@@ -292,7 +361,33 @@
     </div>
   </section>
 
-  <section class="soft" id="pricing">
+  <section class="soft" id="compare">
+    <div class="wrap">
+      <span class="label">Build or buy</span>
+      <h2>What a TanStack export takes</h2>
+      <p class="sub">Most teams start with a CSV button or a general spreadsheet library. Here is what each one leaves for you to write.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th scope="col"><span class="sr-only">Capability</span></th><th scope="col">CSV button</th><th scope="col">Spreadsheet library</th><th scope="col" class="us"><span class="mark sm"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>Rowpine</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Reads filter, sort, visibility and column order from the table</th><td data-l="CSV button" class="you">You write it</td><td data-l="Spreadsheet library" class="you">You write it</td><td data-l="Rowpine" class="us yes">Built in</td></tr>
+            <tr><th scope="row">Every filtered row, not only the current page</th><td data-l="CSV button" class="you">You write it</td><td data-l="Spreadsheet library" class="you">You write it</td><td data-l="Rowpine" class="us yes">Built in</td></tr>
+            <tr><th scope="row">Typed numbers and dates with their formats</th><td data-l="CSV button" class="no">Text only</td><td data-l="Spreadsheet library" class="you">You map each column</td><td data-l="Rowpine" class="us yes">From column settings</td></tr>
+            <tr><th scope="row">Groups and tree rows as Excel outline levels</th><td data-l="CSV button" class="no">Not possible</td><td data-l="Spreadsheet library" class="you">You write it</td><td data-l="Rowpine" class="us yes">Built in</td></tr>
+            <tr><th scope="row">Group totals as SUBTOTAL formulas</th><td data-l="CSV button" class="no">Not possible</td><td data-l="Spreadsheet library" class="you">You write it</td><td data-l="Rowpine" class="us yes">Built in</td></tr>
+            <tr><th scope="row">Pinned columns as frozen panes</th><td data-l="CSV button" class="no">Not possible</td><td data-l="Spreadsheet library" class="you">You write it</td><td data-l="Rowpine" class="us yes">Built in</td></tr>
+            <tr><th scope="row">PDF with title, page setup and a repeated header</th><td data-l="CSV button" class="no">Not possible</td><td data-l="Spreadsheet library" class="no">A second library</td><td data-l="Rowpine" class="us yes">Built in</td></tr>
+            <tr><th scope="row">Pivot table and a designer for end users</th><td data-l="CSV button" class="no">Not possible</td><td data-l="Spreadsheet library" class="no">Not included</td><td data-l="Rowpine" class="us yes">Built in</td></tr>
+            <tr><th scope="row">TanStack Table v8 and v9</th><td data-l="CSV button" class="you">You test it</td><td data-l="Spreadsheet library" class="you">You test it</td><td data-l="Rowpine" class="us yes">Tested</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
     <div class="wrap">
       <div class="head-row">
         <div>
@@ -300,7 +395,7 @@
           <h2>Pay once, keep what you get</h2>
           <p class="sub">A one-time payment covers every version released in the next twelve months. Those versions are yours for good.</p>
         </div>
-        <a class="btn secondary" href="pricing.html">Compare plans</a>
+        <a class="btn secondary" href="pricing.html#compare">Compare plans</a>
       </div>
       <div class="plans-mini">
         <div class="plan-mini">
@@ -324,6 +419,42 @@
           <ul class="ticks"><li>Everything in Developer</li><li>One key for the whole team</li></ul>
           <a class="btn secondary" href="pricing.html" data-umami-event="Home plan Team">Buy Team</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft" id="faq">
+    <div class="wrap faq-grid">
+      <div>
+        <span class="label">FAQ</span>
+        <h2>Questions teams ask before they buy</h2>
+        <p class="sub">Something else? Write to <a href="mailto:info@jqwidgets.com?subject=Rowpine">info@jqwidgets.com</a> and an engineer answers.</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Do we have to replace our table?</summary>
+          <p>No. Rowpine reads the TanStack table instance you already render. Your columns, cells and shadcn/ui styling stay as they are.</p>
+        </details>
+        <details>
+          <summary>Does any of our data leave the browser?</summary>
+          <p>No. Excel and PDF files are built on the user's machine, and the license key is checked there too. The package makes no network calls.</p>
+        </details>
+        <details>
+          <summary>What happens without a license key?</summary>
+          <p>Everything runs. Excel and PDF files carry one notice line, and the console shows a message once. Nothing is switched off, so a missing key never breaks production.</p>
+        </details>
+        <details>
+          <summary>What happens after the year of updates?</summary>
+          <p>Your key covers every version released during that year, for good. Renew only when you want the next year of versions.</p>
+        </details>
+        <details>
+          <summary>Who needs a license?</summary>
+          <p>Each developer who writes code that uses the Pro features. The people who use your app do not, and there is no limit on apps, users or servers.</p>
+        </details>
+        <details>
+          <summary>Can we change the components?</summary>
+          <p>Yes. The export menu, pivot table and pivot designer install as MIT source in your repository. The file writers and the pivot engine are the <code>rowpine</code> npm package.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -357,6 +488,7 @@
         <a href="examples/">Demos</a>
         <a href="pricing.html">Pricing</a>
         <a href="license.html">License</a>
+        <a href="security.html">Security</a>
         <a href="https://www.npmjs.com/package/rowpine">npm</a>
         <a href="https://github.com/rowpine/rowpine">GitHub</a>
       </div>
@@ -384,7 +516,7 @@
     </div>
     <div class="legal">
       <span>&copy; 2026 jQWidgets LTD. Rowpine is a brand of jQWidgets LTD.</span>
-      <nav aria-label="Legal"><a href="license.html">License</a><a href="privacy.html">Privacy</a><a href="mailto:info@jqwidgets.com?subject=Rowpine">Contact</a><a href="llms.txt">llms.txt</a></nav>
+      <nav aria-label="Legal"><a href="license.html">License</a><a href="security.html">Security</a><a href="privacy.html">Privacy</a><a href="mailto:info@jqwidgets.com?subject=Rowpine">Contact</a><a href="llms.txt">llms.txt</a></nav>
     </div>
     <p class="fine">TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
   </div>
