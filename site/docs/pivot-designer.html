@@ -13,41 +13,34 @@
 <link rel="alternate" type="text/markdown" href="pivot-designer.md">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
+</script>
+<link rel="stylesheet" href="../site.css">
 <style>
-  :root { --bg:#fbfaf7; --surface:#fff; --fg:#1c1f1a; --muted:#5b6157; --line:#e2e0d8; --accent:#2f6b4f; --accent-soft:#e6efe9; --code-bg:#f2f1ec; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#121512; --surface:#191d19; --fg:#e6e8e3; --muted:#9ba294; --line:#2b302a; --accent:#7fbf9b; --accent-soft:#1f2d24; --code-bg:#1c211c; } }
-  * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 Manrope,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
-  a { color:var(--accent); }
-  code, pre { font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; font-size:.88em; }
+  :root { --code-bg: #f2f4f2; } :root[data-theme="dark"] { --code-bg: #16201a; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --code-bg: #16201a; } }
+  code, pre { font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em; }
   :not(pre) > code { background:var(--code-bg); padding:.1em .35em; border-radius:4px; }
   pre { background:var(--code-bg); border:1px solid var(--line); border-radius:8px; padding:12px 14px; overflow-x:auto; line-height:1.5; }
-  .wrap { max-width:1120px; margin:0 auto; padding:0 16px; }
-  header.top { border-bottom:1px solid var(--line); }
-  header.top .wrap { display:flex; align-items:center; justify-content:space-between; height:56px; }
-  .brand { display:flex; align-items:center; gap:10px; font-weight:800; color:var(--fg); text-decoration:none; white-space:nowrap; }
-  .brand .for { font-weight:600; color:var(--muted); }
-  .mark { width:30px; height:30px; border-radius:8px; background:#1f5b40; display:grid; place-items:center; }
-  .mark svg { width:19px; height:19px; color:#fff; }
-  @media (max-width: 640px) { .brand .for { display:none; } }
-  nav.top a { color:var(--muted); text-decoration:none; margin-left:20px; font-size:15px; }
-  nav.top a:hover, nav.top a[aria-current] { color:var(--fg); }
-  .layout { display:grid; grid-template-columns:230px minmax(0,1fr); gap:40px; padding:28px 0 60px; }
-  aside.side { position:sticky; top:16px; align-self:start; font-size:14px; max-height:calc(100vh - 32px); overflow:auto; }
-  aside.side h2 { font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin:18px 0 6px; }
+  .layout { display:grid; grid-template-columns:240px minmax(0,1fr); gap:56px; padding:40px 24px 80px; }
+  aside.side { position:sticky; top:88px; align-self:start; font-size:14px; max-height:calc(100vh - 112px); overflow:auto; }
+  aside.side h2 { font:600 11.5px/1 "Geist Mono",ui-monospace,monospace; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:22px 0 8px; padding-left:8px; }
   aside.side h2:first-child { margin-top:0; }
-  aside.side a { display:block; padding:4px 8px; border-radius:6px; color:var(--fg); text-decoration:none; }
+  aside.side a { display:block; padding:5px 8px; border-radius:6px; color:var(--muted); text-decoration:none; }
+  aside.side a:hover { color:var(--fg); }
   aside.side a:hover { background:var(--accent-soft); }
-  aside.side a[aria-current] { background:var(--accent-soft); color:var(--accent); font-weight:600; }
+  aside.side a[aria-current] { background:var(--accent-soft); color:var(--brand); font-weight:600; }
   article { max-width:760px; min-width:0; }
   main { min-width:0; }
-  article h1 { font-size:32px; line-height:1.2; margin:0 0 6px; }
+  article h1 { font-size:36px; line-height:1.15; letter-spacing:-0.03em; font-weight:650; margin:0 0 8px; }
+  article p, article li { line-height:1.7; }
   .crumb { color:var(--muted); font-size:14px; margin:0 0 18px; }
   figure { margin:18px 0 24px; }
-  figure img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:8px; background:#fff; display:block; }
+  figure img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:10px; background:#fff; display:block; box-shadow:var(--shadow-sm); }
   figcaption { color:var(--muted); font-size:13px; margin-top:6px; }
-  article h2 { font-size:20px; margin:28px 0 8px; }
+  article h2 { font-size:21px; letter-spacing:-0.015em; font-weight:600; margin:36px 0 8px; }
   table { border-collapse:collapse; width:100%; font-size:14px; margin:12px 0; display:block; overflow-x:auto; }
   th, td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
   th { font-weight:600; }
@@ -56,19 +49,33 @@
   .index-section { margin-bottom:28px; }
   .index-section ul { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:4px 24px; }
   .index-section li a { text-decoration:none; }
-  footer { border-top:1px solid var(--line); padding:20px 0 36px; color:var(--muted); font-size:14px; }
   @media (max-width: 820px) {
-    .layout { grid-template-columns:minmax(0,1fr); gap:16px; }
-    aside.side { position:static; max-height:none; }
-    nav.top a { margin-left:12px; }
+    .layout { grid-template-columns:minmax(0,1fr); gap:16px; padding:24px 16px 56px; }
+    aside.side { position:static; max-height:none; order:2; border-top:1px solid var(--line); padding-top:24px; }
     article h1 { font-size:26px; }
   }</style>
+<script src="../analytics.js" defer></script>
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <a class="brand" href="../"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span> Rowpine <span class="for">for TanStack Table</span></a>
-  <nav class="top"><a href="./" aria-current="page">Docs</a><a href="../examples/">Demos</a><a href="../pricing.html">Pricing</a><a href="https://github.com/rowpine/rowpine">GitHub</a></nav>
-</div></header>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Rowpine home">
+      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
+      Rowpine <span class="for">for TanStack Table</span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="../examples/">Demos</a>
+      <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../license.html" class="hide-sm">License</a>
+    </nav>
+    <div class="actions">
+      <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+      <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a class="btn sm primary" href="../pricing.html" data-umami-event="Header buy">Buy a license</a>
+    </div>
+  </div>
+</header>
 <div class="wrap layout">
   <aside class="side" aria-label="Help topics"><h2>Getting started</h2><a href="installation.html">Installation</a><a href="add-an-export-menu.html">Add an export menu</a><a href="license-keys.html">License keys</a><a href="column-settings.html">Column settings for exports</a><a href="your-own-export-buttons.html">Export from your own buttons</a><h2>Excel</h2><a href="export-to-excel.html">Export to Excel</a><a href="which-rows-are-exported.html">Which rows are exported</a><a href="number-and-date-formats.html">Number and date formats</a><a href="cell-colors.html">Cell colors</a><a href="hidden-and-excluded-columns.html">Hidden and excluded columns</a><a href="pinned-columns-frozen-panes.html">Pinned columns become frozen panes</a><a href="grouped-rows-as-outlines.html">Grouped rows become Excel outlines</a><a href="subtotal-formulas.html">Group totals as SUBTOTAL formulas</a><a href="tree-data.html">Tree data</a><a href="tree-data-in-excel.html">Tree data in Excel</a><a href="headers-and-widths.html">Headers and column widths</a><h2>PDF</h2><a href="export-to-pdf.html">Export to PDF</a><a href="pdf-page-setup.html">PDF page setup</a><a href="pdf-title-kpis-watermark.html">Title, headline numbers and watermark</a><a href="pdf-grouped-rows.html">Groups in a PDF</a><h2>CSV</h2><a href="csv-export.html">CSV export</a><h2>Pivot</h2><a href="pivot-basics.html">Pivot tables</a><a href="aggregations.html">Aggregations</a><a href="subtotals-and-grand-totals.html">Subtotals and grand totals</a><a href="expand-and-collapse.html">Expand and collapse groups</a><a href="pivot-designer.html" aria-current="page">Pivot designer</a><a href="fields-and-wells.html">Fields and wells</a><a href="pivot-filters.html">Filters in the pivot designer</a><a href="presets-and-saved-views.html">Presets and saved views</a><a href="exporting-a-pivot.html">Export a pivot</a></aside>
   <main><article>
@@ -139,6 +146,57 @@ const fields: PivotField&lt;Order&gt;[] = [
   </nav>
 </article></main>
 </div>
-<footer><div class="wrap">Rowpine is a brand of jQWidgets LTD. TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</div></footer>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="brand" href="../"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span> Rowpine</a>
+        <p>Pivot tables and Excel and PDF export for TanStack Table and shadcn/ui.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="../examples/">Demos</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../license.html">License</a>
+        <a href="https://www.npmjs.com/package/rowpine">npm</a>
+        <a href="https://github.com/rowpine/rowpine">GitHub</a>
+      </div>
+      <div>
+        <h4>Get started</h4>
+        <a href="../docs/installation.html">Installation</a>
+        <a href="../docs/add-an-export-menu.html">Export menu</a>
+        <a href="../docs/license-keys.html">License keys</a>
+        <a href="../docs/">All help topics</a>
+      </div>
+      <div>
+        <h4>Export</h4>
+        <a href="../docs/export-to-excel.html">Excel</a>
+        <a href="../docs/export-to-pdf.html">PDF</a>
+        <a href="../docs/csv-export.html">CSV</a>
+        <a href="../docs/grouped-rows-as-outlines.html">Grouped rows</a>
+      </div>
+      <div>
+        <h4>Pivot</h4>
+        <a href="../docs/pivot-basics.html">Pivot tables</a>
+        <a href="../docs/pivot-designer.html">Pivot designer</a>
+        <a href="../docs/aggregations.html">Aggregations</a>
+        <a href="../docs/exporting-a-pivot.html">Export a pivot</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 jQWidgets LTD. Rowpine is a brand of jQWidgets LTD.</span>
+      <nav aria-label="Legal"><a href="../license.html">License</a><a href="../privacy.html">Privacy</a><a href="mailto:info@jqwidgets.com?subject=Rowpine">Contact</a><a href="../llms.txt">llms.txt</a></nav>
+    </div>
+    <p class="fine">TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
+  </div>
+</footer>
+<script>
+  function toggleTheme() {
+    const root = document.documentElement
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches
+    root.dataset.theme = dark ? 'light' : 'dark'
+    try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
+  }
+</script>
 </body>
 </html>

@@ -13,18 +13,19 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script>
   try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
 </script>
 <link rel="stylesheet" href="site.css">
+<script src="analytics.js" defer></script>
 <style>
   .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
-  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; }
-  .plan.featured { border: 2px solid var(--accent); box-shadow: var(--shadow); }
-  .plan h2 { font-size: 22px; margin: 0 0 4px; }
+  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; display: flex; flex-direction: column; }
+  .plan.featured { border-color: var(--brand); box-shadow: var(--shadow), 0 0 0 1px var(--brand); }
+  .plan h2 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
   .plan .who { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
-  .amount { font-size: 44px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .amount { font-size: 46px; font-weight: 650; letter-spacing: -0.035em; line-height: 1; }
   .amount small { font-size: 15px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
   .terms { color: var(--muted); font-size: 14px; margin: 8px 0 20px; min-height: 42px; }
   .plan ul { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 8px; font-size: 15px; }
@@ -42,33 +43,37 @@
   .faq details { border-bottom: 1px solid var(--line); padding: 16px 0; }
   .faq summary { cursor: pointer; font-weight: 700; font-size: 17px; }
   .faq p { color: var(--muted); margin: 10px 0 0; }
-  pre.install { background: #0f1f16; color: #d7eadf; border-radius: 10px; padding: 12px 14px; font-size: 13px; overflow-x: auto; margin: 0 0 24px; }
+  pre.install { background: #0c1611; color: #d4e6da; border-radius: 8px; padding: 12px 14px; font-size: 13px; overflow-x: auto; margin: 0 0 24px; }
   @media (max-width: 920px) { .plans { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } .terms { min-height: 0; } }
 </style>
 </head>
 <body>
+<!-- header current=pricing -->
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="./">
+    <a class="brand" href="./" aria-label="Rowpine home">
       <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
       Rowpine <span class="for">for TanStack Table</span>
     </a>
-    <nav class="top">
-      <a href="docs/">Docs</a>
+    <nav class="main" aria-label="Main">
       <a href="examples/">Demos</a>
-      <a href="pricing.html" class="hide-sm" aria-current="page">Pricing</a>
-      <a href="https://github.com/rowpine/rowpine" class="hide-sm">GitHub</a>
-      <button class="theme" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
+      <a href="docs/">Docs</a>
+      <a href="pricing.html" aria-current="page">Pricing</a>
+      <a href="license.html" class="hide-sm">License</a>
     </nav>
+    <div class="actions">
+      <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+      <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a class="btn sm primary" href="pricing.html" data-umami-event="Header buy">Buy a license</a>
+    </div>
   </div>
 </header>
+<!-- /header -->
 
 <main>
-  <div class="hero center" style="padding-bottom:40px">
+  <div class="page-head center">
     <div class="wrap">
-      <span class="eyebrow">Pricing</span>
+      <span class="label">Pricing</span>
       <h1>Pay once, keep what you get</h1>
       <p class="lead">One payment per developer covers every Rowpine version released in the next twelve months. Those versions are yours to keep. Renew only if you want the next year of updates.</p>
     </div>
@@ -116,7 +121,7 @@
             <input type="hidden" name="charset" value="utf-8">
             <input type="hidden" name="return" value="https://rowpine.com/thanks.html">
             <input type="hidden" name="cancel_return" value="https://rowpine.com/pricing.html">
-            <button type="submit" class="btn primary">Buy for $149</button>
+            <button type="submit" class="btn primary" data-umami-event="Checkout Developer">Buy for $149</button>
           </form>
         </div>
 
@@ -143,7 +148,7 @@
             <input type="hidden" name="charset" value="utf-8">
             <input type="hidden" name="return" value="https://rowpine.com/thanks.html">
             <input type="hidden" name="cancel_return" value="https://rowpine.com/pricing.html">
-            <button type="submit" class="btn secondary">Buy for $499</button>
+            <button type="submit" class="btn primary" data-umami-event="Checkout Team">Buy for $499</button>
           </form>
         </div>
       </div>
@@ -163,7 +168,7 @@
             <input type="hidden" name="charset" value="utf-8">
             <input type="hidden" name="return" value="https://rowpine.com/thanks.html">
             <input type="hidden" name="cancel_return" value="https://rowpine.com/pricing.html">
-            <button type="submit" class="btn ghost">Developer, $75</button>
+            <button type="submit" class="btn ghost" data-umami-event="Checkout Developer renewal">Developer, $75</button>
           </form>
         <form class="buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_xclick">
@@ -178,7 +183,7 @@
             <input type="hidden" name="charset" value="utf-8">
             <input type="hidden" name="return" value="https://rowpine.com/thanks.html">
             <input type="hidden" name="cancel_return" value="https://rowpine.com/pricing.html">
-            <button type="submit" class="btn ghost">Team, $249</button>
+            <button type="submit" class="btn ghost" data-umami-event="Checkout Team renewal">Team, $249</button>
           </form>
       </div>
     </div>
@@ -186,7 +191,7 @@
 
   <section class="soft">
     <div class="wrap">
-      <div class="center"><h2>Questions</h2></div>
+      <div class="center"><span class="label">FAQ</span><h2>Questions</h2></div>
       <div class="faq">
         <details open>
           <summary>Who needs a license?</summary>
@@ -221,12 +226,51 @@
   </section>
 </main>
 
-<footer>
+<!-- footer -->
+<footer class="site">
   <div class="wrap">
-    <p class="fine" style="margin-top:0">Rowpine is a brand of jQWidgets LTD. TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
+    <div class="cols">
+      <div class="about">
+        <a class="brand" href="./"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span> Rowpine</a>
+        <p>Pivot tables and Excel and PDF export for TanStack Table and shadcn/ui.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="examples/">Demos</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="license.html">License</a>
+        <a href="https://www.npmjs.com/package/rowpine">npm</a>
+        <a href="https://github.com/rowpine/rowpine">GitHub</a>
+      </div>
+      <div>
+        <h4>Get started</h4>
+        <a href="docs/installation.html">Installation</a>
+        <a href="docs/add-an-export-menu.html">Export menu</a>
+        <a href="docs/license-keys.html">License keys</a>
+        <a href="docs/">All help topics</a>
+      </div>
+      <div>
+        <h4>Export</h4>
+        <a href="docs/export-to-excel.html">Excel</a>
+        <a href="docs/export-to-pdf.html">PDF</a>
+        <a href="docs/csv-export.html">CSV</a>
+        <a href="docs/grouped-rows-as-outlines.html">Grouped rows</a>
+      </div>
+      <div>
+        <h4>Pivot</h4>
+        <a href="docs/pivot-basics.html">Pivot tables</a>
+        <a href="docs/pivot-designer.html">Pivot designer</a>
+        <a href="docs/aggregations.html">Aggregations</a>
+        <a href="docs/exporting-a-pivot.html">Export a pivot</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 jQWidgets LTD. Rowpine is a brand of jQWidgets LTD.</span>
+      <nav aria-label="Legal"><a href="license.html">License</a><a href="privacy.html">Privacy</a><a href="mailto:info@jqwidgets.com?subject=Rowpine">Contact</a><a href="llms.txt">llms.txt</a></nav>
+    </div>
+    <p class="fine">TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
   </div>
 </footer>
-
 <script>
   function toggleTheme() {
     const root = document.documentElement
@@ -235,5 +279,7 @@
     try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
   }
 </script>
+<!-- /footer -->
+
 </body>
 </html>

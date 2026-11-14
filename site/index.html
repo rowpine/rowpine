@@ -12,118 +12,192 @@
 <meta property="og:url" content="https://rowpine.com/">
 <meta property="og:image" content="https://rowpine.com/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a1510">
 <link rel="canonical" href="https://rowpine.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script>
   // Apply a saved theme before paint; fall back to the system setting.
   try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
 </script>
 <link rel="stylesheet" href="site.css">
+<script src="analytics.js" defer></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Rowpine","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Pivot tables, a pivot designer, and Excel and PDF export for TanStack Table and shadcn/ui.","url":"https://rowpine.com/","publisher":{"@type":"Organization","name":"jQWidgets LTD"},"offers":[{"@type":"Offer","name":"Developer","price":"149.00","priceCurrency":"USD"},{"@type":"Offer","name":"Team","price":"499.00","priceCurrency":"USD"}]}
+</script>
 </head>
 <body>
+<div class="announce"><div class="wrap"><span class="pill">1.0</span><span><b>Rowpine 1.0 is on npm.</b><span class="hide-xs"> Pivot tables and Excel and PDF export for TanStack Table v8 and v9.</span></span><a href="docs/installation.html">Install it</a></div></div>
+<!-- header -->
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="./">
+    <a class="brand" href="./" aria-label="Rowpine home">
       <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
       Rowpine <span class="for">for TanStack Table</span>
     </a>
-    <nav class="top">
-      <a href="docs/">Docs</a>
+    <nav class="main" aria-label="Main">
       <a href="examples/">Demos</a>
-      <a href="pricing.html" class="hide-sm">Pricing</a>
-      <a href="https://github.com/rowpine/rowpine" class="hide-sm">GitHub</a>
-      <button class="theme" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
+      <a href="docs/">Docs</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="license.html" class="hide-sm">License</a>
     </nav>
+    <div class="actions">
+      <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+      <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a class="btn sm primary" href="pricing.html" data-umami-event="Header buy">Buy a license</a>
+    </div>
   </div>
 </header>
+<!-- /header -->
 
 <main>
-  <div class="hero center">
+  <section class="hero night">
     <div class="wrap">
-      <div class="hero-logo">
-        <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
-        <span>Rowpine</span>
+      <div class="hero-grid">
+        <div>
+          <span class="kicker"><span class="pill">v8 + v9</span>For TanStack Table and shadcn/ui</span>
+          <h1>Pivot tables and Excel export for <span class="hl">TanStack Table</span></h1>
+          <p class="lead">Rowpine works from the <b>table instance you already have</b>. Your users get a pivot designer, and Excel and PDF files that match the screen: groups, filters, sort, pinned columns and formats.</p>
+          <div class="buttons">
+            <a class="btn primary" href="examples/" data-umami-event="Hero demos">Try the live demos</a>
+            <a class="btn secondary" href="docs/installation.html" data-umami-event="Hero install">Get started</a>
+          </div>
+          <div class="install"><span><span class="prompt">$</span><span id="install-cmd">npm install rowpine</span></span><button type="button" aria-label="Copy the install command" onclick="copyInstall(this)" data-umami-event="Copy install"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+        </div>
+        <ul class="specs" aria-label="At a glance">
+          <li><b>Excel</b><span>Real .xlsx: typed numbers and dates, outline levels, SUBTOTAL formulas, frozen panes</span></li>
+          <li><b>PDF</b><span>Title, headline numbers, watermark, page size, a header row on every page</span></li>
+          <li><b>Pivot</b><span>Fields on both axes, several measures, eight aggregations, a designer</span></li>
+          <li><b>Works with</b><span>TanStack Table v8 and v9, shadcn/ui on Base UI or Radix</span></li>
+          <li><b>Privacy</b><span>Files are built in the browser. No server, no network calls</span></li>
+        </ul>
       </div>
-      <h1>adds pivot tables and Excel export to <em>TanStack Table</em></h1>
-      <div class="badges">
-        <span class="badge solid"><i></i>TanStack Table v8 and v9</span>
-        <span class="badge"><i></i>Installs from the shadcn registry</span>
-      </div>
-      <p class="lead">Rowpine works from the <b>table instance you already have</b>. Your columns, filters and shadcn/ui styling stay as they are, and you get the parts TanStack leaves to you.</p>
-      <p class="lead">A <b>pivot designer</b> your users drive themselves, and <b>Excel and PDF files</b> that match the screen: groups, filters, sort, pinned columns and formats.</p>
-      <div class="buttons">
-        <a class="btn primary" href="docs/">Read the docs</a>
-        <a class="btn secondary" href="#demos">Watch the demos</a>
-      </div>
-      <p class="shot-caption" style="margin:40px 0 -32px;font-weight:600;color:var(--fg)">Try it: follow the balloons, or use it any way you like.</p>
-      <figure class="shot">
-        <iframe id="tour" src="examples/tour.html" title="Live pivot designer with a guided tour" style="display:block;width:100%;height:640px;border:0;background:#fff"></iframe>
+      <figure class="window" style="margin-bottom:0">
+        <div class="window-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url">rowpine.com/examples/pivot-designer</span><span class="live">Live</span></div>
+        <iframe id="tour" src="examples/tour.html" title="Live pivot designer with a guided tour" loading="eager"></iframe>
         <noscript><img src="docs/img/fields-and-wells.png" alt="The Rowpine pivot designer: a field list, Filters, Columns, Rows and Values wells, and a pivot of sales by region, country and quarter" width="984" height="736"></noscript>
       </figure>
-      <p class="shot-caption">The real component, running in your browser. <a href="examples/#/09-pivot-designer">Open it full size</a>.</p>
-      <script>
-        // The tour page reports its height so the frame never needs a scrollbar.
-        addEventListener('message', (e) => {
-          if (e.origin !== location.origin || e.data?.type !== 'rowpine-tour-height') return
-          document.getElementById('tour').style.height = Math.max(400, Math.ceil(e.data.height)) + 'px'
-        })
-      </script>
+    </div>
+  </section>
+  <p class="sr-only">The frame above is the real component running in your browser. Follow the balloons, or use it any way you like.</p>
+
+  <div class="proof">
+    <div class="wrap">
+      <p><b>Made by jQWidgets LTD.</b> Our UI components are used by more than 5,000 customers, including:</p>
+      <div class="names" aria-label="Customers of jQWidgets LTD">
+        <span>Samsung</span><span>Boeing</span><span>NVIDIA</span><span>Microsoft</span><span>Nokia</span><span>Intel</span>
+      </div>
     </div>
   </div>
 
+  <section>
+    <div class="wrap">
+      <span class="label">What you get</span>
+      <h2>Three jobs TanStack Table leaves to you</h2>
+      <p class="sub">TanStack Table renders a headless table and stops there. Rowpine adds the parts users ask for next, from the same table instance.</p>
+      <div class="tabs" role="tablist" aria-label="Features">
+        <button role="tab" id="tab-pivot" aria-controls="panel-pivot" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>Pivot</button>
+        <button role="tab" id="tab-excel" aria-controls="panel-excel" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 12l4 5M13 12l-4 5"/></svg>Excel</button>
+        <button role="tab" id="tab-pdf" aria-controls="panel-pdf" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 13h6M9 17h4"/></svg>PDF</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-pivot" aria-labelledby="tab-pivot">
+        <div>
+          <h3>A pivot designer your users drive themselves</h3>
+          <p>Drag fields into rows, columns, values and filters. The pivot renders as a shadcn/ui table and exports like any other.</p>
+          <ul class="ticks">
+            <li>Several measures, eight aggregations, or your own</li>
+            <li>Subtotals, grand totals, expand and collapse</li>
+            <li>Layouts are plain JSON: save them, offer presets, put them in a URL</li>
+          </ul>
+          <a class="link-arrow" href="docs/pivot-designer.html">The pivot designer</a>
+        </div>
+        <div class="shot"><img src="docs/img/fields-and-wells.png" alt="The pivot designer: a field list, Filters, Columns, Rows and Values wells, and a pivot of sales by region, country and quarter" width="984" height="734" loading="lazy"></div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-excel" aria-labelledby="tab-excel" hidden>
+        <div>
+          <h3>The file opens the way the table looked</h3>
+          <p>Visible columns in screen order, the current filter and sort, groups in place. Not a CSV renamed to .xlsx.</p>
+          <ul class="ticks">
+            <li>Groups and tree rows become Excel outline levels</li>
+            <li>Group totals are live SUBTOTAL formulas</li>
+            <li>Pinned columns become frozen panes</li>
+            <li>Number and date formats and cell colors carry over</li>
+          </ul>
+          <a class="link-arrow" href="docs/export-to-excel.html">Export to Excel</a>
+        </div>
+        <div class="shot"><img src="docs/img/grouped-rows-as-outlines.png" alt="An exported sheet with grouped rows as Excel outline levels" width="1219" height="388" loading="lazy"></div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-pdf" aria-labelledby="tab-pdf" hidden>
+        <div>
+          <h3>Reports, not screenshots</h3>
+          <p>A PDF built from the rows and columns, with the page set up for printing and the header repeated on every page.</p>
+          <ul class="ticks">
+            <li>Title, headline numbers and a watermark</li>
+            <li>Letter or A4, portrait or landscape, wide tables fitted</li>
+            <li>Grouped rows with their totals</li>
+          </ul>
+          <a class="link-arrow" href="docs/export-to-pdf.html">Export to PDF</a>
+        </div>
+        <div class="shot"><img src="docs/img/pdf-title-kpis-watermark.png" alt="A PDF report with a title, headline numbers and a DRAFT watermark" width="900" height="640" loading="lazy"></div>
+      </div>
+
+      <div class="stats" style="margin-top:72px">
+        <div class="stat"><b>8</b><span>pivot aggregations, plus your own</span></div>
+        <div class="stat"><b>26</b><span>live demos with their source</span></div>
+        <div class="stat"><b>30</b><span>help topics with pictures</span></div>
+        <div class="stat"><b>0</b><span>network calls, license check included</span></div>
+      </div>
+    </div>
+  </section>
+
   <section class="soft" id="demos">
     <div class="wrap">
-      <div class="center">
-        <span class="eyebrow">Demos</span>
-        <h2>Watch it work on real data</h2>
-        <p class="sub">Each demo plays a short story on the live component and ends with the exported file, open in the page. Pause it, skip to a step, or take over at any point.</p>
+      <div class="head-row">
+        <div>
+          <span class="label">Use cases</span>
+          <h2>Watch it work on real data</h2>
+          <p class="sub">Each demo plays a short story on the live component and ends with the exported file, open in the page. Pause it, skip a step, or take over.</p>
+        </div>
+        <a class="btn secondary" href="examples/">All 26 demos</a>
       </div>
       <div class="cards">
         <a class="card" href="examples/#/demo/sales-pivot">
           <div class="thumb"><img src="img/demos/sales-pivot.jpg" alt="The Sales pivot demo ending with its exported file" loading="lazy" width="984" height="520"></div>
-          <div class="body"><span class="tag">6 steps</span><h3>Sales pivot</h3><p>Regions and countries down the side, quarters across, overdue orders only, then to Excel.</p></div>
+          <div class="body"><span class="tag">Pivot to Excel</span><h3>Sales pivot</h3><p>Regions and countries down the side, quarters across, overdue orders only.</p></div>
         </a>
         <a class="card" href="examples/#/demo/orders-to-excel">
           <div class="thumb"><img src="img/demos/orders-to-excel.jpg" alt="The Orders to Excel demo ending with its exported file" loading="lazy" width="984" height="520"></div>
-          <div class="body"><span class="tag">5 steps</span><h3>Orders to Excel</h3><p>Sort, group, hide and pin, then export. The file opens the way the table looked.</p></div>
+          <div class="body"><span class="tag">Excel</span><h3>Orders to Excel</h3><p>Sort, group, hide and pin, then export. The file opens the way the table looked.</p></div>
         </a>
         <a class="card" href="examples/#/demo/month-end-pdf">
           <div class="thumb"><img src="img/demos/month-end-pdf.jpg" alt="The Month-end PDF demo ending with its exported file" loading="lazy" width="984" height="520"></div>
-          <div class="body"><span class="tag">5 steps</span><h3>Month-end PDF</h3><p>Receivables grouped by status, headline numbers on top, Letter landscape, marked DRAFT.</p></div>
+          <div class="body"><span class="tag">PDF</span><h3>Month-end PDF</h3><p>Receivables grouped by status, headline numbers on top, marked DRAFT.</p></div>
         </a>
         <a class="card" href="examples/#/demo/budget-tree">
           <div class="thumb"><img src="img/demos/budget-tree.jpg" alt="The Budget by department demo ending with its exported file" loading="lazy" width="984" height="520"></div>
-          <div class="body"><span class="tag">5 steps</span><h3>Budget by department</h3><p>A tree of departments and teams, overspend in red, to Excel and PDF with its levels.</p></div>
+          <div class="body"><span class="tag">Tree data</span><h3>Budget by department</h3><p>Departments and teams, overspend in red, to Excel and PDF with its levels.</p></div>
         </a>
         <a class="card" href="examples/#/demo/inventory-reorder">
           <div class="thumb"><img src="img/demos/inventory-reorder.jpg" alt="The Inventory reorder list demo ending with its exported file" loading="lazy" width="984" height="520"></div>
-          <div class="body"><span class="tag">5 steps</span><h3>Inventory reorder list</h3><p>Stock in five warehouses, low items flagged and kept, the reorder list to Excel.</p></div>
+          <div class="body"><span class="tag">Excel</span><h3>Inventory reorder list</h3><p>Stock in five warehouses, low items flagged, the reorder list to Excel.</p></div>
         </a>
         <a class="card" href="examples/#/demo/timesheet-invoice">
           <div class="thumb"><img src="img/demos/timesheet-invoice.jpg" alt="The Timesheet to invoice demo ending with its exported file" loading="lazy" width="984" height="520"></div>
-          <div class="body"><span class="tag">4 steps</span><h3>Timesheet to invoice</h3><p>One client's billable hours, selected and exported as the PDF behind the invoice.</p></div>
+          <div class="body"><span class="tag">PDF</span><h3>Timesheet to invoice</h3><p>One client's billable hours, selected and exported as the invoice PDF.</p></div>
         </a>
         <a class="card" href="examples/#/demo/sales-commissions">
           <div class="thumb"><img src="img/demos/sales-commissions.jpg" alt="The Sales commissions demo ending with its exported file" loading="lazy" width="984" height="520"></div>
-          <div class="body"><span class="tag">5 steps</span><h3>Sales commissions</h3><p>A tiered commission written as a custom aggregation, per rep and quarter, to Excel.</p></div>
+          <div class="body"><span class="tag">Custom aggregation</span><h3>Sales commissions</h3><p>A tiered commission per rep and quarter, written as your own aggregation.</p></div>
         </a>
         <a class="card" href="examples/#/demo/carrier-scorecard">
           <div class="thumb"><img src="img/demos/carrier-scorecard.jpg" alt="The Carrier scorecard demo ending with its exported file" loading="lazy" width="984" height="520"></div>
-          <div class="body"><span class="tag">4 steps</span><h3>Carrier scorecard</h3><p>Fourteen columns of shipments grouped by carrier, late ones in red, fitted to the page.</p></div>
-        </a>
-        <a class="card features" href="examples/">
-          <div class="body">
-            <span class="tag">10 use cases, 16 examples</span>
-            <h3>All demos</h3>
-            <p>Two more use cases (support tickets, marketing spend) and sixteen feature examples, one feature each with its source: grouping, pinned columns, selected rows, formats and colors, tree data, PDF reports, pivots, custom aggregations, wide PDFs, other languages.</p>
-            <p style="margin-top:14px;color:var(--brand);font-weight:700">Open the demos &rarr;</p>
-          </div>
+          <div class="body"><span class="tag">Wide PDF</span><h3>Carrier scorecard</h3><p>Fourteen columns of shipments by carrier, late ones in red, fitted to the page.</p></div>
         </a>
       </div>
     </div>
@@ -131,77 +205,66 @@
 
   <section>
     <div class="wrap">
-      <div class="center">
-        <span class="eyebrow">What it does</span>
-        <h2>Feature spotlight</h2>
-        <p class="sub">Each feature has a help topic and a live example you can try in the browser.</p>
+      <div class="split">
+        <div class="text">
+          <span class="label">Developer experience</span>
+          <h2>One component on the table you have</h2>
+          <p>Add the export menu from the shadcn registry and pass it your table, or call the export functions from your own buttons. The file follows whatever the user set up on screen.</p>
+          <ul class="ticks">
+            <li>Every filtered row, on every page, in the current sort</li>
+            <li>Selected rows only, when asked</li>
+            <li>Typed: TypeScript definitions ship in the package</li>
+            <li>The components install as source you can read and change</li>
+          </ul>
+          <a class="link-arrow" href="docs/add-an-export-menu.html">Add an export menu</a>
+        </div>
+        <div class="editor">
+          <div class="editor-bar" aria-hidden="true"><span class="on">orders-table.tsx</span><span>terminal</span></div>
+<pre class="code"><span class="c">// npx shadcn add https://rowpine.com/r/export-menu.json</span>
+<span class="k">import</span> { ExportMenu } <span class="k">from</span> <span class="s">"@/components/export-menu"</span>
+<span class="k">import</span> { exportXlsx, exportPdf } <span class="k">from</span> <span class="s">"rowpine"</span>
+
+<span class="k">const</span> table = <span class="t">useTable</span>({ features, columns, data })
+
+&lt;<span class="t">ExportMenu</span> table={table} fileName=<span class="s">"orders"</span> /&gt;
+
+<span class="c">// or from your own button</span>
+<span class="k">await</span> <span class="t">exportXlsx</span>(table, { fileName: <span class="s">"orders"</span> })
+<span class="k">await</span> <span class="t">exportPdf</span>(table, { title: <span class="s">"Orders"</span> })</pre>
+        </div>
       </div>
-      <div class="cards">
-        <a class="card" href="docs/pivot-designer.html">
-          <div class="thumb"><img src="docs/img/pivot-designer.png" alt="" loading="lazy"></div>
-          <div class="body"><span class="tag">Pivot</span><h3>Pivot designer</h3><p>Drag fields into rows, columns, values and filters. Change aggregations, filter values, load presets.</p></div>
-        </a>
-        <a class="card" href="docs/subtotal-formulas.html">
-          <div class="thumb"><img src="docs/img/subtotal-formulas.png" alt="" loading="lazy"></div>
-          <div class="body"><span class="tag">Excel</span><h3>Group totals as formulas</h3><p>Group rows carry live SUBTOTAL formulas, so totals update when someone edits the sheet.</p></div>
-        </a>
-        <a class="card" href="docs/grouped-rows-as-outlines.html">
-          <div class="thumb"><img src="docs/img/grouped-rows-as-outlines.png" alt="" loading="lazy"></div>
-          <div class="body"><span class="tag">Excel</span><h3>Groups as Excel outlines</h3><p>Grouped and tree rows become outline levels that collapse in Excel, one per level.</p></div>
-        </a>
-        <a class="card" href="docs/pdf-title-kpis-watermark.html">
-          <div class="thumb"><img src="docs/img/pdf-title-kpis-watermark.png" alt="" loading="lazy"></div>
-          <div class="body"><span class="tag">PDF</span><h3>PDF reports</h3><p>Title, headline numbers, watermark, page size and a header row repeated on every page.</p></div>
-        </a>
-        <a class="card" href="docs/cell-colors.html">
-          <div class="thumb"><img src="docs/img/cell-colors.png" alt="" loading="lazy"></div>
-          <div class="body"><span class="tag">Excel</span><h3>Formats and cell colors</h3><p>Real number and date formats, and the same color rules as the screen.</p></div>
-        </a>
-        <a class="card" href="docs/presets-and-saved-views.html">
-          <div class="thumb"><img src="docs/img/presets-and-saved-views.png" alt="" loading="lazy"></div>
-          <div class="body"><span class="tag">Pivot</span><h3>Saved views</h3><p>A pivot layout is plain JSON. Save it, offer it back as a preset, put it in a URL.</p></div>
-        </a>
-      </div>
-      <div class="more"><a class="btn primary" href="docs/">See all 30 help topics</a></div>
     </div>
   </section>
 
-  <section class="band">
+  <section class="night" id="production">
     <div class="wrap">
-      <div class="center">
-        <h2>Why Rowpine?</h2>
-        <ul class="checks">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>TanStack Table v8 and v9</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>shadcn/ui Base UI and Radix</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Runs in the browser</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>One-time license</li>
-        </ul>
-        <p class="sub">TanStack Table gives you a headless table and leaves the rest to you. Rowpine is the rest, for the two jobs users ask for most: pivoting and getting the data into Excel.</p>
-      </div>
-      <div class="tiles">
-        <div class="tile">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>Your table stays yours</h3>
-          <p>Rowpine reads the TanStack table you already render. No new grid to learn and no column definitions to repeat.</p>
-        </div>
-        <div class="tile">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Files match the screen</h3>
-          <p>Visible columns in screen order, the current filter and sort, groups in place, pinned columns frozen.</p>
-        </div>
-        <div class="tile">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 13l2 3 2-3M9 17h0"/></svg>Real Excel files</h3>
-          <p>Typed numbers and dates with their formats, outline rows, SUBTOTAL formulas and cell colors. Not a CSV renamed.</p>
-        </div>
-        <div class="tile">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>The pivot TanStack lacks</h3>
-          <p>Fields on both axes, several measures, eight aggregations, subtotals and totals, and a designer.</p>
-        </div>
-        <div class="tile">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>Source in your project</h3>
-          <p>The export menu and the pivot designer install from the shadcn registry as code you can read and change.</p>
-        </div>
-        <div class="tile">
+      <span class="label">Built for production</span>
+      <h2>Ready for your security and procurement review</h2>
+      <p class="sub">Rowpine runs entirely in the browser, checks its license offline, and never switches anything off.</p>
+      <div class="trust">
+        <div>
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Nothing leaves the browser</h3>
-          <p>Files are built on the user's machine. License keys are checked offline, with no call to a server.</p>
+          <p>Excel and PDF files are built on the user's machine. Your data is never sent to us or anyone else.</p>
+        </div>
+        <div>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Offline license check</h3>
+          <p>Keys are signed with Ed25519 and verified in the browser. No license server, so it works behind firewalls.</p>
+        </div>
+        <div>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/><circle cx="12" cy="12" r="10"/></svg>Never blocks a release</h3>
+          <p>Without a key everything still runs; files carry one notice line. Nothing in production stops working.</p>
+        </div>
+        <div>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>Source you can audit</h3>
+          <p>The export menu, pivot table and pivot designer are MIT source in your repository, from the shadcn registry.</p>
+        </div>
+        <div>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 13h6M9 17h6"/></svg>Plain license terms</h3>
+          <p>One payment per developer. Unlimited apps, end users and servers. No runtime or per-seat fees for your users.</p>
+        </div>
+        <div>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Support from the authors</h3>
+          <p>Questions and bug reports go to the engineers who write Rowpine, at <a href="mailto:info@jqwidgets.com?subject=Rowpine">info@jqwidgets.com</a>.</p>
         </div>
       </div>
     </div>
@@ -211,101 +274,98 @@
     <div class="wrap">
       <div class="split">
         <div class="text">
-          <span class="eyebrow">Export</span>
-          <h2>One line on the table you have</h2>
-          <p style="color:var(--muted)">Pass your table to the export menu, or call the export functions from your own buttons. The file follows whatever the user set up on screen.</p>
-          <ul>
-            <li>Every filtered row, on every page, in the current sort</li>
-            <li>Groups and tree rows as Excel outline levels</li>
-            <li>Pinned columns become frozen panes</li>
-            <li>Selected rows only, when asked</li>
-          </ul>
-          <a href="docs/add-an-export-menu.html">Add an export menu</a>
+          <span class="label">Compatibility</span>
+          <h2>Tested on both TanStack versions and both shadcn bases</h2>
+          <p>The same components run in each combination. The test suite builds tables with each version and opens every exported file.</p>
+          <a class="link-arrow" href="docs/installation.html">Installation</a>
         </div>
-        <pre class="code"><span class="c">// npx shadcn add https://rowpine.com/r/export-menu.json</span>
-import { ExportMenu } from <span class="s">"@/components/export-menu"</span>
-
-const table = useTable({ features, columns, data })
-
-&lt;ExportMenu table={table} fileName=<span class="s">"orders"</span> /&gt;
-
-<span class="c">// or from your own button</span>
-await exportXlsx(table, { fileName: <span class="s">"orders"</span> })
-await exportPdf(table, { title: <span class="s">"Orders"</span> })</pre>
+        <table class="matrix">
+          <thead><tr><th scope="col">Library</th><th scope="col" class="hide-sm">API</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><td>TanStack Table v9</td><td class="hide-sm"><code>useTable</code>, registered features, start and end pinning</td><td class="yes">Supported</td></tr>
+            <tr><td>TanStack Table v8</td><td class="hide-sm"><code>useReactTable</code>, left and right pinning</td><td class="yes">Supported</td></tr>
+            <tr><td>shadcn/ui, Base UI</td><td class="hide-sm">The default for new shadcn projects</td><td class="yes">Supported</td></tr>
+            <tr><td>shadcn/ui, Radix</td><td class="hide-sm">Most existing shadcn projects</td><td class="yes">Supported</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="split flip">
-        <div class="text">
-          <span class="eyebrow">Excel</span>
-          <h2>The file opens the way it looked</h2>
-          <p style="color:var(--muted)">Group rows are bold with their totals as formulas, the rows under them collapse in Excel, and amounts and dates keep their formats so they still sort and sum.</p>
-          <a href="docs/export-to-excel.html">Export to Excel</a>
+    </div>
+  </section>
+
+  <section class="soft" id="pricing">
+    <div class="wrap">
+      <div class="head-row">
+        <div>
+          <span class="label">Pricing</span>
+          <h2>Pay once, keep what you get</h2>
+          <p class="sub">A one-time payment covers every version released in the next twelve months. Those versions are yours for good.</p>
         </div>
-        <div class="frame"><img src="docs/img/subtotal-formulas.png" alt="An exported sheet with a group total cell selected showing SUBTOTAL(9,E3:E52)" loading="lazy"></div>
+        <a class="btn secondary" href="pricing.html">Compare plans</a>
+      </div>
+      <div class="plans-mini">
+        <div class="plan-mini">
+          <h3>Free</h3>
+          <div class="price-line">$0</div>
+          <p>CSV export, with no license key.</p>
+          <ul class="ticks"><li>CSV from any TanStack table</li><li>Try every Pro feature with a notice line</li></ul>
+          <a class="btn secondary" href="docs/installation.html">Install</a>
+        </div>
+        <div class="plan-mini featured">
+          <h3>Developer <span class="badge">Per developer</span></h3>
+          <div class="price-line">$149 <small>one-time</small></div>
+          <p>One developer, a year of updates. Renew for $75.</p>
+          <ul class="ticks"><li>Pivot tables and the pivot designer</li><li>Excel and PDF export</li><li>Unlimited apps and end users</li></ul>
+          <a class="btn primary" href="pricing.html" data-umami-event="Home plan Developer">Buy Developer</a>
+        </div>
+        <div class="plan-mini">
+          <h3>Team</h3>
+          <div class="price-line">$499 <small>one-time</small></div>
+          <p>Up to 10 developers in one company. Renew for $249.</p>
+          <ul class="ticks"><li>Everything in Developer</li><li>One key for the whole team</li></ul>
+          <a class="btn secondary" href="pricing.html" data-umami-event="Home plan Team">Buy Team</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="soft">
+  <section>
     <div class="wrap">
-      <div class="center">
-        <span class="eyebrow">Works with</span>
-        <h2>Tested on both TanStack versions and both shadcn bases</h2>
-        <p class="sub">The same components run in each combination below. The test suite builds tables with each and opens every exported file.</p>
-      </div>
-      <div class="works">
-        <div class="work"><span class="ver">v8</span><h3>TanStack Table</h3><p><code>useReactTable</code>, left and right pinning, <code>getState()</code>.</p></div>
-        <div class="work"><span class="ver">v9</span><h3>TanStack Table</h3><p><code>useTable</code> with registered features, start and end pinning.</p></div>
-        <div class="work"><span class="ver">Base UI</span><h3>shadcn/ui</h3><p>The default for new shadcn projects.</p></div>
-        <div class="work"><span class="ver">Radix</span><h3>shadcn/ui</h3><p>Most existing shadcn projects.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing">
-    <div class="wrap">
-      <div class="center">
-        <span class="eyebrow">Pricing</span>
-        <h2>Pay once, keep what you get</h2>
-        <p class="sub">CSV export is free. Pro is $149 per developer or $499 for a team of up to 10, paid once, with a year of updates.</p>
-      </div>
-      <div class="price">
-        <div><h3>Free</h3><p>CSV export, with no license key.</p></div>
-        <div><h3>Pro</h3><p>Pivot tables, the pivot designer, and Excel and PDF export. A one-time payment per developer with a year of updates. You keep every version released in that year.</p></div>
-      </div>
-      <div class="more"><a class="btn primary" href="pricing.html">See pricing</a></div>
-    </div>
-  </section>
-
-  <section style="padding-top:0">
-    <div class="wrap">
-      <div class="cta">
-        <h2>Ready to try it?</h2>
-        <p>Install it from npm, add the components from the shadcn registry, and use everything before you buy. Without a key, files carry one notice line.</p>
+      <div class="cta night">
+        <div>
+          <h2>Try every feature before you buy</h2>
+          <p>Install from npm and add the components from the shadcn registry. Without a key, Excel and PDF files carry one notice line, and nothing else changes.</p>
+        </div>
         <div class="buttons">
-          <a class="btn primary" href="examples/">Open the demos</a>
-          <a class="btn ghost" href="docs/installation.html">Install</a>
+          <a class="btn primary" href="docs/installation.html" data-umami-event="CTA install">Get started</a>
+          <a class="btn secondary" href="pricing.html">See pricing</a>
         </div>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
+<!-- footer -->
+<footer class="site">
   <div class="wrap">
     <div class="cols">
-      <div>
-        <a class="brand" href="./" style="padding:0">
-          <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
-          Rowpine
-        </a>
-        <p style="color:var(--muted);margin:10px 0 0">Pivot tables and Excel and PDF export for TanStack Table and shadcn/ui.</p>
+      <div class="about">
+        <a class="brand" href="./"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span> Rowpine</a>
+        <p>Pivot tables and Excel and PDF export for TanStack Table and shadcn/ui.</p>
       </div>
       <div>
-        <h4>Getting started</h4>
+        <h4>Product</h4>
+        <a href="examples/">Demos</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="license.html">License</a>
+        <a href="https://www.npmjs.com/package/rowpine">npm</a>
+        <a href="https://github.com/rowpine/rowpine">GitHub</a>
+      </div>
+      <div>
+        <h4>Get started</h4>
         <a href="docs/installation.html">Installation</a>
         <a href="docs/add-an-export-menu.html">Export menu</a>
         <a href="docs/license-keys.html">License keys</a>
-        <a href="docs/column-settings.html">Column settings</a>
+        <a href="docs/">All help topics</a>
       </div>
       <div>
         <h4>Export</h4>
@@ -321,19 +381,14 @@ await exportPdf(table, { title: <span class="s">"Orders"</span> })</pre>
         <a href="docs/aggregations.html">Aggregations</a>
         <a href="docs/exporting-a-pivot.html">Export a pivot</a>
       </div>
-      <div>
-        <h4>More</h4>
-        <a href="examples/">Demos</a>
-        <a href="https://github.com/rowpine/rowpine">GitHub</a>
-        <a href="llms.txt">llms.txt</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="license.html">License</a>
-      </div>
     </div>
-    <p class="fine">Rowpine is a brand of jQWidgets LTD. TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
+    <div class="legal">
+      <span>&copy; 2026 jQWidgets LTD. Rowpine is a brand of jQWidgets LTD.</span>
+      <nav aria-label="Legal"><a href="license.html">License</a><a href="privacy.html">Privacy</a><a href="mailto:info@jqwidgets.com?subject=Rowpine">Contact</a><a href="llms.txt">llms.txt</a></nav>
+    </div>
+    <p class="fine">TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
   </div>
 </footer>
-
 <script>
   function toggleTheme() {
     const root = document.documentElement
@@ -341,6 +396,45 @@ await exportPdf(table, { title: <span class="s">"Orders"</span> })</pre>
     root.dataset.theme = dark ? 'light' : 'dark'
     try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
   }
+</script>
+<!-- /footer -->
+
+<script>
+  function copyInstall(btn) {
+    const text = document.getElementById('install-cmd').textContent
+    navigator.clipboard?.writeText(text).then(() => {
+      btn.setAttribute('aria-label', 'Copied')
+      btn.style.color = 'var(--glow)'
+      setTimeout(() => { btn.setAttribute('aria-label', 'Copy the install command'); btn.style.color = '' }, 1500)
+    })
+  }
+  // Feature tabs: arrow keys move between them, as the ARIA tabs pattern has it.
+  ;(() => {
+    const tabs = [...document.querySelectorAll('[role="tab"]')]
+    const select = (tab) => {
+      for (const t of tabs) {
+        const on = t === tab
+        t.setAttribute('aria-selected', String(on))
+        t.tabIndex = on ? 0 : -1
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on
+      }
+    }
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(t))
+      t.addEventListener('keydown', (e) => {
+        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0
+        if (!d) return
+        const next = tabs[(i + d + tabs.length) % tabs.length]
+        select(next)
+        next.focus()
+      })
+    })
+  })()
+  // The tour page reports its height so the frame never needs a scrollbar.
+  addEventListener('message', (e) => {
+    if (e.origin !== location.origin || e.data?.type !== 'rowpine-tour-height') return
+    document.getElementById('tour').style.height = Math.max(400, Math.ceil(e.data.height)) + 'px'
+  })
 </script>
 </body>
 </html>
