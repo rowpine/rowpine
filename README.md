@@ -90,7 +90,7 @@ CSV export is free. Pivots and Excel and PDF export come in one Pro license: $14
 
 ## This repository
 
-This repo holds the website at [rowpine.com](https://rowpine.com): the pages in [`site/`](site/), the help topics in [`docs/`](docs/), and the shadcn registry files in [`site/r/`](site/r/). It deploys to GitHub Pages with [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
+This repo holds the website at [rowpine.com](https://rowpine.com) and the shadcn registry: the pages in [`site/`](site/), the help topics in [`docs/`](docs/), the registry components in [`registry/`](registry/) (MIT) and their built items in [`site/r/`](site/r/). It deploys to GitHub Pages with [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
 
 ```bash
 npm install
