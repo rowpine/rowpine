@@ -23,15 +23,6 @@
   --glow: #46c486;
   --radius: 10px;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0b100d; --bg-soft: #0f1612; --surface: #121a15; --fg: #e8eee9; --muted: #98a79d;
-    --line: #1f2b24; --line-strong: #2c3b32; --brand: #7fd0a1; --brand-strong: #a8e3c1; --accent: #63c48f;
-    --accent-soft: #15261c; --on-brand: #06140c;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4); --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 16px 40px -16px rgba(0, 0, 0, .7);
-    --night: #070e0a; --night-2: #0d1a13;
-  }
-}
 :root[data-theme="dark"] {
   --bg: #0b100d; --bg-soft: #0f1612; --surface: #121a15; --fg: #e8eee9; --muted: #98a79d;
   --line: #1f2b24; --line-strong: #2c3b32; --brand: #7fd0a1; --brand-strong: #a8e3c1; --accent: #63c48f;
@@ -308,12 +299,10 @@ footer.site { border-top: 1px solid var(--line); padding: 64px 0 32px; font-size
   .matrix .hide-sm { display: none; }
 }
 
-/* Dark theme: a lighter tick, and the CTA lifted off the page */
+/* Dark theme (from the toggle): a lighter tick, and the CTA lifted off the page */
 :root[data-theme="dark"] .ticks li::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2363c48f' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E"); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ticks li::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2363c48f' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E"); } }
 .cta { border: 1px solid var(--night-line); }
 :root[data-theme="dark"] .cta { background: linear-gradient(135deg, #0f2219, #0a1510); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cta { background: linear-gradient(135deg, #0f2219, #0a1510); } }
 @media (max-width: 640px) { .hide-xs { display: none; } .announce .wrap { gap: 8px; } }
 .cols a.brand { display: inline-flex; color: var(--fg); padding: 0; }
 

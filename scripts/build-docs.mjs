@@ -38,7 +38,6 @@ for (const t of topics) {
 
 const CSS = `
   :root { --code-bg: #f2f4f2; } :root[data-theme="dark"] { --code-bg: #16201a; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --code-bg: #16201a; } }
   code, pre { font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em; }
   :not(pre) > code { background:var(--code-bg); padding:.1em .35em; border-radius:4px; }
   pre { background:var(--code-bg); border:1px solid var(--line); border-radius:8px; padding:12px 14px; overflow-x:auto; line-height:1.5; }

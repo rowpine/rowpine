@@ -1,6 +1,7 @@
 // The site header and footer, in one place. build-docs.mjs uses them for the
 // help topics, and `npm run build:chrome` writes them between the
 // <!-- header --> / <!-- footer --> markers of the static pages in site/.
+// The site is light unless the visitor picks dark with the toggle.
 // `base` is the path back to the site root: '' for site/*.html, '../' for docs.
 
 export const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,7 +100,7 @@ export function footer({ base = '' } = {}) {
 <script>
   function toggleTheme() {
     const root = document.documentElement
-    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches
+    const dark = root.dataset.theme === 'dark'
     root.dataset.theme = dark ? 'light' : 'dark'
     try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
   }
