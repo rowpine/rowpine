@@ -123,7 +123,7 @@ ${current ? `<link rel="alternate" type="text/markdown" href="${current}.md">` :
   <aside class="side" aria-label="Help topics">${sidebar(current)}</aside>
   <main>${body}</main>
 </div>
-<footer><div class="wrap">Rowpine. TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</div></footer>
+<footer><div class="wrap">Rowpine is a brand of jQWidgets LTD. TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</div></footer>
 </body>
 </html>
 `

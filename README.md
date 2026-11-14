@@ -100,4 +100,4 @@ npm run check        # every local link, image and script on every page resolves
 
 Questions and bug reports: [open an issue](https://github.com/rowpine/rowpine/issues).
 
-TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.
+Rowpine is a brand of jQWidgets LTD. TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.
