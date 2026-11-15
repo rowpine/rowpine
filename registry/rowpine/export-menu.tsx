@@ -26,6 +26,7 @@ import {
 
 type Format = "csv" | "xlsx" | "pdf"
 
+/** Props of `ExportMenu`. */
 export type ExportMenuProps = {
   /** A TanStack table (v8 or v9), or `pivot.table` from createPivot. */
   table: TableLike
@@ -41,7 +42,9 @@ export type ExportMenuProps = {
   allowSelectedOnly?: boolean
   /** Called when an export fails. Default: console.error. */
   onError?: (error: unknown) => void
+  /** Button text. Default 'Export'. */
   label?: string
+  /** Classes added to the trigger button. */
   className?: string
 }
 
@@ -51,6 +54,13 @@ const ITEMS: Record<Format, { label: string; icon: React.ComponentType<{ classNa
   csv: { label: "CSV", icon: Sheet },
 }
 
+/**
+ * A dropdown button that exports the table to Excel, PDF or CSV and saves the
+ * file. While an export runs the button reads "Exporting..." and further picks
+ * are ignored. A "Selected rows only" checkbox appears when the table has
+ * selected rows, or as `allowSelectedOnly` says.
+ * @param props See `ExportMenuProps`.
+ */
 export function ExportMenu({
   table,
   fileName = "export",

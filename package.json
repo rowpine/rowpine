@@ -4,12 +4,13 @@
   "description": "rowpine.com: the site, help topics and hosted examples",
   "type": "module",
   "scripts": {
+    "build": "node scripts/build-chrome.mjs && node scripts/build-docs.mjs",
     "build:docs": "node scripts/build-docs.mjs",
-    "build:guides": "node scripts/build-guides.mjs",
     "build:chrome": "node scripts/build-chrome.mjs",
     "check": "node scripts/check-site.mjs"
   },
   "devDependencies": {
-    "marked": "^18.2.0"
+    "marked": "^18.2.0",
+    "typescript": "^5.9.3"
   }
 }

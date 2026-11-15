@@ -21,7 +21,12 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-/** Pivot `data` with `config`; recomputes only when either changes. */
+/**
+ * Pivot `data` with `config`; recomputes only when either changes.
+ * @param data Source rows. A new array on each render rebuilds the pivot.
+ * @param config The pivot config. Keep the same object between renders (a constant or useMemo); a new one rebuilds the pivot.
+ * @param options Settings for every value column, such as an Excel number format. Same rule as `config`.
+ */
 export function usePivot<TData>(
   data: ReadonlyArray<TData>,
   config: PivotConfig<TData>,
@@ -72,16 +77,29 @@ function leafColumns(columns: PivotColumnDef[]): Extract<PivotColumnDef, { acces
   return columns.flatMap((c) => ("columns" in c ? leafColumns(c.columns) : [c]))
 }
 
+/** Props of `PivotTable`. */
 export type PivotTableProps = {
+  /** The pivot to show, from usePivot or createPivot. */
   pivot: PivotModel
   /** Collapsed group ids, to control expansion from outside. */
   collapsed?: Set<string>
+  /**
+   * Called with the new set of collapsed ids when a row is expanded or
+   * collapsed. When given, the table does not keep its own state, so pass
+   * `collapsed` with it.
+   */
   onCollapsedChange?: (collapsed: Set<string>) => void
   /** Start with every group collapsed when uncontrolled. Default false. */
   defaultCollapsed?: boolean
+  /** Classes added to the bordered wrapper. */
   className?: string
 }
 
+/**
+ * A pivot as a shadcn Table: header groups span their columns, rows with
+ * children get an expand and collapse button, and empty value cells show '-'.
+ * @param props See `PivotTableProps`.
+ */
 export function PivotTable({ pivot, collapsed, onCollapsedChange, defaultCollapsed = false, className }: PivotTableProps) {
   const [own, setOwn] = React.useState<Set<string>>(() => (defaultCollapsed ? expandableIds(pivot) : new Set()))
   const shut = collapsed ?? own

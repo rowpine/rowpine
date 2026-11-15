@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog - Rowpine docs</title>
+<meta name="description" content="What changed in each version of the rowpine package.">
+<link rel="canonical" href="https://rowpine.com/docs/changelog.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Rowpine">
+<meta property="og:title" content="Changelog - Rowpine docs">
+<meta property="og:description" content="What changed in each version of the rowpine package.">
+<meta property="og:url" content="https://rowpine.com/docs/changelog.html">
+<meta property="og:image" content="https://rowpine.com/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="text/markdown" href="changelog.md">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
+</script>
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="../docs.css">
+<script src="../analytics.js" defer></script>
+<script src="../docs.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Changelog","description":"What changed in each version of the rowpine package.","dateModified":"2026-11-15","author":{"@type":"Organization","name":"jQWidgets LTD"}}</script>
+</head>
+<body id="top">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Rowpine home">
+      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
+      Rowpine <span class="for">for TanStack Table</span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="../examples/" class="hide-xs">Demos</a>
+      <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../guides/" class="hide-sm">Guides</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../license.html" class="hide-sm">License</a>
+    </nav>
+    <div class="actions">
+      <button type="button" class="search-btn" data-open-search aria-label="Search docs, guides and API"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs</span><kbd>Ctrl K</kbd></button>
+      <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+      <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a class="btn sm primary" href="../pricing.html" data-umami-event="Header buy">Buy a license</a>
+    </div>
+  </div>
+</header>
+<script src="../search.js" defer></script>
+<button type="button" class="dnav-toggle" aria-controls="docs-nav" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
+<div class="docs">
+  <nav class="dnav" id="docs-nav" aria-label="Documentation">
+    <div class="dnav-top"><a class="dnav-home" href="../docs/">Documentation</a><span class="ver" title="Documented package version">v1.0.2</span></div>
+    <div class="dnav-group"><h2>Getting started</h2><a href="../docs/">Overview</a><a href="../docs/installation.html">Installation</a><a href="../docs/add-an-export-menu.html">Add an export menu</a><a href="../docs/license-keys.html">License keys</a><a href="../docs/column-settings.html">Column settings for exports</a><a href="../docs/your-own-export-buttons.html">Export from your own buttons</a></div><div class="dnav-group"><h2>Excel</h2><a href="../docs/export-to-excel.html">Export to Excel</a><a href="../docs/which-rows-are-exported.html">Which rows are exported</a><a href="../docs/number-and-date-formats.html">Number and date formats</a><a href="../docs/cell-colors.html">Cell colors</a><a href="../docs/hidden-and-excluded-columns.html">Hidden and excluded columns</a><a href="../docs/pinned-columns-frozen-panes.html">Pinned columns become frozen panes</a><a href="../docs/grouped-rows-as-outlines.html">Grouped rows become Excel outlines</a><a href="../docs/subtotal-formulas.html">Group totals as SUBTOTAL formulas</a><a href="../docs/tree-data.html">Tree data</a><a href="../docs/tree-data-in-excel.html">Tree data in Excel</a><a href="../docs/headers-and-widths.html">Headers and column widths</a></div><div class="dnav-group"><h2>PDF</h2><a href="../docs/export-to-pdf.html">Export to PDF</a><a href="../docs/pdf-page-setup.html">PDF page setup</a><a href="../docs/pdf-title-kpis-watermark.html">Title, headline numbers and watermark</a><a href="../docs/pdf-grouped-rows.html">Groups in a PDF</a></div><div class="dnav-group"><h2>CSV</h2><a href="../docs/csv-export.html">CSV export</a></div><div class="dnav-group"><h2>Pivot</h2><a href="../docs/pivot-basics.html">Pivot tables</a><a href="../docs/aggregations.html">Aggregations</a><a href="../docs/subtotals-and-grand-totals.html">Subtotals and grand totals</a><a href="../docs/expand-and-collapse.html">Expand and collapse groups</a><a href="../docs/pivot-designer.html">Pivot designer</a><a href="../docs/fields-and-wells.html">Fields and wells</a><a href="../docs/pivot-filters.html">Filters in the pivot designer</a><a href="../docs/presets-and-saved-views.html">Presets and saved views</a><a href="../docs/exporting-a-pivot.html">Export a pivot</a></div><div class="dnav-group"><h2>Guides</h2><a href="../guides/">All guides</a><a href="../guides/export-tanstack-table-to-excel-with-grouped-rows.html">Export TanStack Table to Excel with grouped rows</a><a href="../guides/tanstack-table-pivot-table.html">TanStack Table pivot table</a><a href="../guides/shadcn-data-table-export-to-pdf.html">shadcn data table export to PDF</a></div><div class="dnav-group"><h2>API reference</h2><a href="../docs/api-export.html">Export functions</a><a href="../docs/api-columns.html">Column settings</a><a href="../docs/api-pivot.html">Pivot</a><a href="../docs/api-designer.html">Pivot designer state</a><a href="../docs/api-license.html">License</a><a href="../docs/api-advanced.html">Low-level API</a><a href="../docs/api-components.html">Components</a></div><div class="dnav-group"><h2>Resources</h2><a href="../docs/changelog.html" aria-current="page">Changelog</a><a href="../docs/troubleshooting.html">Troubleshooting</a><a href="../docs/support.html">Support</a><a href="../security.html">Security</a><a href="../license.html">License</a><a href="../examples/">Live demos</a></div>
+  </nav>
+  <main class="dmain">
+<article class="doc">
+    <div class="crumbs"><a href="./">Docs</a><span>Resources</span></div>
+    <h1>Changelog</h1>
+    <p class="lead">What changed in each version of the rowpine package.</p>
+    <div class="dmeta"><div class="facts"><span>Updated November 15, 2026</span><span>rowpine 1.0.2</span></div><div class="acts"><button type="button" class="act" data-copy-md="changelog.md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy as Markdown</span></button><a class="act" href="https://github.com/rowpine/rowpine/blob/main/docs/changelog.md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>Edit on GitHub</span></a></div></div>
+    
+    <p>Every version of the <code>rowpine</code> npm package, newest first. The components from the shadcn registry are source in your project and change only when you add them again.</p>
+<h2 id="1-0-2">1.0.2<a class="anchor" href="#1-0-2" aria-label="Link to this section">#</a></h2>
+<p>Released 2026-11-15.</p>
+<ul>
+<li><strong>Fixed:</strong> a TanStack Table v9 table without the grouping feature, such as the <a href="../guides/shadcn-data-table-export-to-pdf.html">shadcn/ui data table</a>, failed to type-check when passed to <code>ExportMenu</code> or an export function, with &quot;not assignable to type TableLike&quot;. It runs and type-checks now.</li>
+<li><strong>Changed:</strong> display columns, the ones without an accessor such as selection checkboxes and row actions, are left out of exports by default. Set <code>meta.rowpine.exclude: false</code> on one to keep it. See <a href="hidden-and-excluded-columns.html">hidden and excluded columns</a>.</li>
+<li><strong>Added:</strong> <code>rowHeader</code> on the pivot config, the header of the pivot&#39;s first column. It defaulted to the row fields joined with <code>/</code> and could not be changed. See <a href="pivot-basics.html">pivot basics</a>.</li>
+<li><strong>Docs:</strong> every exported function, option and type has a description, shown in your editor and in the <a href="api-export.html">API reference</a>.</li>
+<li><strong>Deprecated:</strong> the PDF options <code>grandTotal</code>, <code>labels.subtotal</code> and <code>labels.total</code>. They never had an effect; they stay in the types so existing code compiles.</li>
+</ul>
+<h2 id="1-0-1">1.0.1<a class="anchor" href="#1-0-1" aria-label="Link to this section">#</a></h2>
+<p>Released 2026-11-14.</p>
+<ul>
+<li>The final license text: copyright jQWidgets LTD. See the <a href="../license.html">license</a>.</li>
+<li><code>require(&quot;rowpine/package.json&quot;)</code> works: <code>package.json</code> is in the package&#39;s exports.</li>
+</ul>
+<h2 id="1-0-0">1.0.0<a class="anchor" href="#1-0-0" aria-label="Link to this section">#</a></h2>
+<p>Released 2026-11-14.</p>
+<ul>
+<li>The first stable version. The code is the same as 0.1.0; the npm README gained pictures and links.</li>
+</ul>
+<h2 id="0-1-0">0.1.0<a class="anchor" href="#0-1-0" aria-label="Link to this section">#</a></h2>
+<p>Released 2026-11-13.</p>
+<ul>
+<li>Excel, PDF and CSV export from TanStack Table v8 and v9 tables: grouped rows as Excel outline levels, group totals as <code>SUBTOTAL</code> formulas, pinned columns as frozen panes, number formats and cell colors.</li>
+<li>The pivot engine and the pivot designer state.</li>
+<li>The export menu, the pivot table and the pivot designer in the shadcn registry.</li>
+</ul>
+
+    
+    <div class="feedback" data-feedback>
+    <span>Was this page helpful?</span>
+    <button type="button" data-answer="yes" data-umami-event="Docs feedback" data-umami-event-page="changelog" data-umami-event-answer="yes">Yes</button>
+    <button type="button" data-answer="no" data-umami-event="Docs feedback" data-umami-event-page="changelog" data-umami-event-answer="no">No</button>
+    <span class="fb-thanks" hidden>Thanks. To tell us more, write to <a href="mailto:info@jqwidgets.com?subject=Rowpine%20docs%3A%20changelog">info@jqwidgets.com</a>.</span>
+  </div>
+    <nav class="pager" aria-label="Previous and next"><a class="pg prev" href="../docs/exporting-a-pivot.html"><span>Previous</span><b>Export a pivot</b></a><a class="pg next" href="../docs/troubleshooting.html"><span>Next</span><b>Troubleshooting</b></a></nav>
+  </article>
+  </main>
+  <aside class="dtoc" aria-label="On this page"><b>On this page</b><a href="#1-0-2" class="l2">1.0.2</a><a href="#1-0-1" class="l2">1.0.1</a><a href="#1-0-0" class="l2">1.0.0</a><a href="#0-1-0" class="l2">0.1.0</a><a class="totop" href="#top">Back to top</a></aside>
+</div>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="brand" href="../"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span> Rowpine</a>
+        <p>Pivot tables and Excel and PDF export for TanStack Table and shadcn/ui.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="../examples/">Demos</a>
+        <a href="../guides/">Guides</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../license.html">License</a>
+        <a href="../security.html">Security</a>
+        <a href="https://www.npmjs.com/package/rowpine">npm</a>
+        <a href="https://github.com/rowpine/rowpine">GitHub</a>
+      </div>
+      <div>
+        <h4>Get started</h4>
+        <a href="../docs/installation.html">Installation</a>
+        <a href="../docs/add-an-export-menu.html">Export menu</a>
+        <a href="../docs/license-keys.html">License keys</a>
+        <a href="../docs/">All help topics</a>
+      </div>
+      <div>
+        <h4>Export</h4>
+        <a href="../docs/export-to-excel.html">Excel</a>
+        <a href="../docs/export-to-pdf.html">PDF</a>
+        <a href="../docs/csv-export.html">CSV</a>
+        <a href="../docs/grouped-rows-as-outlines.html">Grouped rows</a>
+      </div>
+      <div>
+        <h4>Pivot</h4>
+        <a href="../docs/pivot-basics.html">Pivot tables</a>
+        <a href="../docs/pivot-designer.html">Pivot designer</a>
+        <a href="../docs/aggregations.html">Aggregations</a>
+        <a href="../docs/exporting-a-pivot.html">Export a pivot</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 jQWidgets LTD. Rowpine is a brand of jQWidgets LTD.</span>
+      <nav aria-label="Legal"><a href="../license.html">License</a><a href="../security.html">Security</a><a href="../privacy.html">Privacy</a><a href="mailto:info@jqwidgets.com?subject=Rowpine">Contact</a><a href="../llms.txt">llms.txt</a></nav>
+    </div>
+    <p class="fine">TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
+  </div>
+</footer>
+<script>
+  function toggleTheme() {
+    const root = document.documentElement
+    const dark = root.dataset.theme === 'dark'
+    root.dataset.theme = dark ? 'light' : 'dark'
+    try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
+  }
+</script>
+</body>
+</html>

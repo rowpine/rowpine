@@ -5,9 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Which rows are exported - Rowpine docs</title>
 <meta name="description" content="By default an export holds every row that passes the table's filters, on every page, in the current sort. Paging is a screen concern; the file gets the whole result.">
+<link rel="canonical" href="https://rowpine.com/docs/which-rows-are-exported.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Rowpine">
 <meta property="og:title" content="Which rows are exported - Rowpine docs">
 <meta property="og:description" content="By default an export holds every row that passes the table's filters, on every page, in the current sort. Paging is a screen concern; the file gets the whole result.">
+<meta property="og:url" content="https://rowpine.com/docs/which-rows-are-exported.html">
 <meta property="og:image" content="https://rowpine.com/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="text/markdown" href="which-rows-are-exported.md">
@@ -18,44 +22,12 @@
   try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
 </script>
 <link rel="stylesheet" href="../site.css">
-<style>
-  :root { --code-bg: #f2f4f2; } :root[data-theme="dark"] { --code-bg: #16201a; }
-  code, pre { font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em; }
-  :not(pre) > code { background:var(--code-bg); padding:.1em .35em; border-radius:4px; }
-  pre { background:var(--code-bg); border:1px solid var(--line); border-radius:8px; padding:12px 14px; overflow-x:auto; line-height:1.5; }
-  .layout { display:grid; grid-template-columns:240px minmax(0,1fr); gap:56px; padding:40px 24px 80px; }
-  aside.side { position:sticky; top:88px; align-self:start; font-size:14px; max-height:calc(100vh - 112px); overflow:auto; }
-  aside.side h2 { font:600 11.5px/1 "Geist Mono",ui-monospace,monospace; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:22px 0 8px; padding-left:8px; }
-  aside.side h2:first-child { margin-top:0; }
-  aside.side a { display:block; padding:5px 8px; border-radius:6px; color:var(--muted); text-decoration:none; }
-  aside.side a:hover { color:var(--fg); }
-  aside.side a:hover { background:var(--accent-soft); }
-  aside.side a[aria-current] { background:var(--accent-soft); color:var(--brand); font-weight:600; }
-  article { max-width:760px; min-width:0; }
-  main { min-width:0; }
-  article h1 { font-size:36px; line-height:1.15; letter-spacing:-0.03em; font-weight:650; margin:0 0 8px; }
-  article p, article li { line-height:1.7; }
-  .crumb { color:var(--muted); font-size:14px; margin:0 0 18px; }
-  figure { margin:18px 0 24px; }
-  figure img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:10px; background:#fff; display:block; box-shadow:var(--shadow-sm); }
-  figcaption { color:var(--muted); font-size:13px; margin-top:6px; }
-  article h2 { font-size:21px; letter-spacing:-0.015em; font-weight:600; margin:36px 0 8px; }
-  table { border-collapse:collapse; width:100%; font-size:14px; margin:12px 0; display:block; overflow-x:auto; }
-  th, td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
-  th { font-weight:600; }
-  .live { display:inline-block; margin:6px 0 0; padding:6px 12px; border:1px solid var(--line); border-radius:8px; text-decoration:none; font-size:14px; background:var(--surface); }
-  .pager { display:flex; justify-content:space-between; gap:16px; margin-top:40px; padding-top:16px; border-top:1px solid var(--line); font-size:14px; }
-  .index-section { margin-bottom:28px; }
-  .index-section ul { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:4px 24px; }
-  .index-section li a { text-decoration:none; }
-  @media (max-width: 820px) {
-    .layout { grid-template-columns:minmax(0,1fr); gap:16px; padding:24px 16px 56px; }
-    aside.side { position:static; max-height:none; order:2; border-top:1px solid var(--line); padding-top:24px; }
-    article h1 { font-size:26px; }
-  }</style>
+<link rel="stylesheet" href="../docs.css">
 <script src="../analytics.js" defer></script>
+<script src="../docs.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Which rows are exported","description":"By default an export holds every row that passes the table's filters, on every page, in the current sort. Paging is a screen concern; the file gets the whole result.","dateModified":"2026-11-15","author":{"@type":"Organization","name":"jQWidgets LTD"}}</script>
 </head>
-<body>
+<body id="top">
 <header class="top">
   <div class="wrap">
     <a class="brand" href="../" aria-label="Rowpine home">
@@ -63,31 +35,37 @@
       Rowpine <span class="for">for TanStack Table</span>
     </a>
     <nav class="main" aria-label="Main">
-      <a href="../examples/">Demos</a>
+      <a href="../examples/" class="hide-xs">Demos</a>
       <a href="../docs/" aria-current="page">Docs</a>
       <a href="../guides/" class="hide-sm">Guides</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../license.html" class="hide-sm">License</a>
     </nav>
     <div class="actions">
+      <button type="button" class="search-btn" data-open-search aria-label="Search docs, guides and API"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs</span><kbd>Ctrl K</kbd></button>
       <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
       <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
       <a class="btn sm primary" href="../pricing.html" data-umami-event="Header buy">Buy a license</a>
     </div>
   </div>
 </header>
-<div class="wrap layout">
-  <aside class="side" aria-label="Help topics"><h2>Getting started</h2><a href="installation.html">Installation</a><a href="add-an-export-menu.html">Add an export menu</a><a href="license-keys.html">License keys</a><a href="column-settings.html">Column settings for exports</a><a href="your-own-export-buttons.html">Export from your own buttons</a><h2>Excel</h2><a href="export-to-excel.html">Export to Excel</a><a href="which-rows-are-exported.html" aria-current="page">Which rows are exported</a><a href="number-and-date-formats.html">Number and date formats</a><a href="cell-colors.html">Cell colors</a><a href="hidden-and-excluded-columns.html">Hidden and excluded columns</a><a href="pinned-columns-frozen-panes.html">Pinned columns become frozen panes</a><a href="grouped-rows-as-outlines.html">Grouped rows become Excel outlines</a><a href="subtotal-formulas.html">Group totals as SUBTOTAL formulas</a><a href="tree-data.html">Tree data</a><a href="tree-data-in-excel.html">Tree data in Excel</a><a href="headers-and-widths.html">Headers and column widths</a><h2>PDF</h2><a href="export-to-pdf.html">Export to PDF</a><a href="pdf-page-setup.html">PDF page setup</a><a href="pdf-title-kpis-watermark.html">Title, headline numbers and watermark</a><a href="pdf-grouped-rows.html">Groups in a PDF</a><h2>CSV</h2><a href="csv-export.html">CSV export</a><h2>Pivot</h2><a href="pivot-basics.html">Pivot tables</a><a href="aggregations.html">Aggregations</a><a href="subtotals-and-grand-totals.html">Subtotals and grand totals</a><a href="expand-and-collapse.html">Expand and collapse groups</a><a href="pivot-designer.html">Pivot designer</a><a href="fields-and-wells.html">Fields and wells</a><a href="pivot-filters.html">Filters in the pivot designer</a><a href="presets-and-saved-views.html">Presets and saved views</a><a href="exporting-a-pivot.html">Export a pivot</a></aside>
-  <main><article>
-  <h1>Which rows are exported</h1>
-  <p class="crumb">Excel</p>
-  <figure>
-    <img src="img/which-rows-are-exported.png" alt="The Export menu with a Selected rows only checkbox" loading="lazy">
-    <figcaption>The Export menu with a Selected rows only checkbox. <a href="../examples/#/04-selected-rows">Open the live example</a></figcaption>
-  </figure>
-  <p>By default an export holds every row that passes the table&#39;s filters, on every page, in the current sort. Paging is a screen concern; the file gets the whole result.</p>
+<script src="../search.js" defer></script>
+<button type="button" class="dnav-toggle" aria-controls="docs-nav" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
+<div class="docs">
+  <nav class="dnav" id="docs-nav" aria-label="Documentation">
+    <div class="dnav-top"><a class="dnav-home" href="../docs/">Documentation</a><span class="ver" title="Documented package version">v1.0.2</span></div>
+    <div class="dnav-group"><h2>Getting started</h2><a href="../docs/">Overview</a><a href="../docs/installation.html">Installation</a><a href="../docs/add-an-export-menu.html">Add an export menu</a><a href="../docs/license-keys.html">License keys</a><a href="../docs/column-settings.html">Column settings for exports</a><a href="../docs/your-own-export-buttons.html">Export from your own buttons</a></div><div class="dnav-group"><h2>Excel</h2><a href="../docs/export-to-excel.html">Export to Excel</a><a href="../docs/which-rows-are-exported.html" aria-current="page">Which rows are exported</a><a href="../docs/number-and-date-formats.html">Number and date formats</a><a href="../docs/cell-colors.html">Cell colors</a><a href="../docs/hidden-and-excluded-columns.html">Hidden and excluded columns</a><a href="../docs/pinned-columns-frozen-panes.html">Pinned columns become frozen panes</a><a href="../docs/grouped-rows-as-outlines.html">Grouped rows become Excel outlines</a><a href="../docs/subtotal-formulas.html">Group totals as SUBTOTAL formulas</a><a href="../docs/tree-data.html">Tree data</a><a href="../docs/tree-data-in-excel.html">Tree data in Excel</a><a href="../docs/headers-and-widths.html">Headers and column widths</a></div><div class="dnav-group"><h2>PDF</h2><a href="../docs/export-to-pdf.html">Export to PDF</a><a href="../docs/pdf-page-setup.html">PDF page setup</a><a href="../docs/pdf-title-kpis-watermark.html">Title, headline numbers and watermark</a><a href="../docs/pdf-grouped-rows.html">Groups in a PDF</a></div><div class="dnav-group"><h2>CSV</h2><a href="../docs/csv-export.html">CSV export</a></div><div class="dnav-group"><h2>Pivot</h2><a href="../docs/pivot-basics.html">Pivot tables</a><a href="../docs/aggregations.html">Aggregations</a><a href="../docs/subtotals-and-grand-totals.html">Subtotals and grand totals</a><a href="../docs/expand-and-collapse.html">Expand and collapse groups</a><a href="../docs/pivot-designer.html">Pivot designer</a><a href="../docs/fields-and-wells.html">Fields and wells</a><a href="../docs/pivot-filters.html">Filters in the pivot designer</a><a href="../docs/presets-and-saved-views.html">Presets and saved views</a><a href="../docs/exporting-a-pivot.html">Export a pivot</a></div><div class="dnav-group"><h2>Guides</h2><a href="../guides/">All guides</a><a href="../guides/export-tanstack-table-to-excel-with-grouped-rows.html">Export TanStack Table to Excel with grouped rows</a><a href="../guides/tanstack-table-pivot-table.html">TanStack Table pivot table</a><a href="../guides/shadcn-data-table-export-to-pdf.html">shadcn data table export to PDF</a></div><div class="dnav-group"><h2>API reference</h2><a href="../docs/api-export.html">Export functions</a><a href="../docs/api-columns.html">Column settings</a><a href="../docs/api-pivot.html">Pivot</a><a href="../docs/api-designer.html">Pivot designer state</a><a href="../docs/api-license.html">License</a><a href="../docs/api-advanced.html">Low-level API</a><a href="../docs/api-components.html">Components</a></div><div class="dnav-group"><h2>Resources</h2><a href="../docs/changelog.html">Changelog</a><a href="../docs/troubleshooting.html">Troubleshooting</a><a href="../docs/support.html">Support</a><a href="../security.html">Security</a><a href="../license.html">License</a><a href="../examples/">Live demos</a></div>
+  </nav>
+  <main class="dmain">
+<article class="doc">
+    <div class="crumbs"><a href="./">Docs</a><span>Excel</span></div>
+    <h1>Which rows are exported</h1>
+    
+    <div class="dmeta"><div class="facts"><span>Updated November 15, 2026</span><span>rowpine 1.0.2</span></div><div class="acts"><button type="button" class="act" data-copy-md="which-rows-are-exported.md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy as Markdown</span></button><a class="act" href="https://github.com/rowpine/rowpine/blob/main/docs/which-rows-are-exported.md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>Edit on GitHub</span></a></div></div>
+    <figure><img src="img/which-rows-are-exported.png" alt="The Export menu with a Selected rows only checkbox" loading="lazy"><figcaption>The Export menu with a Selected rows only checkbox.</figcaption></figure>
+    <p>By default an export holds every row that passes the table&#39;s filters, on every page, in the current sort. Paging is a screen concern; the file gets the whole result.</p>
 <p>The <code>rows</code> option changes that:</p>
-<table>
+<div class="tw"><table>
 <thead>
 <tr>
 <th><code>rows</code></th>
@@ -106,19 +84,22 @@
 <td><code>&quot;selected&quot;</code></td>
 <td>Only the selected rows (needs TanStack&#39;s row selection).</td>
 </tr>
-</tbody></table>
-<pre><code class="language-ts">await exportXlsx(table, { rows: &quot;selected&quot; })
-</code></pre>
+</tbody></table></div>
+<div class="editor"><div class="editor-bar"><span class="on">ts</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">await</span> exportXlsx(table, { rows: <span class="s">&quot;selected&quot;</span> })</code></pre></div>
 <p><code>ExportMenu</code> adds a &quot;Selected rows only&quot; checkbox when rows are selected. A selection column is usually a display column with checkboxes. Display columns have no accessor, so Rowpine leaves them out of the file on its own:</p>
-<pre><code class="language-ts">helper.display({ id: &quot;select&quot;, cell: ... }) // not exported: no accessor
-</code></pre>
+<div class="editor"><div class="editor-bar"><span class="on">ts</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>helper.display({ id: <span class="s">&quot;select&quot;</span>, cell: ... }) <span class="c">// not exported: no accessor</span></code></pre></div>
 
-  <p><a class="live" href="../examples/#/04-selected-rows">Live example and source</a></p>
-  <nav class="pager" aria-label="Previous and next topic">
-    <span><a href="export-to-excel.html">&larr; Export to Excel</a></span>
-    <span><a href="number-and-date-formats.html">Number and date formats &rarr;</a></span>
-  </nav>
-</article></main>
+    <a class="live-card" href="../examples/#/04-selected-rows"><span><b>Live example and source</b><span>Run this in the browser and read the code behind it.</span></span><i>Open &rarr;</i></a>
+    <div class="feedback" data-feedback>
+    <span>Was this page helpful?</span>
+    <button type="button" data-answer="yes" data-umami-event="Docs feedback" data-umami-event-page="which-rows-are-exported" data-umami-event-answer="yes">Yes</button>
+    <button type="button" data-answer="no" data-umami-event="Docs feedback" data-umami-event-page="which-rows-are-exported" data-umami-event-answer="no">No</button>
+    <span class="fb-thanks" hidden>Thanks. To tell us more, write to <a href="mailto:info@jqwidgets.com?subject=Rowpine%20docs%3A%20which-rows-are-exported">info@jqwidgets.com</a>.</span>
+  </div>
+    <nav class="pager" aria-label="Previous and next"><a class="pg prev" href="../docs/export-to-excel.html"><span>Previous</span><b>Export to Excel</b></a><a class="pg next" href="../docs/number-and-date-formats.html"><span>Next</span><b>Number and date formats</b></a></nav>
+  </article>
+  </main>
+  <aside class="dtoc"></aside>
 </div>
 <footer class="site">
   <div class="wrap">

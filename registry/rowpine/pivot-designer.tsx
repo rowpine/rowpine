@@ -59,11 +59,15 @@ import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { expandableIds, PivotTable } from "@/components/pivot-table"
 
+/** Props of `PivotDesigner`. */
 export type PivotDesignerProps<TData> = {
+  /** Source rows. The filter value lists are read from all of them. */
   data: ReadonlyArray<TData>
+  /** The fields offered in the field list. `kind` decides which wells take each one. */
   fields: ReadonlyArray<PivotField<TData>>
   /** The layout, to control it. Store it as JSON to save a user's view. */
   layout?: PivotLayout
+  /** Called with each new layout. Without `layout` the designer also keeps the layout itself. */
   onLayoutChange?: (layout: PivotLayout) => void
   /** Saved layouts offered in the Presets menu. */
   presets?: ReadonlyArray<PivotPreset>
@@ -75,6 +79,7 @@ export type PivotDesignerProps<TData> = {
   actions?: (pivot: PivotModel) => React.ReactNode
   /** Called with each new pivot. */
   onPivotChange?: (pivot: PivotModel | null) => void
+  /** Classes added to the outer container. */
   className?: string
 }
 
@@ -134,7 +139,11 @@ function FilterValues({
   )
 }
 
-/** An Excel-style pivot designer: field list, four wells, and the pivot it builds. */
+/**
+ * An Excel-style pivot designer: field list, four wells, and the pivot it builds.
+ * Uncontrolled, it starts from `defaultLayoutFor`.
+ * @param props See `PivotDesignerProps`.
+ */
 export function PivotDesigner<TData>({
   data,
   fields,

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Components - Rowpine API reference</title>
+<meta name="description" content="The shadcn registry items: an export menu, a pivot table and a pivot designer. Their source is in your project after npx shadcn add.">
+<link rel="canonical" href="https://rowpine.com/docs/api-components.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Rowpine">
+<meta property="og:title" content="Components - Rowpine API reference">
+<meta property="og:description" content="The shadcn registry items: an export menu, a pivot table and a pivot designer. Their source is in your project after npx shadcn add.">
+<meta property="og:url" content="https://rowpine.com/docs/api-components.html">
+<meta property="og:image" content="https://rowpine.com/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="text/markdown" href="api-components.md">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
+</script>
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="../docs.css">
+<script src="../analytics.js" defer></script>
+<script src="../docs.js" defer></script>
+
+</head>
+<body id="top">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Rowpine home">
+      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
+      Rowpine <span class="for">for TanStack Table</span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="../examples/" class="hide-xs">Demos</a>
+      <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../guides/" class="hide-sm">Guides</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../license.html" class="hide-sm">License</a>
+    </nav>
+    <div class="actions">
+      <button type="button" class="search-btn" data-open-search aria-label="Search docs, guides and API"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs</span><kbd>Ctrl K</kbd></button>
+      <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+      <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a class="btn sm primary" href="../pricing.html" data-umami-event="Header buy">Buy a license</a>
+    </div>
+  </div>
+</header>
+<script src="../search.js" defer></script>
+<button type="button" class="dnav-toggle" aria-controls="docs-nav" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
+<div class="docs">
+  <nav class="dnav" id="docs-nav" aria-label="Documentation">
+    <div class="dnav-top"><a class="dnav-home" href="../docs/">Documentation</a><span class="ver" title="Documented package version">v1.0.2</span></div>
+    <div class="dnav-group"><h2>Getting started</h2><a href="../docs/">Overview</a><a href="../docs/installation.html">Installation</a><a href="../docs/add-an-export-menu.html">Add an export menu</a><a href="../docs/license-keys.html">License keys</a><a href="../docs/column-settings.html">Column settings for exports</a><a href="../docs/your-own-export-buttons.html">Export from your own buttons</a></div><div class="dnav-group"><h2>Excel</h2><a href="../docs/export-to-excel.html">Export to Excel</a><a href="../docs/which-rows-are-exported.html">Which rows are exported</a><a href="../docs/number-and-date-formats.html">Number and date formats</a><a href="../docs/cell-colors.html">Cell colors</a><a href="../docs/hidden-and-excluded-columns.html">Hidden and excluded columns</a><a href="../docs/pinned-columns-frozen-panes.html">Pinned columns become frozen panes</a><a href="../docs/grouped-rows-as-outlines.html">Grouped rows become Excel outlines</a><a href="../docs/subtotal-formulas.html">Group totals as SUBTOTAL formulas</a><a href="../docs/tree-data.html">Tree data</a><a href="../docs/tree-data-in-excel.html">Tree data in Excel</a><a href="../docs/headers-and-widths.html">Headers and column widths</a></div><div class="dnav-group"><h2>PDF</h2><a href="../docs/export-to-pdf.html">Export to PDF</a><a href="../docs/pdf-page-setup.html">PDF page setup</a><a href="../docs/pdf-title-kpis-watermark.html">Title, headline numbers and watermark</a><a href="../docs/pdf-grouped-rows.html">Groups in a PDF</a></div><div class="dnav-group"><h2>CSV</h2><a href="../docs/csv-export.html">CSV export</a></div><div class="dnav-group"><h2>Pivot</h2><a href="../docs/pivot-basics.html">Pivot tables</a><a href="../docs/aggregations.html">Aggregations</a><a href="../docs/subtotals-and-grand-totals.html">Subtotals and grand totals</a><a href="../docs/expand-and-collapse.html">Expand and collapse groups</a><a href="../docs/pivot-designer.html">Pivot designer</a><a href="../docs/fields-and-wells.html">Fields and wells</a><a href="../docs/pivot-filters.html">Filters in the pivot designer</a><a href="../docs/presets-and-saved-views.html">Presets and saved views</a><a href="../docs/exporting-a-pivot.html">Export a pivot</a></div><div class="dnav-group"><h2>Guides</h2><a href="../guides/">All guides</a><a href="../guides/export-tanstack-table-to-excel-with-grouped-rows.html">Export TanStack Table to Excel with grouped rows</a><a href="../guides/tanstack-table-pivot-table.html">TanStack Table pivot table</a><a href="../guides/shadcn-data-table-export-to-pdf.html">shadcn data table export to PDF</a></div><div class="dnav-group"><h2>API reference</h2><a href="../docs/api-export.html">Export functions</a><a href="../docs/api-columns.html">Column settings</a><a href="../docs/api-pivot.html">Pivot</a><a href="../docs/api-designer.html">Pivot designer state</a><a href="../docs/api-license.html">License</a><a href="../docs/api-advanced.html">Low-level API</a><a href="../docs/api-components.html" aria-current="page">Components</a></div><div class="dnav-group"><h2>Resources</h2><a href="../docs/changelog.html">Changelog</a><a href="../docs/troubleshooting.html">Troubleshooting</a><a href="../docs/support.html">Support</a><a href="../security.html">Security</a><a href="../license.html">License</a><a href="../examples/">Live demos</a></div>
+  </nav>
+  <main class="dmain">
+<article class="doc">
+    <div class="crumbs"><a href="./">Docs</a><span>API reference</span></div>
+    <h1>Components</h1>
+    <p class="lead">The shadcn registry items: an export menu, a pivot table and a pivot designer. Their source is in your project after npx shadcn add.</p>
+    <div class="dmeta"><div class="facts"><span>rowpine 1.0.2</span><span>Generated from the package's type definitions</span></div><div class="acts"><button type="button" class="act" data-copy-md="api-components.md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy as Markdown</span></button></div></div>
+    <section class="api-entry" id="ExportMenu">
+    <div class="api-head"><h2><code>ExportMenu</code></h2><span class="kind">component</span></div>
+    <div class="api-doc"><p>A dropdown button that exports the table to Excel, PDF or CSV and saves the
+file. While an export runs the button reads &quot;Exporting...&quot; and further picks
+are ignored. A &quot;Selected rows only&quot; checkbox appears when the table has
+selected rows, or as <code>allowSelectedOnly</code> says.</p>
+</div><p class="src">Source in your project: <code>components/export-menu.tsx</code></p><div class="editor"><div class="editor-bar"><span class="on">Component</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="t">ExportMenu</span>(
+  { table, fileName, pdfTitle, formats, rowStyle, allowSelectedOnly, onError, label, className, }: ExportMenuProps,
+) =&gt; any</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>__0</code></td><td><code class="ty"><a href="#ExportMenuProps">ExportMenuProps</a></code></td><td>See <a href="#ExportMenuProps"><code>ExportMenuProps</code></a>.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty">any</code></p>
+  </section>
+<section class="api-entry" id="ExportMenuProps">
+    <div class="api-head"><h2><code>ExportMenuProps</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>Props of <a href="#ExportMenu"><code>ExportMenu</code></a>.</p>
+</div><p class="src">Source in your project: <code>components/export-menu.tsx</code></p><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>table</code></td><td><code class="ty"><a href="api-advanced.html#TableLike">TableLike</a></code></td><td>A TanStack table (v8 or v9), or <code>pivot.table</code> from createPivot.</td></tr><tr><td><code>fileName</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>File name without extension.</td></tr><tr><td><code>pdfTitle</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>Title printed at the top of the PDF.</td></tr><tr><td><code>formats</code><span class="opt">optional</span></td><td><code class="ty">Format[]</code></td><td>Which formats to offer. Default all three.</td></tr><tr><td><code>rowStyle</code><span class="opt">optional</span></td><td><code class="ty">((original: unknown) =&gt; <a href="api-columns.html#CellStyle">CellStyle</a> | undefined)</code></td><td>Style whole rows, e.g. <a href="api-pivot.html#pivotRowStyle"><code>pivotRowStyle</code></a> for pivots.</td></tr><tr><td><code>allowSelectedOnly</code><span class="opt">optional</span></td><td><code class="ty">boolean</code></td><td>Offer &quot;Selected rows only&quot;. Default: when the table has a selection.</td></tr><tr><td><code>onError</code><span class="opt">optional</span></td><td><code class="ty">((error: unknown) =&gt; void)</code></td><td>Called when an export fails. Default: console.error.</td></tr><tr><td><code>label</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>Button text. Default &#39;Export&#39;.</td></tr><tr><td><code>className</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>Classes added to the trigger button.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotTable">
+    <div class="api-head"><h2><code>PivotTable</code></h2><span class="kind">component</span></div>
+    <div class="api-doc"><p>A pivot as a shadcn Table: header groups span their columns, rows with
+children get an expand and collapse button, and empty value cells show &#39;-&#39;.</p>
+</div><p class="src">Source in your project: <code>components/pivot-table.tsx</code></p><div class="editor"><div class="editor-bar"><span class="on">Component</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="t">PivotTable</span>(
+  { pivot, collapsed, onCollapsedChange, defaultCollapsed, className }: PivotTableProps,
+) =&gt; any</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>__0</code></td><td><code class="ty"><a href="#PivotTableProps">PivotTableProps</a></code></td><td>See <a href="#PivotTableProps"><code>PivotTableProps</code></a>.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty">any</code></p>
+  </section>
+<section class="api-entry" id="PivotTableProps">
+    <div class="api-head"><h2><code>PivotTableProps</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>Props of <a href="#PivotTable"><code>PivotTable</code></a>.</p>
+</div><p class="src">Source in your project: <code>components/pivot-table.tsx</code></p><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>pivot</code></td><td><code class="ty">PivotModel</code></td><td>The pivot to show, from usePivot or createPivot.</td></tr><tr><td><code>collapsed</code><span class="opt">optional</span></td><td><code class="ty">any</code></td><td>Collapsed group ids, to control expansion from outside.</td></tr><tr><td><code>onCollapsedChange</code><span class="opt">optional</span></td><td><code class="ty">((collapsed: Set&lt;string&gt;) =&gt; void)</code></td><td>Called with the new set of collapsed ids when a row is expanded or
+collapsed. When given, the table does not keep its own state, so pass
+<code>collapsed</code> with it.</td></tr><tr><td><code>defaultCollapsed</code><span class="opt">optional</span></td><td><code class="ty">boolean</code></td><td>Start with every group collapsed when uncontrolled. Default false.</td></tr><tr><td><code>className</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>Classes added to the bordered wrapper.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="usePivot">
+    <div class="api-head"><h2><code>usePivot</code></h2><span class="kind">hook</span></div>
+    <div class="api-doc"><p>Pivot <code>data</code> with <code>config</code>; recomputes only when either changes.</p>
+</div><p class="src">Source in your project: <code>components/pivot-table.tsx</code></p><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>usePivot&lt;TData&gt;(
+  data: ReadonlyArray&lt;TData&gt;,
+  config: PivotConfig&lt;TData&gt;,
+  options?: ToColumnsOptions,
+) =&gt; PivotModel</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td><code class="ty">readonly TData[]</code></td><td>Source rows. A new array on each render rebuilds the pivot.</td></tr><tr><td><code>config</code></td><td><code class="ty"><a href="api-pivot.html#PivotConfig">PivotConfig</a>&lt;TData&gt;</code></td><td>The pivot config. Keep the same object between renders (a constant or useMemo); a new one rebuilds the pivot.</td></tr><tr><td><code>options</code><span class="opt">optional</span></td><td><code class="ty"><a href="api-pivot.html#ToColumnsOptions">ToColumnsOptions</a></code></td><td>Settings for every value column, such as an Excel number format. Same rule as <code>config</code>.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty">PivotModel</code></p>
+  </section>
+<section class="api-entry" id="PivotDesigner">
+    <div class="api-head"><h2><code>PivotDesigner</code></h2><span class="kind">component</span></div>
+    <div class="api-doc"><p>An Excel-style pivot designer: field list, four wells, and the pivot it builds.
+Uncontrolled, it starts from <a href="api-designer.html#defaultLayoutFor"><code>defaultLayoutFor</code></a>.</p>
+</div><p class="src">Source in your project: <code>components/pivot-designer.tsx</code></p><div class="editor"><div class="editor-bar"><span class="on">Component</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>PivotDesigner&lt;TData&gt;(
+  { data, fields, layout: controlled, onLayoutChange, presets, aggregators, pivotOptions, actions, onPivotChange, className, }: PivotDesignerProps&lt;TData&gt;,
+) =&gt; any</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>__0</code></td><td><code class="ty"><a href="#PivotDesignerProps">PivotDesignerProps</a>&lt;TData&gt;</code></td><td>See <a href="#PivotDesignerProps"><code>PivotDesignerProps</code></a>.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty">any</code></p>
+  </section>
+<section class="api-entry" id="PivotDesignerProps">
+    <div class="api-head"><h2><code>PivotDesignerProps&lt;TData&gt;</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>Props of <a href="#PivotDesigner"><code>PivotDesigner</code></a>.</p>
+</div><p class="src">Source in your project: <code>components/pivot-designer.tsx</code></p><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td><code class="ty">readonly TData[]</code></td><td>Source rows. The filter value lists are read from all of them.</td></tr><tr><td><code>fields</code></td><td><code class="ty">readonly <a href="api-designer.html#PivotField">PivotField</a>&lt;TData&gt;[]</code></td><td>The fields offered in the field list. <code>kind</code> decides which wells take each one.</td></tr><tr><td><code>layout</code><span class="opt">optional</span></td><td><code class="ty"><a href="api-designer.html#PivotLayout">PivotLayout</a></code></td><td>The layout, to control it. Store it as JSON to save a user&#39;s view.</td></tr><tr><td><code>onLayoutChange</code><span class="opt">optional</span></td><td><code class="ty">((layout: <a href="api-designer.html#PivotLayout">PivotLayout</a>) =&gt; void)</code></td><td>Called with each new layout. Without <code>layout</code> the designer also keeps the layout itself.</td></tr><tr><td><code>presets</code><span class="opt">optional</span></td><td><code class="ty">readonly <a href="api-designer.html#PivotPreset">PivotPreset</a>[]</code></td><td>Saved layouts offered in the Presets menu.</td></tr><tr><td><code>aggregators</code><span class="opt">optional</span></td><td><code class="ty">readonly <a href="api-pivot.html#PivotAggregatorId">PivotAggregatorId</a>[]</code></td><td>Aggregations offered on value chips. Default all.</td></tr><tr><td><code>pivotOptions</code><span class="opt">optional</span></td><td><code class="ty"><a href="api-pivot.html#ToColumnsOptions">ToColumnsOptions</a></code></td><td>Column options for the pivot, e.g. an Excel number format.</td></tr><tr><td><code>actions</code><span class="opt">optional</span></td><td><code class="ty">((pivot: PivotModel) =&gt; React.ReactNode)</code></td><td>Extra toolbar content, given the current pivot (e.g. an ExportMenu).</td></tr><tr><td><code>onPivotChange</code><span class="opt">optional</span></td><td><code class="ty">((pivot: PivotModel | null) =&gt; void)</code></td><td>Called with each new pivot.</td></tr><tr><td><code>className</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>Classes added to the outer container.</td></tr></tbody></table></div>
+  </section>
+    <div class="feedback" data-feedback>
+    <span>Was this page helpful?</span>
+    <button type="button" data-answer="yes" data-umami-event="Docs feedback" data-umami-event-page="api-components" data-umami-event-answer="yes">Yes</button>
+    <button type="button" data-answer="no" data-umami-event="Docs feedback" data-umami-event-page="api-components" data-umami-event-answer="no">No</button>
+    <span class="fb-thanks" hidden>Thanks. To tell us more, write to <a href="mailto:info@jqwidgets.com?subject=Rowpine%20docs%3A%20api-components">info@jqwidgets.com</a>.</span>
+  </div>
+    <nav class="pager" aria-label="Previous and next"><a class="pg prev" href="../docs/api-advanced.html"><span>Previous</span><b>Low-level API</b></a><span></span></nav>
+  </article>
+  </main>
+  <aside class="dtoc" aria-label="On this page"><b>On this page</b><a href="#ExportMenu" class="l2">ExportMenu</a><a href="#ExportMenuProps" class="l2">ExportMenuProps</a><a href="#PivotTable" class="l2">PivotTable</a><a href="#PivotTableProps" class="l2">PivotTableProps</a><a href="#usePivot" class="l2">usePivot</a><a href="#PivotDesigner" class="l2">PivotDesigner</a><a href="#PivotDesignerProps" class="l2">PivotDesignerProps</a><a class="totop" href="#top">Back to top</a></aside>
+</div>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="brand" href="../"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span> Rowpine</a>
+        <p>Pivot tables and Excel and PDF export for TanStack Table and shadcn/ui.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="../examples/">Demos</a>
+        <a href="../guides/">Guides</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../license.html">License</a>
+        <a href="../security.html">Security</a>
+        <a href="https://www.npmjs.com/package/rowpine">npm</a>
+        <a href="https://github.com/rowpine/rowpine">GitHub</a>
+      </div>
+      <div>
+        <h4>Get started</h4>
+        <a href="../docs/installation.html">Installation</a>
+        <a href="../docs/add-an-export-menu.html">Export menu</a>
+        <a href="../docs/license-keys.html">License keys</a>
+        <a href="../docs/">All help topics</a>
+      </div>
+      <div>
+        <h4>Export</h4>
+        <a href="../docs/export-to-excel.html">Excel</a>
+        <a href="../docs/export-to-pdf.html">PDF</a>
+        <a href="../docs/csv-export.html">CSV</a>
+        <a href="../docs/grouped-rows-as-outlines.html">Grouped rows</a>
+      </div>
+      <div>
+        <h4>Pivot</h4>
+        <a href="../docs/pivot-basics.html">Pivot tables</a>
+        <a href="../docs/pivot-designer.html">Pivot designer</a>
+        <a href="../docs/aggregations.html">Aggregations</a>
+        <a href="../docs/exporting-a-pivot.html">Export a pivot</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 jQWidgets LTD. Rowpine is a brand of jQWidgets LTD.</span>
+      <nav aria-label="Legal"><a href="../license.html">License</a><a href="../security.html">Security</a><a href="../privacy.html">Privacy</a><a href="mailto:info@jqwidgets.com?subject=Rowpine">Contact</a><a href="../llms.txt">llms.txt</a></nav>
+    </div>
+    <p class="fine">TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
+  </div>
+</footer>
+<script>
+  function toggleTheme() {
+    const root = document.documentElement
+    const dark = root.dataset.theme === 'dark'
+    root.dataset.theme = dark ? 'light' : 'dark'
+    try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
+  }
+</script>
+</body>
+</html>

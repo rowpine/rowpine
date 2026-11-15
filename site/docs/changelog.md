@@ -1,0 +1,34 @@
+# Changelog
+
+Every version of the `rowpine` npm package, newest first. The components from the shadcn registry are source in your project and change only when you add them again.
+
+## 1.0.2
+
+Released 2026-11-15.
+
+- **Fixed:** a TanStack Table v9 table without the grouping feature, such as the [shadcn/ui data table](../guides/shadcn-data-table-export-to-pdf.html), failed to type-check when passed to `ExportMenu` or an export function, with "not assignable to type TableLike". It runs and type-checks now.
+- **Changed:** display columns, the ones without an accessor such as selection checkboxes and row actions, are left out of exports by default. Set `meta.rowpine.exclude: false` on one to keep it. See [hidden and excluded columns](hidden-and-excluded-columns.html).
+- **Added:** `rowHeader` on the pivot config, the header of the pivot's first column. It defaulted to the row fields joined with ` / ` and could not be changed. See [pivot basics](pivot-basics.html).
+- **Docs:** every exported function, option and type has a description, shown in your editor and in the [API reference](api-export.html).
+- **Deprecated:** the PDF options `grandTotal`, `labels.subtotal` and `labels.total`. They never had an effect; they stay in the types so existing code compiles.
+
+## 1.0.1
+
+Released 2026-11-14.
+
+- The final license text: copyright jQWidgets LTD. See the [license](../license.html).
+- `require("rowpine/package.json")` works: `package.json` is in the package's exports.
+
+## 1.0.0
+
+Released 2026-11-14.
+
+- The first stable version. The code is the same as 0.1.0; the npm README gained pictures and links.
+
+## 0.1.0
+
+Released 2026-11-13.
+
+- Excel, PDF and CSV export from TanStack Table v8 and v9 tables: grouped rows as Excel outline levels, group totals as `SUBTOTAL` formulas, pinned columns as frozen panes, number formats and cell colors.
+- The pivot engine and the pivot designer state.
+- The export menu, the pivot table and the pivot designer in the shadcn registry.

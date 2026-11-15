@@ -1,0 +1,8 @@
+{
+  "note": "The versions the guide code was built and run with (scratchpad npmcheck app, guides-e2e.cjs 30/30, 2026-11-15).",
+  "rowpine": "1.0.2",
+  "@tanstack/react-table": ["9.3.1", "8.21.3"],
+  "react": "19.3.1",
+  "@base-ui/react": "1.9.0",
+  "vite": "8.3.8"
+}

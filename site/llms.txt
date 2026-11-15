@@ -42,6 +42,9 @@
 - [Filters in the pivot designer](https://rowpine.com/docs/pivot-filters.md): A field in the Filters well limits which rows the pivot counts. When a field is dropped there, its value list opens: untick the values to leave out.
 - [Presets and saved views](https://rowpine.com/docs/presets-and-saved-views.md): A designer layout is plain JSON:
 - [Export a pivot](https://rowpine.com/docs/exporting-a-pivot.md): A pivot exports like any table. pivot.table is a table view of the pivot for the exporters:
+- [Changelog](https://rowpine.com/docs/changelog.md): What changed in each version of the rowpine package.
+- [Troubleshooting](https://rowpine.com/docs/troubleshooting.md): Fixes for the problems people run into most with Rowpine exports and pivots.
+- [Support](https://rowpine.com/docs/support.md): Where to ask a question or report a bug, and what to include so it can be answered the first time.
 <!-- docs:end -->
 
 <!-- guides:start -->
@@ -51,3 +54,15 @@
 - [TanStack Table pivot table](https://rowpine.com/guides/tanstack-table-pivot-table.md): A cross-tab from flat rows, a pivot designer for end users, and an Excel export with outline levels.
 - [shadcn data table export to PDF](https://rowpine.com/guides/shadcn-data-table-export-to-pdf.md): An export menu on the shadcn payments table, then a PDF report with a title, headline numbers and page setup.
 <!-- guides:end -->
+
+<!-- api:start -->
+## API reference (rowpine 1.0.2)
+
+- [Export functions](https://rowpine.com/docs/api-export.md): Write a TanStack table to Excel, PDF or CSV, and the options each export takes.
+- [Column settings](https://rowpine.com/docs/api-columns.md): Per-column export settings, read from meta.rowpine on your TanStack column definitions.
+- [Pivot](https://rowpine.com/docs/api-pivot.md): Build a pivot from flat rows: the config, the measures, and the result you render or export.
+- [Pivot designer state](https://rowpine.com/docs/api-designer.md): The fields, layouts and presets behind the pivot designer, and the pure functions that change a layout.
+- [License](https://rowpine.com/docs/api-license.md): Set the license key and read what it covers. The check runs in the browser and makes no network calls.
+- [Low-level API](https://rowpine.com/docs/api-advanced.md): The pieces the exporters are built from: reading a table into a sheet, and building files without saving them.
+- [Components](https://rowpine.com/docs/api-components.md): The shadcn registry items: an export menu, a pivot table and a pivot designer. Their source is in your project after npx shadcn add.
+<!-- api:end -->

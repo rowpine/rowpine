@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pivot - Rowpine API reference</title>
+<meta name="description" content="Build a pivot from flat rows: the config, the measures, and the result you render or export.">
+<link rel="canonical" href="https://rowpine.com/docs/api-pivot.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Rowpine">
+<meta property="og:title" content="Pivot - Rowpine API reference">
+<meta property="og:description" content="Build a pivot from flat rows: the config, the measures, and the result you render or export.">
+<meta property="og:url" content="https://rowpine.com/docs/api-pivot.html">
+<meta property="og:image" content="https://rowpine.com/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="text/markdown" href="api-pivot.md">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
+</script>
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="../docs.css">
+<script src="../analytics.js" defer></script>
+<script src="../docs.js" defer></script>
+
+</head>
+<body id="top">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Rowpine home">
+      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
+      Rowpine <span class="for">for TanStack Table</span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="../examples/" class="hide-xs">Demos</a>
+      <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../guides/" class="hide-sm">Guides</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../license.html" class="hide-sm">License</a>
+    </nav>
+    <div class="actions">
+      <button type="button" class="search-btn" data-open-search aria-label="Search docs, guides and API"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs</span><kbd>Ctrl K</kbd></button>
+      <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+      <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a class="btn sm primary" href="../pricing.html" data-umami-event="Header buy">Buy a license</a>
+    </div>
+  </div>
+</header>
+<script src="../search.js" defer></script>
+<button type="button" class="dnav-toggle" aria-controls="docs-nav" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
+<div class="docs">
+  <nav class="dnav" id="docs-nav" aria-label="Documentation">
+    <div class="dnav-top"><a class="dnav-home" href="../docs/">Documentation</a><span class="ver" title="Documented package version">v1.0.2</span></div>
+    <div class="dnav-group"><h2>Getting started</h2><a href="../docs/">Overview</a><a href="../docs/installation.html">Installation</a><a href="../docs/add-an-export-menu.html">Add an export menu</a><a href="../docs/license-keys.html">License keys</a><a href="../docs/column-settings.html">Column settings for exports</a><a href="../docs/your-own-export-buttons.html">Export from your own buttons</a></div><div class="dnav-group"><h2>Excel</h2><a href="../docs/export-to-excel.html">Export to Excel</a><a href="../docs/which-rows-are-exported.html">Which rows are exported</a><a href="../docs/number-and-date-formats.html">Number and date formats</a><a href="../docs/cell-colors.html">Cell colors</a><a href="../docs/hidden-and-excluded-columns.html">Hidden and excluded columns</a><a href="../docs/pinned-columns-frozen-panes.html">Pinned columns become frozen panes</a><a href="../docs/grouped-rows-as-outlines.html">Grouped rows become Excel outlines</a><a href="../docs/subtotal-formulas.html">Group totals as SUBTOTAL formulas</a><a href="../docs/tree-data.html">Tree data</a><a href="../docs/tree-data-in-excel.html">Tree data in Excel</a><a href="../docs/headers-and-widths.html">Headers and column widths</a></div><div class="dnav-group"><h2>PDF</h2><a href="../docs/export-to-pdf.html">Export to PDF</a><a href="../docs/pdf-page-setup.html">PDF page setup</a><a href="../docs/pdf-title-kpis-watermark.html">Title, headline numbers and watermark</a><a href="../docs/pdf-grouped-rows.html">Groups in a PDF</a></div><div class="dnav-group"><h2>CSV</h2><a href="../docs/csv-export.html">CSV export</a></div><div class="dnav-group"><h2>Pivot</h2><a href="../docs/pivot-basics.html">Pivot tables</a><a href="../docs/aggregations.html">Aggregations</a><a href="../docs/subtotals-and-grand-totals.html">Subtotals and grand totals</a><a href="../docs/expand-and-collapse.html">Expand and collapse groups</a><a href="../docs/pivot-designer.html">Pivot designer</a><a href="../docs/fields-and-wells.html">Fields and wells</a><a href="../docs/pivot-filters.html">Filters in the pivot designer</a><a href="../docs/presets-and-saved-views.html">Presets and saved views</a><a href="../docs/exporting-a-pivot.html">Export a pivot</a></div><div class="dnav-group"><h2>Guides</h2><a href="../guides/">All guides</a><a href="../guides/export-tanstack-table-to-excel-with-grouped-rows.html">Export TanStack Table to Excel with grouped rows</a><a href="../guides/tanstack-table-pivot-table.html">TanStack Table pivot table</a><a href="../guides/shadcn-data-table-export-to-pdf.html">shadcn data table export to PDF</a></div><div class="dnav-group"><h2>API reference</h2><a href="../docs/api-export.html">Export functions</a><a href="../docs/api-columns.html">Column settings</a><a href="../docs/api-pivot.html" aria-current="page">Pivot</a><a href="../docs/api-designer.html">Pivot designer state</a><a href="../docs/api-license.html">License</a><a href="../docs/api-advanced.html">Low-level API</a><a href="../docs/api-components.html">Components</a></div><div class="dnav-group"><h2>Resources</h2><a href="../docs/changelog.html">Changelog</a><a href="../docs/troubleshooting.html">Troubleshooting</a><a href="../docs/support.html">Support</a><a href="../security.html">Security</a><a href="../license.html">License</a><a href="../examples/">Live demos</a></div>
+  </nav>
+  <main class="dmain">
+<article class="doc">
+    <div class="crumbs"><a href="./">Docs</a><span>API reference</span></div>
+    <h1>Pivot</h1>
+    <p class="lead">Build a pivot from flat rows: the config, the measures, and the result you render or export.</p>
+    <div class="dmeta"><div class="facts"><span>rowpine 1.0.2</span><span>Generated from the package's type definitions</span></div><div class="acts"><button type="button" class="act" data-copy-md="api-pivot.md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy as Markdown</span></button></div></div>
+    <section class="api-entry" id="createPivot">
+    <div class="api-head"><h2><code>createPivot</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Pivot <code>data</code> and return rows and columns ready for TanStack Table.
+Without a license key it still runs and logs a notice once.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>createPivot&lt;TData&gt;(
+  data: ReadonlyArray&lt;TData&gt;,
+  config: PivotConfig&lt;TData&gt;,
+  opts?: ToColumnsOptions,
+) =&gt; PivotTable</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td><code class="ty">readonly TData[]</code></td><td>Flat source rows. Not changed.</td></tr><tr><td><code>config</code></td><td><code class="ty"><a href="#PivotConfig">PivotConfig</a>&lt;TData&gt;</code></td><td>Row fields, column fields and measures. Throws when <code>values</code> is empty or names an unknown aggregator.</td></tr><tr><td><code>opts</code><span class="opt">optional</span></td><td><code class="ty"><a href="#ToColumnsOptions">ToColumnsOptions</a></code></td><td>Settings for every value column, such as an Excel number format.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="api-components.html#PivotTable">PivotTable</a></code></p>
+  </section>
+<section class="api-entry" id="PivotConfig">
+    <div class="api-head"><h2><code>PivotConfig&lt;TData&gt;</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>A pivot definition: the row axis, the column axis, and the measures at their intersections.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>rows</code></td><td><code class="ty">readonly (keyof TData &amp; string)[]</code></td><td>Outer-most first. Each entry becomes one level of row grouping.</td></tr><tr><td><code>cols</code></td><td><code class="ty">readonly (keyof TData &amp; string)[]</code></td><td>Outer-most first. Each entry becomes one level of column grouping.</td></tr><tr><td><code>values</code></td><td><code class="ty">readonly <a href="#PivotValueConfig">PivotValueConfig</a>&lt;TData&gt;[]</code></td><td>One or more measures aggregated under each column-axis leaf.</td></tr><tr><td><code>rowHeader</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>Header of the first column. Default: the row fields joined with <code>/</code>.</td></tr><tr><td><code>grandTotalRow</code><span class="opt">optional</span></td><td><code class="ty">boolean</code></td><td>Grand-total row at the bottom. Default <code>true</code>.</td></tr><tr><td><code>grandTotalCol</code><span class="opt">optional</span></td><td><code class="ty">boolean</code></td><td>Grand-total column on the right. Default <code>true</code>.</td></tr><tr><td><code>rowSubtotals</code><span class="opt">optional</span></td><td><code class="ty">boolean</code></td><td>Group rows carry their subtotals. When false, group rows stay (they still expand and collapse) but show no numbers. Default <code>true</code>.</td></tr><tr><td><code>colSort</code><span class="opt">optional</span></td><td><code class="ty">((a: unknown, b: unknown, level: number) =&gt; number)</code></td><td>Optional sort for column-axis values per dim level (defaults to alpha).</td></tr><tr><td><code>rowSort</code><span class="opt">optional</span></td><td><code class="ty">((a: unknown, b: unknown, level: number) =&gt; number)</code></td><td>Optional sort for row-axis values per dim level (defaults to alpha).</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotValueConfig">
+    <div class="api-head"><h2><code>PivotValueConfig&lt;TData&gt;</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>One measure: the field to aggregate and how to aggregate it.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>field</code></td><td><code class="ty">keyof TData &amp; string</code></td><td>Row field whose values get aggregated.</td></tr><tr><td><code>agg</code></td><td><code class="ty"><a href="#PivotAggregatorId">PivotAggregatorId</a> | <a href="#PivotAggregator">PivotAggregator</a></code></td><td>Built-in aggregator id, or a custom reducer.</td></tr><tr><td><code>label</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>Display name in the column header. Defaults to <code>${field} (${agg})</code>.</td></tr><tr><td><code>format</code><span class="opt">optional</span></td><td><code class="ty">((value: unknown) =&gt; string)</code></td><td>Turns a value cell into display text. Default: numbers with grouping separators.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotAggregatorId">
+    <div class="api-head"><h2><code>PivotAggregatorId</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>Built-in pivot measures, named in <a href="#PivotValueConfig"><code>PivotValueConfig</code></a>.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Type</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">type</span> PivotAggregatorId = <span class="s">'sum'</span>
+  | <span class="s">'avg'</span>
+  | <span class="s">'min'</span>
+  | <span class="s">'max'</span>
+  | <span class="s">'count'</span>
+  | <span class="s">'countDistinct'</span>
+  | <span class="s">'first'</span>
+  | <span class="s">'last'</span></code></pre></div>
+  </section>
+<section class="api-entry" id="PivotAggregator">
+    <div class="api-head"><h2><code>PivotAggregator</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>A custom measure: reduce the values under one cell to the number to display.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Type</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">type</span> PivotAggregator = (values: ReadonlyArray&lt;unknown&gt;) =&gt; unknown</code></pre></div>
+  </section>
+<section class="api-entry" id="ToColumnsOptions">
+    <div class="api-head"><h2><code>ToColumnsOptions</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>Options for the generated value columns.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>numFmt</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>Excel number format for every value column, e.g. <code>&#39;#,##0.00&#39;</code>.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotTable">
+    <div class="api-head"><h2><code>PivotTable</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>What <a href="#createPivot"><code>createPivot</code></a> returns: the pivot as TanStack data and columns, and as a table the exporters read.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td><code class="ty"><a href="#PivotTreeRow">PivotTreeRow</a>[]</code></td><td>Rows for <code>useReactTable({ data })</code>, with <code>getSubRows: (r) =&gt; r.subRows</code>.</td></tr><tr><td><code>columns</code></td><td><code class="ty"><a href="#PivotColumnDef">PivotColumnDef</a>[]</code></td><td>Columns for <code>useReactTable({ columns })</code>.</td></tr><tr><td><code>rows</code></td><td><code class="ty"><a href="#PivotRow">PivotRow</a>[]</code></td><td>The flat rows, as the engine produced them.</td></tr><tr><td><code>table</code></td><td><code class="ty"><a href="api-advanced.html#TableLike">TableLike</a></code></td><td>The pivot as a table the exporters read: <code>exportXlsx(pivot.table)</code>.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotTreeRow">
+    <div class="api-head"><h2><code>PivotTreeRow</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>A pivot row with its children attached.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>__pivotId</code></td><td><code class="ty">string</code></td><td>Unique id built from the row&#39;s path of values. The grand-total row is &#39;row__grand_total&#39;.</td></tr><tr><td><code>__pivotKind</code></td><td><code class="ty"><a href="#PivotRowKind">PivotRowKind</a></code></td><td>&#39;group&#39; (holds the group&#39;s subtotals unless <code>rowSubtotals</code> is false), &#39;leaf&#39; or &#39;grandTotal&#39;.</td></tr><tr><td><code>__pivotDepth</code></td><td><code class="ty">number</code></td><td>Level on the row axis: 1 under the first row field, 2 under the second, and so on. 0 on the grand-total row and on the single row of a pivot with no row fields.</td></tr><tr><td><code>__pivotLabel</code></td><td><code class="ty">string</code></td><td>Text of the first column: the row&#39;s value on the row axis, &#39;Grand total&#39; on the grand-total row, &#39;(All)&#39; on the single row of a pivot with no row fields.</td></tr><tr><td><code>__pivotParentId</code></td><td><code class="ty">string | null</code></td><td><code>__pivotId</code> of the group row this row sits under, or null at the top level.</td></tr><tr><td><code>__pivotExpandable</code></td><td><code class="ty">boolean</code></td><td>True on group rows, which always have rows under them.</td></tr><tr><td><code>subRows</code><span class="opt">optional</span></td><td><code class="ty"><a href="#PivotTreeRow">PivotTreeRow</a>[]</code></td><td>The rows under this one. Absent on rows with none.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotColumnDef">
+    <div class="api-head"><h2><code>PivotColumnDef</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>A generated column: an accessor leaf or a header group. Fits TanStack&#39;s <code>ColumnDef&lt;PivotTreeRow&gt;</code>.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Type</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">type</span> PivotColumnDef = { id: string; header: string; accessorFn: (row: PivotTreeRow) =&gt; unknown; size?: number; meta: PivotColumnMeta; }
+  | { id: string; header: string; columns: PivotColumnDef[]; meta: PivotColumnMeta; }</code></pre></div>
+  </section>
+<section class="api-entry" id="PivotColumnMeta">
+    <div class="api-head"><h2><code>PivotColumnMeta</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>Metadata on every generated column.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>rowpine</code></td><td><code class="ty"><a href="api-columns.html#RowpineColumnMeta">RowpineColumnMeta</a>&lt;<a href="#PivotTreeRow">PivotTreeRow</a>&gt;</code></td><td>Export settings: the row-header column carries its header; value columns carry <code>numFmt</code>, <code>format</code> and right alignment.</td></tr><tr><td><code>pivot</code></td><td><code class="ty">{ isRowHeader: boolean; isTotal: boolean; measure?: number; }</code></td><td>Where the column sits in the pivot: the row-header column, a grand-total column, and the measure index into <code>config.values</code> for a value leaf.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="pivotRowStyle">
+    <div class="api-head"><h2><code>pivotRowStyle</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Bold group, subtotal and grand-total rows in exports. Pass as <code>rowStyle</code>.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>pivotRowStyle(original: unknown) =&gt; { bold?: boolean; } | <span class="k">undefined</span></code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>original</code></td><td><code class="ty">unknown</code></td><td>A row&#39;s original data: a <a href="#PivotTreeRow"><code>PivotTreeRow</code></a>.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty">{ bold?: boolean; } | undefined</code></p>
+  </section>
+<section class="api-entry" id="pivotAggregators">
+    <div class="api-head"><h2><code>pivotAggregators</code></h2><span class="kind">constant</span></div>
+    <div class="api-doc"><p>Public registry of built-in aggregators. Useful for surfacing the
+available options in a pivot designer UI.</p>
+</div><p><b>Type</b> <code class="ty">Record&lt;<a href="#PivotAggregatorId">PivotAggregatorId</a>, <a href="#PivotAggregator">PivotAggregator</a>&gt;</code></p>
+  </section>
+<section class="api-entry" id="createPivotModel">
+    <div class="api-head"><h2><code>createPivotModel</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Build a pivot table from flat rows: cross the row axis with the column axis,
+aggregate each intersection, and return rows plus the generated column tree.
+No license check.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>createPivotModel&lt;TData&gt;(
+  data: ReadonlyArray&lt;TData&gt;,
+  config: PivotConfig&lt;TData&gt;,
+) =&gt; PivotResult</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td><code class="ty">readonly TData[]</code></td><td>Flat source rows. Not changed.</td></tr><tr><td><code>config</code></td><td><code class="ty"><a href="#PivotConfig">PivotConfig</a>&lt;TData&gt;</code></td><td>Row fields, column fields and measures. Throws when <code>values</code> is empty or names an unknown aggregator.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotResult">PivotResult</a></code></p>
+  </section>
+<section class="api-entry" id="PivotResult">
+    <div class="api-head"><h2><code>PivotResult</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>A built pivot: the rows to display, and the generated columns for its column axis.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>rows</code></td><td><code class="ty"><a href="#PivotRow">PivotRow</a>[]</code></td><td>Every pivot row, flat, in display order: each group row before its rows, the grand-total row last.</td></tr><tr><td><code>columns</code></td><td><code class="ty"><a href="#PivotColumn">PivotColumn</a>[]</code></td><td>The column tree: the row-header column, the value columns, then the &#39;Total&#39; group when there is one.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotRow">
+    <div class="api-head"><h2><code>PivotRow</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>Shape of one entry in <code>result.rows</code>. The first-column label lives at
+<code>__pivotLabel</code>; every value cell lives at the column id matching the
+leaf column generated for its (col-path × measure).</p>
+<p><code>__pivotParentId</code> is the <code>__pivotId</code> of the row&#39;s row-axis parent
+(or <code>null</code> for top-level groups, the grand-total row, and the one
+synthetic &quot;All&quot; row when no row dims are configured). Use it with
+<a href="#filterCollapsedPivotRows"><code>filterCollapsedPivotRows</code></a> to hide leaves whose ancestor is
+collapsed - that&#39;s how expandable pivots are built on top of the
+model.</p>
+<p><code>__pivotExpandable</code> is <code>true</code> for <code>group</code> rows that have at least
+one descendant. A renderer uses this to decide whether to show a
+chevron next to the label.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>__pivotId</code></td><td><code class="ty">string</code></td><td>Unique id built from the row&#39;s path of values. The grand-total row is &#39;row__grand_total&#39;.</td></tr><tr><td><code>__pivotKind</code></td><td><code class="ty"><a href="#PivotRowKind">PivotRowKind</a></code></td><td>&#39;group&#39; (holds the group&#39;s subtotals unless <code>rowSubtotals</code> is false), &#39;leaf&#39; or &#39;grandTotal&#39;.</td></tr><tr><td><code>__pivotDepth</code></td><td><code class="ty">number</code></td><td>Level on the row axis: 1 under the first row field, 2 under the second, and so on. 0 on the grand-total row and on the single row of a pivot with no row fields.</td></tr><tr><td><code>__pivotLabel</code></td><td><code class="ty">string</code></td><td>Text of the first column: the row&#39;s value on the row axis, &#39;Grand total&#39; on the grand-total row, &#39;(All)&#39; on the single row of a pivot with no row fields.</td></tr><tr><td><code>__pivotParentId</code></td><td><code class="ty">string | null</code></td><td><code>__pivotId</code> of the group row this row sits under, or null at the top level.</td></tr><tr><td><code>__pivotExpandable</code></td><td><code class="ty">boolean</code></td><td>True on group rows, which always have rows under them.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotRowKind">
+    <div class="api-head"><h2><code>PivotRowKind</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>What a pivot row represents: a group row (which carries the group&#39;s subtotals),
+a leaf, or the grand total. The engine does not emit <code>subtotal</code>; it is kept
+in the type so existing code that checks for it still compiles.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Type</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">type</span> PivotRowKind = <span class="s">'group'</span>
+  | <span class="s">'subtotal'</span>
+  | <span class="s">'leaf'</span>
+  | <span class="s">'grandTotal'</span></code></pre></div>
+  </section>
+<section class="api-entry" id="PivotColumn">
+    <div class="api-head"><h2><code>PivotColumn</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>One generated column. A leaf has a <code>measure</code>; a header group has <code>columns</code>.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>id</code></td><td><code class="ty">string</code></td><td>Column id. A value leaf&#39;s id is the key of its cell in each <a href="#PivotRow"><code>PivotRow</code></a>; the first column is &#39;__pivotRowHeader&#39;.</td></tr><tr><td><code>header</code></td><td><code class="ty">string</code></td><td>Header text: the measure&#39;s label on a value leaf, the column-axis value on a header group (&#39;(blank)&#39; for null), &#39;Total&#39; on the grand-total group.</td></tr><tr><td><code>columns</code><span class="opt">optional</span></td><td><code class="ty"><a href="#PivotColumn">PivotColumn</a>[]</code></td><td>Child columns, for a column-axis header group.</td></tr><tr><td><code>measure</code><span class="opt">optional</span></td><td><code class="ty">number</code></td><td>Index into <code>config.values</code>, for a value leaf.</td></tr><tr><td><code>format</code><span class="opt">optional</span></td><td><code class="ty">((value: unknown) =&gt; string)</code></td><td>The measure&#39;s formatter, for a value leaf.</td></tr><tr><td><code>width</code><span class="opt">optional</span></td><td><code class="ty">number</code></td><td>Suggested width in px.</td></tr><tr><td><code>isRowHeader</code><span class="opt">optional</span></td><td><code class="ty">boolean</code></td><td>True for the first column, which holds each row&#39;s label.</td></tr><tr><td><code>isTotal</code><span class="opt">optional</span></td><td><code class="ty">boolean</code></td><td>True for the grand-total column group and its leaves.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="filterCollapsedPivotRows">
+    <div class="api-head"><h2><code>filterCollapsedPivotRows</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Filter a <code>result.rows</code> array down to only the rows the user should
+see given the current expansion state. A row stays in the output if
+its entire ancestor chain (via <code>__pivotParentId</code>) is in <code>expandedIds</code>.</p>
+<p>Pass <code>true</code> to bypass filtering (everything visible - the default
+shape <a href="#createPivotModel"><code>createPivotModel</code></a> already returns). Pass an empty array /
+empty Set to collapse every group to its subtotal row.</p>
+<p>The result is a new array; the input is not mutated.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>filterCollapsedPivotRows(
+  rows: ReadonlyArray&lt;PivotRow&gt;,
+  expandedIds: ReadonlyArray&lt;string&gt; | Set&lt;string&gt; | <span class="k">true</span>,
+) =&gt; PivotRow[]</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>rows</code></td><td><code class="ty">readonly <a href="#PivotRow">PivotRow</a>[]</code></td><td>Rows as <a href="#createPivotModel"><code>createPivotModel</code></a> returns them.</td></tr><tr><td><code>expandedIds</code></td><td><code class="ty">any</code></td><td>Ids of the expanded group rows, or <code>true</code> to keep every row.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotRow">PivotRow</a>[]</code></p>
+  </section>
+<section class="api-entry" id="pivotAsTable">
+    <div class="api-head"><h2><code>pivotAsTable</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>A pivot as a read-only table for the exporters, with no TanStack instance
+behind it, so exporting a pivot works the same under any TanStack version.
+It holds every row, nested by <code>subRows</code>; collapsing groups on screen does not change it.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>pivotAsTable(data: PivotTreeRow[], columns: PivotColumnDef[]) =&gt; TableLike</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td><code class="ty"><a href="#PivotTreeRow">PivotTreeRow</a>[]</code></td><td>Nested rows from <a href="#pivotToTree"><code>pivotToTree</code></a>.</td></tr><tr><td><code>columns</code></td><td><code class="ty"><a href="#PivotColumnDef">PivotColumnDef</a>[]</code></td><td>Column definitions from <a href="#toTanStackColumns"><code>toTanStackColumns</code></a>.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="api-advanced.html#TableLike">TableLike</a></code></p>
+  </section>
+<section class="api-entry" id="pivotToTree">
+    <div class="api-head"><h2><code>pivotToTree</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Nest flat pivot rows under their parents. The grand-total row stays last.
+The rows are copied; the input is not changed.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>pivotToTree(rows: ReadonlyArray&lt;PivotRow&gt;) =&gt; PivotTreeRow[]</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>rows</code></td><td><code class="ty">readonly <a href="#PivotRow">PivotRow</a>[]</code></td><td>Flat rows from <a href="#createPivotModel"><code>createPivotModel</code></a>, each parent before its children.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotTreeRow">PivotTreeRow</a>[]</code></p>
+  </section>
+<section class="api-entry" id="toTanStackColumns">
+    <div class="api-head"><h2><code>toTanStackColumns</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Turn a pivot&#39;s column tree into TanStack column definitions. Value columns
+format with the measure&#39;s <code>format</code>, else numbers in the browser locale
+with at most two decimals, and null as an empty string.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>toTanStackColumns(
+  columns: ReadonlyArray&lt;PivotColumn&gt;,
+  opts?: ToColumnsOptions,
+) =&gt; PivotColumnDef[]</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>columns</code></td><td><code class="ty">readonly <a href="#PivotColumn">PivotColumn</a>[]</code></td><td>The column tree from <a href="#createPivotModel"><code>createPivotModel</code></a>.</td></tr><tr><td><code>opts</code><span class="opt">optional</span></td><td><code class="ty"><a href="#ToColumnsOptions">ToColumnsOptions</a></code></td><td>Settings for every value column.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotColumnDef">PivotColumnDef</a>[]</code></p>
+  </section>
+    <div class="feedback" data-feedback>
+    <span>Was this page helpful?</span>
+    <button type="button" data-answer="yes" data-umami-event="Docs feedback" data-umami-event-page="api-pivot" data-umami-event-answer="yes">Yes</button>
+    <button type="button" data-answer="no" data-umami-event="Docs feedback" data-umami-event-page="api-pivot" data-umami-event-answer="no">No</button>
+    <span class="fb-thanks" hidden>Thanks. To tell us more, write to <a href="mailto:info@jqwidgets.com?subject=Rowpine%20docs%3A%20api-pivot">info@jqwidgets.com</a>.</span>
+  </div>
+    <nav class="pager" aria-label="Previous and next"><a class="pg prev" href="../docs/api-columns.html"><span>Previous</span><b>Column settings</b></a><a class="pg next" href="../docs/api-designer.html"><span>Next</span><b>Pivot designer state</b></a></nav>
+  </article>
+  </main>
+  <aside class="dtoc" aria-label="On this page"><b>On this page</b><a href="#createPivot" class="l2">createPivot</a><a href="#PivotConfig" class="l2">PivotConfig</a><a href="#PivotValueConfig" class="l2">PivotValueConfig</a><a href="#PivotAggregatorId" class="l2">PivotAggregatorId</a><a href="#PivotAggregator" class="l2">PivotAggregator</a><a href="#ToColumnsOptions" class="l2">ToColumnsOptions</a><a href="#PivotTable" class="l2">PivotTable</a><a href="#PivotTreeRow" class="l2">PivotTreeRow</a><a href="#PivotColumnDef" class="l2">PivotColumnDef</a><a href="#PivotColumnMeta" class="l2">PivotColumnMeta</a><a href="#pivotRowStyle" class="l2">pivotRowStyle</a><a href="#pivotAggregators" class="l2">pivotAggregators</a><a href="#createPivotModel" class="l2">createPivotModel</a><a href="#PivotResult" class="l2">PivotResult</a><a href="#PivotRow" class="l2">PivotRow</a><a href="#PivotRowKind" class="l2">PivotRowKind</a><a href="#PivotColumn" class="l2">PivotColumn</a><a href="#filterCollapsedPivotRows" class="l2">filterCollapsedPivotRows</a><a href="#pivotAsTable" class="l2">pivotAsTable</a><a href="#pivotToTree" class="l2">pivotToTree</a><a href="#toTanStackColumns" class="l2">toTanStackColumns</a><a class="totop" href="#top">Back to top</a></aside>
+</div>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="brand" href="../"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span> Rowpine</a>
+        <p>Pivot tables and Excel and PDF export for TanStack Table and shadcn/ui.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="../examples/">Demos</a>
+        <a href="../guides/">Guides</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../license.html">License</a>
+        <a href="../security.html">Security</a>
+        <a href="https://www.npmjs.com/package/rowpine">npm</a>
+        <a href="https://github.com/rowpine/rowpine">GitHub</a>
+      </div>
+      <div>
+        <h4>Get started</h4>
+        <a href="../docs/installation.html">Installation</a>
+        <a href="../docs/add-an-export-menu.html">Export menu</a>
+        <a href="../docs/license-keys.html">License keys</a>
+        <a href="../docs/">All help topics</a>
+      </div>
+      <div>
+        <h4>Export</h4>
+        <a href="../docs/export-to-excel.html">Excel</a>
+        <a href="../docs/export-to-pdf.html">PDF</a>
+        <a href="../docs/csv-export.html">CSV</a>
+        <a href="../docs/grouped-rows-as-outlines.html">Grouped rows</a>
+      </div>
+      <div>
+        <h4>Pivot</h4>
+        <a href="../docs/pivot-basics.html">Pivot tables</a>
+        <a href="../docs/pivot-designer.html">Pivot designer</a>
+        <a href="../docs/aggregations.html">Aggregations</a>
+        <a href="../docs/exporting-a-pivot.html">Export a pivot</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 jQWidgets LTD. Rowpine is a brand of jQWidgets LTD.</span>
+      <nav aria-label="Legal"><a href="../license.html">License</a><a href="../security.html">Security</a><a href="../privacy.html">Privacy</a><a href="mailto:info@jqwidgets.com?subject=Rowpine">Contact</a><a href="../llms.txt">llms.txt</a></nav>
+    </div>
+    <p class="fine">TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
+  </div>
+</footer>
+<script>
+  function toggleTheme() {
+    const root = document.documentElement
+    const dark = root.dataset.theme === 'dark'
+    root.dataset.theme = dark ? 'light' : 'dark'
+    try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
+  }
+</script>
+</body>
+</html>

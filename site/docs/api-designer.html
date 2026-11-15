@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pivot designer state - Rowpine API reference</title>
+<meta name="description" content="The fields, layouts and presets behind the pivot designer, and the pure functions that change a layout.">
+<link rel="canonical" href="https://rowpine.com/docs/api-designer.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Rowpine">
+<meta property="og:title" content="Pivot designer state - Rowpine API reference">
+<meta property="og:description" content="The fields, layouts and presets behind the pivot designer, and the pure functions that change a layout.">
+<meta property="og:url" content="https://rowpine.com/docs/api-designer.html">
+<meta property="og:image" content="https://rowpine.com/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="text/markdown" href="api-designer.md">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
+</script>
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="../docs.css">
+<script src="../analytics.js" defer></script>
+<script src="../docs.js" defer></script>
+
+</head>
+<body id="top">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Rowpine home">
+      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span>
+      Rowpine <span class="for">for TanStack Table</span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="../examples/" class="hide-xs">Demos</a>
+      <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../guides/" class="hide-sm">Guides</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../license.html" class="hide-sm">License</a>
+    </nav>
+    <div class="actions">
+      <button type="button" class="search-btn" data-open-search aria-label="Search docs, guides and API"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs</span><kbd>Ctrl K</kbd></button>
+      <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+      <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a class="btn sm primary" href="../pricing.html" data-umami-event="Header buy">Buy a license</a>
+    </div>
+  </div>
+</header>
+<script src="../search.js" defer></script>
+<button type="button" class="dnav-toggle" aria-controls="docs-nav" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
+<div class="docs">
+  <nav class="dnav" id="docs-nav" aria-label="Documentation">
+    <div class="dnav-top"><a class="dnav-home" href="../docs/">Documentation</a><span class="ver" title="Documented package version">v1.0.2</span></div>
+    <div class="dnav-group"><h2>Getting started</h2><a href="../docs/">Overview</a><a href="../docs/installation.html">Installation</a><a href="../docs/add-an-export-menu.html">Add an export menu</a><a href="../docs/license-keys.html">License keys</a><a href="../docs/column-settings.html">Column settings for exports</a><a href="../docs/your-own-export-buttons.html">Export from your own buttons</a></div><div class="dnav-group"><h2>Excel</h2><a href="../docs/export-to-excel.html">Export to Excel</a><a href="../docs/which-rows-are-exported.html">Which rows are exported</a><a href="../docs/number-and-date-formats.html">Number and date formats</a><a href="../docs/cell-colors.html">Cell colors</a><a href="../docs/hidden-and-excluded-columns.html">Hidden and excluded columns</a><a href="../docs/pinned-columns-frozen-panes.html">Pinned columns become frozen panes</a><a href="../docs/grouped-rows-as-outlines.html">Grouped rows become Excel outlines</a><a href="../docs/subtotal-formulas.html">Group totals as SUBTOTAL formulas</a><a href="../docs/tree-data.html">Tree data</a><a href="../docs/tree-data-in-excel.html">Tree data in Excel</a><a href="../docs/headers-and-widths.html">Headers and column widths</a></div><div class="dnav-group"><h2>PDF</h2><a href="../docs/export-to-pdf.html">Export to PDF</a><a href="../docs/pdf-page-setup.html">PDF page setup</a><a href="../docs/pdf-title-kpis-watermark.html">Title, headline numbers and watermark</a><a href="../docs/pdf-grouped-rows.html">Groups in a PDF</a></div><div class="dnav-group"><h2>CSV</h2><a href="../docs/csv-export.html">CSV export</a></div><div class="dnav-group"><h2>Pivot</h2><a href="../docs/pivot-basics.html">Pivot tables</a><a href="../docs/aggregations.html">Aggregations</a><a href="../docs/subtotals-and-grand-totals.html">Subtotals and grand totals</a><a href="../docs/expand-and-collapse.html">Expand and collapse groups</a><a href="../docs/pivot-designer.html">Pivot designer</a><a href="../docs/fields-and-wells.html">Fields and wells</a><a href="../docs/pivot-filters.html">Filters in the pivot designer</a><a href="../docs/presets-and-saved-views.html">Presets and saved views</a><a href="../docs/exporting-a-pivot.html">Export a pivot</a></div><div class="dnav-group"><h2>Guides</h2><a href="../guides/">All guides</a><a href="../guides/export-tanstack-table-to-excel-with-grouped-rows.html">Export TanStack Table to Excel with grouped rows</a><a href="../guides/tanstack-table-pivot-table.html">TanStack Table pivot table</a><a href="../guides/shadcn-data-table-export-to-pdf.html">shadcn data table export to PDF</a></div><div class="dnav-group"><h2>API reference</h2><a href="../docs/api-export.html">Export functions</a><a href="../docs/api-columns.html">Column settings</a><a href="../docs/api-pivot.html">Pivot</a><a href="../docs/api-designer.html" aria-current="page">Pivot designer state</a><a href="../docs/api-license.html">License</a><a href="../docs/api-advanced.html">Low-level API</a><a href="../docs/api-components.html">Components</a></div><div class="dnav-group"><h2>Resources</h2><a href="../docs/changelog.html">Changelog</a><a href="../docs/troubleshooting.html">Troubleshooting</a><a href="../docs/support.html">Support</a><a href="../security.html">Security</a><a href="../license.html">License</a><a href="../examples/">Live demos</a></div>
+  </nav>
+  <main class="dmain">
+<article class="doc">
+    <div class="crumbs"><a href="./">Docs</a><span>API reference</span></div>
+    <h1>Pivot designer state</h1>
+    <p class="lead">The fields, layouts and presets behind the pivot designer, and the pure functions that change a layout.</p>
+    <div class="dmeta"><div class="facts"><span>rowpine 1.0.2</span><span>Generated from the package's type definitions</span></div><div class="acts"><button type="button" class="act" data-copy-md="api-designer.md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy as Markdown</span></button></div></div>
+    <section class="api-entry" id="PivotField">
+    <div class="api-head"><h2><code>PivotField&lt;T = Record&lt;string, unknown&gt;&gt;</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>One field the designer offers. Dimensions land in Rows by default; measures in Values.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>field</code></td><td><code class="ty">keyof T &amp; string</code></td><td>Key of the field in each data row.</td></tr><tr><td><code>label</code></td><td><code class="ty">string</code></td><td>Name shown in the field list and on chips.</td></tr><tr><td><code>kind</code></td><td><code class="ty">&quot;dimension&quot; | &quot;measure&quot;</code></td><td>&#39;dimension&#39; may go to Rows, Columns or Filters; &#39;measure&#39; to Values or Filters.</td></tr><tr><td><code>group</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>Optional group heading in the field list, e.g. &#39;Customer&#39;.</td></tr><tr><td><code>format</code><span class="opt">optional</span></td><td><code class="ty">((value: unknown) =&gt; string)</code></td><td>Display text for this field&#39;s values when it is a measure.</td></tr><tr><td><code>defaultAgg</code><span class="opt">optional</span></td><td><code class="ty"><a href="api-pivot.html#PivotAggregatorId">PivotAggregatorId</a></code></td><td>Aggregation used when the field is added to Values. Default &#39;sum&#39; for measures.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotLayout">
+    <div class="api-head"><h2><code>PivotLayout</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>The whole designer state, as plain JSON.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>rows</code></td><td><code class="ty">string[]</code></td><td>Fields in the Rows well, outer-most first.</td></tr><tr><td><code>cols</code></td><td><code class="ty">string[]</code></td><td>Fields in the Columns well, outer-most first.</td></tr><tr><td><code>values</code></td><td><code class="ty"><a href="#PivotValueChip">PivotValueChip</a>[]</code></td><td>Chips in the Values well, in column order.</td></tr><tr><td><code>filters</code></td><td><code class="ty"><a href="#PivotFilterChip">PivotFilterChip</a>[]</code></td><td>Chips in the Filters well.</td></tr><tr><td><code>hideSubtotals</code><span class="opt">optional</span></td><td><code class="ty">boolean</code></td><td>Show no numbers on group rows. The group rows stay and still expand and collapse.</td></tr><tr><td><code>hideGrandTotals</code><span class="opt">optional</span></td><td><code class="ty">boolean</code></td><td>Hide the grand-total row and column.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotPreset">
+    <div class="api-head"><h2><code>PivotPreset</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>A saved layout offered in the designer&#39;s Presets menu.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td><code class="ty">string</code></td><td>Name shown in the Presets menu.</td></tr><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The layout applied when the preset is picked.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotValueChip">
+    <div class="api-head"><h2><code>PivotValueChip</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>A chip in the Values well.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>field</code></td><td><code class="ty">string</code></td><td>The field it aggregates.</td></tr><tr><td><code>agg</code></td><td><code class="ty"><a href="api-pivot.html#PivotAggregatorId">PivotAggregatorId</a></code></td><td>How it aggregates the field.</td></tr><tr><td><code>label</code><span class="opt">optional</span></td><td><code class="ty">string</code></td><td>Column header. The designer functions set it to e.g. &#39;Sum of Amount&#39;; when missing, the pivot uses that form.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="PivotFilterChip">
+    <div class="api-head"><h2><code>PivotFilterChip</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>A chip in the Filters well. <code>allowed: null</code> lets every value through.</p>
+</div><h4>Properties</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>field</code></td><td><code class="ty">string</code></td><td>The field it filters on.</td></tr><tr><td><code>allowed</code></td><td><code class="ty">string[] | null</code></td><td>Values that pass, compared as text (<code>String(value)</code>). An empty array lets nothing through.</td></tr></tbody></table></div>
+  </section>
+<section class="api-entry" id="Well">
+    <div class="api-head"><h2><code>Well</code></h2><span class="kind">type</span></div>
+    <div class="api-doc"><p>One of the designer&#39;s four wells.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Type</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">type</span> Well = <span class="s">'rows'</span>
+  | <span class="s">'cols'</span>
+  | <span class="s">'values'</span>
+  | <span class="s">'filters'</span></code></pre></div>
+  </section>
+<section class="api-entry" id="EMPTY_LAYOUT">
+    <div class="api-head"><h2><code>EMPTY_LAYOUT</code></h2><span class="kind">constant</span></div>
+    <div class="api-doc"><p>A layout with every well empty.</p>
+</div><p><b>Type</b> <code class="ty"><a href="#PivotLayout">PivotLayout</a></code></p>
+  </section>
+<section class="api-entry" id="ALL_AGGREGATORS">
+    <div class="api-head"><h2><code>ALL_AGGREGATORS</code></h2><span class="kind">constant</span></div>
+    <div class="api-doc"><p>Every built-in aggregator id, in the order the designer lists them.</p>
+</div><p><b>Type</b> <code class="ty"><a href="api-pivot.html#PivotAggregatorId">PivotAggregatorId</a>[]</code></p>
+  </section>
+<section class="api-entry" id="AGG_LABEL">
+    <div class="api-head"><h2><code>AGG_LABEL</code></h2><span class="kind">constant</span></div>
+    <div class="api-doc"><p>Display name of each aggregator, e.g. &#39;Average&#39; for &#39;avg&#39;. Value chip labels are built from it.</p>
+</div><p><b>Type</b> <code class="ty">Record&lt;<a href="api-pivot.html#PivotAggregatorId">PivotAggregatorId</a>, string&gt;</code></p>
+  </section>
+<section class="api-entry" id="KIND_WELLS">
+    <div class="api-head"><h2><code>KIND_WELLS</code></h2><span class="kind">constant</span></div>
+    <div class="api-doc"><p>Which wells each kind of field may go to.</p>
+</div><p><b>Type</b> <code class="ty">Record&lt;&quot;dimension&quot; | &quot;measure&quot;, <a href="#Well">Well</a>[]&gt;</code></p>
+  </section>
+<section class="api-entry" id="WELL_LABEL">
+    <div class="api-head"><h2><code>WELL_LABEL</code></h2><span class="kind">constant</span></div>
+    <div class="api-doc"><p>Display name of each well: &#39;Rows&#39;, &#39;Columns&#39;, &#39;Values&#39;, &#39;Filters&#39;.</p>
+</div><p><b>Type</b> <code class="ty">Record&lt;<a href="#Well">Well</a>, string&gt;</code></p>
+  </section>
+<section class="api-entry" id="defaultLayoutFor">
+    <div class="api-head"><h2><code>defaultLayoutFor</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>First dimension in Rows, first measure in Values (with its <code>defaultAgg</code>, else &#39;sum&#39;).</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>defaultLayoutFor&lt;T&gt;(fields: ReadonlyArray&lt;PivotField&lt;T&gt;&gt;) =&gt; PivotLayout</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>fields</code></td><td><code class="ty">readonly <a href="#PivotField">PivotField</a>&lt;T&gt;[]</code></td><td>The fields the designer offers.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></p>
+  </section>
+<section class="api-entry" id="defaultWellFor">
+    <div class="api-head"><h2><code>defaultWellFor</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>The well a field goes to when added without one: Values for a measure, Rows otherwise.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>defaultWellFor(field: Pick&lt;PivotField, <span class="s">&quot;kind&quot;</span>&gt;) =&gt; Well</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>field</code></td><td><code class="ty">Pick&lt;<a href="#PivotField">PivotField</a>&lt;Record&lt;string, unknown&gt;&gt;, &quot;kind&quot;&gt;</code></td><td>The field, or anything with its <code>kind</code>.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#Well">Well</a></code></p>
+  </section>
+<section class="api-entry" id="layoutToConfig">
+    <div class="api-head"><h2><code>layoutToConfig</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>The engine config for a layout. Value labels come from the chips, and a
+measure&#39;s <code>format</code> is used except on count and distinct count.
+<code>hideSubtotals</code> and <code>hideGrandTotals</code> turn off the matching config switches.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>layoutToConfig&lt;T&gt;(
+  layout: PivotLayout,
+  fields: ReadonlyArray&lt;PivotField&lt;T&gt;&gt;,
+) =&gt; PivotConfig&lt;T&gt;</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The layout.</td></tr><tr><td><code>fields</code></td><td><code class="ty">readonly <a href="#PivotField">PivotField</a>&lt;T&gt;[]</code></td><td>The fields the designer offers, for labels and formats.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="api-pivot.html#PivotConfig">PivotConfig</a>&lt;T&gt;</code></p>
+  </section>
+<section class="api-entry" id="pivotFromLayout">
+    <div class="api-head"><h2><code>pivotFromLayout</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Filter, pivot and label in one step. Returns null when the layout has no
+values yet, which a UI shows as an empty state. Runs <a href="api-pivot.html#createPivot"><code>createPivot</code></a>, so
+without a license key it logs a notice once.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>pivotFromLayout&lt;T&gt;(
+  data: ReadonlyArray&lt;T&gt;,
+  layout: PivotLayout,
+  fields: ReadonlyArray&lt;PivotField&lt;T&gt;&gt;,
+  opts?: ToColumnsOptions,
+) =&gt; PivotTable | <span class="k">null</span></code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td><code class="ty">readonly T[]</code></td><td>The source rows. Not changed.</td></tr><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The layout to build.</td></tr><tr><td><code>fields</code></td><td><code class="ty">readonly <a href="#PivotField">PivotField</a>&lt;T&gt;[]</code></td><td>The fields the designer offers. Their labels name the row-header column.</td></tr><tr><td><code>opts</code><span class="opt">optional</span></td><td><code class="ty"><a href="api-pivot.html#ToColumnsOptions">ToColumnsOptions</a></code></td><td>Settings for every value column, such as an Excel number format.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="api-components.html#PivotTable">PivotTable</a> | null</code></p>
+  </section>
+<section class="api-entry" id="applyLayoutFilters">
+    <div class="api-head"><h2><code>applyLayoutFilters</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>The rows that pass the layout&#39;s filters. Returns a new array.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>applyLayoutFilters&lt;T&gt;(data: ReadonlyArray&lt;T&gt;, layout: PivotLayout) =&gt; T[]</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td><code class="ty">readonly T[]</code></td><td>The source rows. Not changed.</td></tr><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The layout whose Filters well applies.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty">T[]</code></p>
+  </section>
+<section class="api-entry" id="addToWell">
+    <div class="api-head"><h2><code>addToWell</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Add a field to a well at <code>index</code> (default: the end). In Rows, Columns and
+Filters a field appears at most once, so adding it moves it. In Values the
+same field may appear with different aggregations (sum and average of one
+amount), but not twice with the same one. <code>sourceIndex</code> is the chip&#39;s
+position in Values when it is being moved out of that well.
+Returns the layout unchanged when <code>field</code> is not in <code>fields</code>.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>addToWell&lt;T&gt;(
+  layout: PivotLayout,
+  fields: ReadonlyArray&lt;PivotField&lt;T&gt;&gt;,
+  field: string,
+  well: Well,
+  index?: number,
+  sourceIndex?: number,
+) =&gt; PivotLayout</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The current layout. Not changed.</td></tr><tr><td><code>fields</code></td><td><code class="ty">readonly <a href="#PivotField">PivotField</a>&lt;T&gt;[]</code></td><td>The fields the designer offers.</td></tr><tr><td><code>field</code></td><td><code class="ty">string</code></td><td>Key of the field to add.</td></tr><tr><td><code>well</code></td><td><code class="ty"><a href="#Well">Well</a></code></td><td>The well to add it to.</td></tr><tr><td><code>index</code><span class="opt">optional</span></td><td><code class="ty">number</code></td><td>Position in the well. Default: the end.</td></tr><tr><td><code>sourceIndex</code><span class="opt">optional</span></td><td><code class="ty">number</code></td><td>When moving a chip out of Values, its position there. A chip moved within Values keeps its aggregation.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></p>
+  </section>
+<section class="api-entry" id="removeFromWell">
+    <div class="api-head"><h2><code>removeFromWell</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Remove a field from a well. In Values, <code>valueIndex</code> picks the one chip.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>removeFromWell(
+  layout: PivotLayout,
+  field: string,
+  well: Well,
+  valueIndex?: number,
+) =&gt; PivotLayout</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The current layout. Not changed.</td></tr><tr><td><code>field</code></td><td><code class="ty">string</code></td><td>Key of the field to remove.</td></tr><tr><td><code>well</code></td><td><code class="ty"><a href="#Well">Well</a></code></td><td>The well to remove it from.</td></tr><tr><td><code>valueIndex</code><span class="opt">optional</span></td><td><code class="ty">number</code></td><td>In Values, the chip&#39;s position. Without it every chip of the field is removed.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></p>
+  </section>
+<section class="api-entry" id="clearWell">
+    <div class="api-head"><h2><code>clearWell</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Empty one well.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>clearWell(layout: PivotLayout, well: Well) =&gt; PivotLayout</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The current layout. Not changed.</td></tr><tr><td><code>well</code></td><td><code class="ty"><a href="#Well">Well</a></code></td><td>The well to empty.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></p>
+  </section>
+<section class="api-entry" id="toggleField">
+    <div class="api-head"><h2><code>toggleField</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Field-list checkbox: take the field out of every well, or add it to its default well.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>toggleField&lt;T&gt;(
+  layout: PivotLayout,
+  fields: ReadonlyArray&lt;PivotField&lt;T&gt;&gt;,
+  field: string,
+) =&gt; PivotLayout</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The current layout. Not changed.</td></tr><tr><td><code>fields</code></td><td><code class="ty">readonly <a href="#PivotField">PivotField</a>&lt;T&gt;[]</code></td><td>The fields the designer offers. A field not in it leaves the layout unchanged.</td></tr><tr><td><code>field</code></td><td><code class="ty">string</code></td><td>Key of the field to toggle.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></p>
+  </section>
+<section class="api-entry" id="isFieldInLayout">
+    <div class="api-head"><h2><code>isFieldInLayout</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>True when the field is in any well.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>isFieldInLayout(layout: PivotLayout, field: string) =&gt; boolean</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The current layout.</td></tr><tr><td><code>field</code></td><td><code class="ty">string</code></td><td>The field key.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty">boolean</code></p>
+  </section>
+<section class="api-entry" id="setAggregatorAt">
+    <div class="api-head"><h2><code>setAggregatorAt</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Change a value chip&#39;s aggregation. A change that would duplicate another chip removes this one.
+The chip&#39;s label is rebuilt from the new aggregation.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>setAggregatorAt&lt;T&gt;(
+  layout: PivotLayout,
+  fields: ReadonlyArray&lt;PivotField&lt;T&gt;&gt;,
+  index: number,
+  agg: PivotAggregatorId,
+) =&gt; PivotLayout</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The current layout. Not changed.</td></tr><tr><td><code>fields</code></td><td><code class="ty">readonly <a href="#PivotField">PivotField</a>&lt;T&gt;[]</code></td><td>The fields the designer offers, for the label.</td></tr><tr><td><code>index</code></td><td><code class="ty">number</code></td><td>The chip&#39;s position in Values. Out of range leaves the layout unchanged.</td></tr><tr><td><code>agg</code></td><td><code class="ty"><a href="api-pivot.html#PivotAggregatorId">PivotAggregatorId</a></code></td><td>The new aggregation.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></p>
+  </section>
+<section class="api-entry" id="setFilterAllowed">
+    <div class="api-head"><h2><code>setFilterAllowed</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Set which values of a filter field pass. <code>null</code> lets everything through.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>setFilterAllowed(
+  layout: PivotLayout,
+  field: string,
+  allowed: string[] | <span class="k">null</span>,
+) =&gt; PivotLayout</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>layout</code></td><td><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></td><td>The current layout. Not changed.</td></tr><tr><td><code>field</code></td><td><code class="ty">string</code></td><td>Key of a field in the Filters well. Any other field has no effect.</td></tr><tr><td><code>allowed</code></td><td><code class="ty">string[] | null</code></td><td>The values that pass, as text, or null for all.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty"><a href="#PivotLayout">PivotLayout</a></code></p>
+  </section>
+<section class="api-entry" id="distinctValues">
+    <div class="api-head"><h2><code>distinctValues</code></h2><span class="kind">function</span></div>
+    <div class="api-doc"><p>Every distinct value of a field in the full data, as text, sorted.</p>
+</div><div class="editor"><div class="editor-bar"><span class="on">Signature</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>distinctValues&lt;T&gt;(data: ReadonlyArray&lt;T&gt;, field: string) =&gt; string[]</code></pre></div><h4>Parameters</h4><div class="tw"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td><code class="ty">readonly T[]</code></td><td>The source rows.</td></tr><tr><td><code>field</code></td><td><code class="ty">string</code></td><td>The field key.</td></tr></tbody></table></div><h4>Returns</h4><p><code class="ty">string[]</code></p>
+  </section>
+    <div class="feedback" data-feedback>
+    <span>Was this page helpful?</span>
+    <button type="button" data-answer="yes" data-umami-event="Docs feedback" data-umami-event-page="api-designer" data-umami-event-answer="yes">Yes</button>
+    <button type="button" data-answer="no" data-umami-event="Docs feedback" data-umami-event-page="api-designer" data-umami-event-answer="no">No</button>
+    <span class="fb-thanks" hidden>Thanks. To tell us more, write to <a href="mailto:info@jqwidgets.com?subject=Rowpine%20docs%3A%20api-designer">info@jqwidgets.com</a>.</span>
+  </div>
+    <nav class="pager" aria-label="Previous and next"><a class="pg prev" href="../docs/api-pivot.html"><span>Previous</span><b>Pivot</b></a><a class="pg next" href="../docs/api-license.html"><span>Next</span><b>License</b></a></nav>
+  </article>
+  </main>
+  <aside class="dtoc" aria-label="On this page"><b>On this page</b><a href="#PivotField" class="l2">PivotField</a><a href="#PivotLayout" class="l2">PivotLayout</a><a href="#PivotPreset" class="l2">PivotPreset</a><a href="#PivotValueChip" class="l2">PivotValueChip</a><a href="#PivotFilterChip" class="l2">PivotFilterChip</a><a href="#Well" class="l2">Well</a><a href="#EMPTY_LAYOUT" class="l2">EMPTY_LAYOUT</a><a href="#ALL_AGGREGATORS" class="l2">ALL_AGGREGATORS</a><a href="#AGG_LABEL" class="l2">AGG_LABEL</a><a href="#KIND_WELLS" class="l2">KIND_WELLS</a><a href="#WELL_LABEL" class="l2">WELL_LABEL</a><a href="#defaultLayoutFor" class="l2">defaultLayoutFor</a><a href="#defaultWellFor" class="l2">defaultWellFor</a><a href="#layoutToConfig" class="l2">layoutToConfig</a><a href="#pivotFromLayout" class="l2">pivotFromLayout</a><a href="#applyLayoutFilters" class="l2">applyLayoutFilters</a><a href="#addToWell" class="l2">addToWell</a><a href="#removeFromWell" class="l2">removeFromWell</a><a href="#clearWell" class="l2">clearWell</a><a href="#toggleField" class="l2">toggleField</a><a href="#isFieldInLayout" class="l2">isFieldInLayout</a><a href="#setAggregatorAt" class="l2">setAggregatorAt</a><a href="#setFilterAllowed" class="l2">setFilterAllowed</a><a href="#distinctValues" class="l2">distinctValues</a><a class="totop" href="#top">Back to top</a></aside>
+</div>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a class="brand" href="../"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 6.5 9h3L5 15h4.5L4 21h7v1h2v-1h7l-5.5-6H19l-4.5-6h3z"/></svg></span> Rowpine</a>
+        <p>Pivot tables and Excel and PDF export for TanStack Table and shadcn/ui.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="../examples/">Demos</a>
+        <a href="../guides/">Guides</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../license.html">License</a>
+        <a href="../security.html">Security</a>
+        <a href="https://www.npmjs.com/package/rowpine">npm</a>
+        <a href="https://github.com/rowpine/rowpine">GitHub</a>
+      </div>
+      <div>
+        <h4>Get started</h4>
+        <a href="../docs/installation.html">Installation</a>
+        <a href="../docs/add-an-export-menu.html">Export menu</a>
+        <a href="../docs/license-keys.html">License keys</a>
+        <a href="../docs/">All help topics</a>
+      </div>
+      <div>
+        <h4>Export</h4>
+        <a href="../docs/export-to-excel.html">Excel</a>
+        <a href="../docs/export-to-pdf.html">PDF</a>
+        <a href="../docs/csv-export.html">CSV</a>
+        <a href="../docs/grouped-rows-as-outlines.html">Grouped rows</a>
+      </div>
+      <div>
+        <h4>Pivot</h4>
+        <a href="../docs/pivot-basics.html">Pivot tables</a>
+        <a href="../docs/pivot-designer.html">Pivot designer</a>
+        <a href="../docs/aggregations.html">Aggregations</a>
+        <a href="../docs/exporting-a-pivot.html">Export a pivot</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 jQWidgets LTD. Rowpine is a brand of jQWidgets LTD.</span>
+      <nav aria-label="Legal"><a href="../license.html">License</a><a href="../security.html">Security</a><a href="../privacy.html">Privacy</a><a href="mailto:info@jqwidgets.com?subject=Rowpine">Contact</a><a href="../llms.txt">llms.txt</a></nav>
+    </div>
+    <p class="fine">TanStack Table and shadcn/ui are separate projects and are not affiliated with Rowpine.</p>
+  </div>
+</footer>
+<script>
+  function toggleTheme() {
+    const root = document.documentElement
+    const dark = root.dataset.theme === 'dark'
+    root.dataset.theme = dark ? 'light' : 'dark'
+    try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
+  }
+</script>
+</body>
+</html>

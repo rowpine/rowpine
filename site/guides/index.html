@@ -7,13 +7,14 @@
 <meta name="description" content="Step-by-step guides for TanStack Table and shadcn/ui: export to Excel with grouped rows, build a pivot table, and export a data table to PDF.">
 <link rel="canonical" href="https://rowpine.com/guides/">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="Rowpine">
 <meta property="og:title" content="Rowpine guides - TanStack Table to Excel, PDF and pivot tables">
 <meta property="og:description" content="Step-by-step guides for TanStack Table and shadcn/ui: export to Excel with grouped rows, build a pivot table, and export a data table to PDF.">
 <meta property="og:url" content="https://rowpine.com/guides/">
 <meta property="og:image" content="https://rowpine.com/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,56 +22,12 @@
   try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
 </script>
 <link rel="stylesheet" href="../site.css">
-<style>
-  .guide-head { padding: 56px 0 40px; border-bottom: 1px solid var(--line); background: var(--bg-soft); }
-  .crumbs { font-size: 14px; color: var(--muted); margin: 0 0 16px; }
-  .crumbs a { color: var(--muted); text-decoration: none; }
-  .crumbs a:hover { color: var(--fg); }
-  .guide-head h1 { font-size: 44px; line-height: 1.1; font-weight: 650; letter-spacing: -0.035em; margin: 0 0 14px; max-width: 860px; }
-  .guide-head .lead { font-size: 18.5px; color: var(--muted); max-width: 760px; margin: 0 0 18px; }
-  .byline { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px; color: var(--muted); }
-  .byline span + span::before { content: ""; display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: currentColor; margin-right: 18px; vertical-align: middle; opacity: .6; }
-  .guide { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 64px; padding: 48px 24px 88px; }
-  .guide article { min-width: 0; max-width: 760px; font-size: 16.5px; line-height: 1.75; }
-  .guide article > p, .guide article li { color: color-mix(in srgb, var(--fg) 82%, var(--muted)); }
-  .guide article h2 { font-size: 27px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 650; margin: 52px 0 12px; scroll-margin-top: 88px; }
-  .guide article h3 { font-size: 19px; font-weight: 600; margin: 32px 0 8px; scroll-margin-top: 88px; }
-  .guide article h2 + p, .guide article h3 + p { margin-top: 0; }
-  .guide article :not(pre) > code { font-size: .86em; background: var(--bg-soft); border: 1px solid var(--line); padding: .08em .38em; border-radius: 5px; }
-  .guide article .editor { margin: 20px 0 26px; }
-  .guide article pre.code { font-size: 13.5px; line-height: 1.65; }
-  .guide article .copy { margin-left: auto; border: 1px solid #2a3d32; background: transparent; color: #a9c2b3; font: 500 12px/1 "Geist Mono", ui-monospace, monospace; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
-  .guide article .copy:hover { color: #fff; border-color: #4a6b58; }
-  .guide article figure { margin: 26px 0 30px; }
-  .guide article figure img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; box-shadow: var(--shadow-sm); }
-  .guide article figcaption { color: var(--muted); font-size: 14px; margin-top: 10px; }
-  .guide article table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 16px 0 24px; display: block; overflow-x: auto; }
-  .guide article th, .guide article td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .guide article th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
-  .guide article blockquote { margin: 22px 0; padding: 14px 18px; border-left: 3px solid var(--brand); background: var(--accent-soft); border-radius: 0 8px 8px 0; }
-  .guide article blockquote p { margin: 0; color: var(--fg); }
-  .toc { position: sticky; top: 88px; align-self: start; font-size: 14px; }
-  .toc b { display: block; font: 600 11.5px/1 "Geist Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 12px; }
-  .toc a { display: block; color: var(--muted); text-decoration: none; padding: 5px 0 5px 12px; border-left: 2px solid var(--line); line-height: 1.4; }
-  .toc a:hover { color: var(--fg); border-left-color: var(--line-strong); }
-  .toc a.on { color: var(--brand); border-left-color: var(--brand); font-weight: 600; }
-  .try { margin: 56px 0 0; padding: 28px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg-soft); display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; }
-  .try h2 { margin: 0 0 6px !important; font-size: 22px !important; }
-  .try p { margin: 0; color: var(--muted); font-size: 15px; }
-  .try .buttons { margin: 0; }
-  .more-guides { margin-top: 48px; }
-  .more-guides h2 { font-size: 20px !important; margin: 0 0 14px !important; }
-  .more-guides .cards { grid-template-columns: repeat(2, 1fr); }
-  .guide-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 48px 24px 96px; }
-  @media (max-width: 1000px) { .guide { grid-template-columns: minmax(0, 1fr); } .toc { display: none; } .guide-list { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 640px) {
-    .guide-head h1 { font-size: 32px; } .guide { padding: 32px 16px 64px; } .guide article h2 { font-size: 23px; }
-    .try { grid-template-columns: 1fr; } .more-guides .cards, .guide-list { grid-template-columns: 1fr; } .guide-list { padding: 32px 16px 64px; }
-  }</style>
+<link rel="stylesheet" href="../docs.css">
 <script src="../analytics.js" defer></script>
+<script src="../docs.js" defer></script>
 
 </head>
-<body>
+<body id="top">
 <header class="top">
   <div class="wrap">
     <a class="brand" href="../" aria-label="Rowpine home">
@@ -78,38 +35,46 @@
       Rowpine <span class="for">for TanStack Table</span>
     </a>
     <nav class="main" aria-label="Main">
-      <a href="../examples/">Demos</a>
+      <a href="../examples/" class="hide-xs">Demos</a>
       <a href="../docs/">Docs</a>
       <a href="../guides/" class="hide-sm" aria-current="page">Guides</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../license.html" class="hide-sm">License</a>
     </nav>
     <div class="actions">
+      <button type="button" class="search-btn" data-open-search aria-label="Search docs, guides and API"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs</span><kbd>Ctrl K</kbd></button>
       <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
       <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
       <a class="btn sm primary" href="../pricing.html" data-umami-event="Header buy">Buy a license</a>
     </div>
   </div>
 </header>
-<main>
-<div class="page-head">
-  <div class="wrap">
-    <span class="label">Guides</span>
+<script src="../search.js" defer></script>
+<button type="button" class="dnav-toggle" aria-controls="docs-nav" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
+<div class="docs">
+  <nav class="dnav" id="docs-nav" aria-label="Documentation">
+    <div class="dnav-top"><a class="dnav-home" href="../docs/">Documentation</a><span class="ver" title="Documented package version">v1.0.2</span></div>
+    <div class="dnav-group"><h2>Getting started</h2><a href="../docs/">Overview</a><a href="../docs/installation.html">Installation</a><a href="../docs/add-an-export-menu.html">Add an export menu</a><a href="../docs/license-keys.html">License keys</a><a href="../docs/column-settings.html">Column settings for exports</a><a href="../docs/your-own-export-buttons.html">Export from your own buttons</a></div><div class="dnav-group"><h2>Excel</h2><a href="../docs/export-to-excel.html">Export to Excel</a><a href="../docs/which-rows-are-exported.html">Which rows are exported</a><a href="../docs/number-and-date-formats.html">Number and date formats</a><a href="../docs/cell-colors.html">Cell colors</a><a href="../docs/hidden-and-excluded-columns.html">Hidden and excluded columns</a><a href="../docs/pinned-columns-frozen-panes.html">Pinned columns become frozen panes</a><a href="../docs/grouped-rows-as-outlines.html">Grouped rows become Excel outlines</a><a href="../docs/subtotal-formulas.html">Group totals as SUBTOTAL formulas</a><a href="../docs/tree-data.html">Tree data</a><a href="../docs/tree-data-in-excel.html">Tree data in Excel</a><a href="../docs/headers-and-widths.html">Headers and column widths</a></div><div class="dnav-group"><h2>PDF</h2><a href="../docs/export-to-pdf.html">Export to PDF</a><a href="../docs/pdf-page-setup.html">PDF page setup</a><a href="../docs/pdf-title-kpis-watermark.html">Title, headline numbers and watermark</a><a href="../docs/pdf-grouped-rows.html">Groups in a PDF</a></div><div class="dnav-group"><h2>CSV</h2><a href="../docs/csv-export.html">CSV export</a></div><div class="dnav-group"><h2>Pivot</h2><a href="../docs/pivot-basics.html">Pivot tables</a><a href="../docs/aggregations.html">Aggregations</a><a href="../docs/subtotals-and-grand-totals.html">Subtotals and grand totals</a><a href="../docs/expand-and-collapse.html">Expand and collapse groups</a><a href="../docs/pivot-designer.html">Pivot designer</a><a href="../docs/fields-and-wells.html">Fields and wells</a><a href="../docs/pivot-filters.html">Filters in the pivot designer</a><a href="../docs/presets-and-saved-views.html">Presets and saved views</a><a href="../docs/exporting-a-pivot.html">Export a pivot</a></div><div class="dnav-group"><h2>Guides</h2><a href="../guides/" aria-current="page">All guides</a><a href="../guides/export-tanstack-table-to-excel-with-grouped-rows.html">Export TanStack Table to Excel with grouped rows</a><a href="../guides/tanstack-table-pivot-table.html">TanStack Table pivot table</a><a href="../guides/shadcn-data-table-export-to-pdf.html">shadcn data table export to PDF</a></div><div class="dnav-group"><h2>API reference</h2><a href="../docs/api-export.html">Export functions</a><a href="../docs/api-columns.html">Column settings</a><a href="../docs/api-pivot.html">Pivot</a><a href="../docs/api-designer.html">Pivot designer state</a><a href="../docs/api-license.html">License</a><a href="../docs/api-advanced.html">Low-level API</a><a href="../docs/api-components.html">Components</a></div><div class="dnav-group"><h2>Resources</h2><a href="../docs/changelog.html">Changelog</a><a href="../docs/troubleshooting.html">Troubleshooting</a><a href="../docs/support.html">Support</a><a href="../security.html">Security</a><a href="../license.html">License</a><a href="../examples/">Live demos</a></div>
+  </nav>
+  <main class="dmain">
+<article class="doc" style="max-width:none">
+    <div class="crumbs"><a href="../docs/">Docs</a><span>Guides</span></div>
     <h1>Guides</h1>
     <p class="lead">Step-by-step guides for TanStack Table and shadcn/ui. Every code sample is built and run in a real app before it is published.</p>
-  </div>
+    <div class="guide-cards three"><a class="card" href="export-tanstack-table-to-excel-with-grouped-rows.html">
+        <div class="thumb"><img src="img/excel-file.png" alt="An exported workbook with Europe and its products as outline levels and a SUBTOTAL formula in the formula bar" loading="lazy"></div>
+        <div class="body"><span class="tag">Excel</span><h3>Export TanStack Table to Excel with grouped rows</h3><p>Groups become Excel outline levels and group totals become SUBTOTAL formulas, from the table you already render.</p></div>
+      </a><a class="card" href="tanstack-table-pivot-table.html">
+        <div class="thumb"><img src="img/pivot-table.png" alt="A pivot of revenue with regions and countries down the side and quarters across" loading="lazy"></div>
+        <div class="body"><span class="tag">Pivot</span><h3>TanStack Table pivot table</h3><p>A cross-tab from flat rows, a pivot designer for end users, and an Excel export with outline levels.</p></div>
+      </a><a class="card" href="shadcn-data-table-export-to-pdf.html">
+        <div class="thumb"><img src="img/pdf-report.png" alt="A PDF report titled Payments with Collected and Failed totals above a table of payments" loading="lazy"></div>
+        <div class="body"><span class="tag">PDF</span><h3>shadcn data table export to PDF</h3><p>An export menu on the shadcn payments table, then a PDF report with a title, headline numbers and page setup.</p></div>
+      </a></div>
+  </article>
+  </main>
+  <aside class="dtoc"></aside>
 </div>
-<div class="wrap guide-list"><a class="card" href="export-tanstack-table-to-excel-with-grouped-rows.html">
-          <div class="thumb"><img src="img/excel-file.png" alt="An exported workbook with Europe and its products as outline levels and a SUBTOTAL formula in the formula bar" loading="lazy"></div>
-          <div class="body"><span class="tag">Guide</span><h3>Export TanStack Table to Excel with grouped rows</h3><p>Groups become Excel outline levels and group totals become SUBTOTAL formulas, from the table you already render.</p></div>
-        </a><a class="card" href="tanstack-table-pivot-table.html">
-          <div class="thumb"><img src="img/pivot-table.png" alt="A pivot of revenue with regions and countries down the side and quarters across" loading="lazy"></div>
-          <div class="body"><span class="tag">Guide</span><h3>TanStack Table pivot table</h3><p>A cross-tab from flat rows, a pivot designer for end users, and an Excel export with outline levels.</p></div>
-        </a><a class="card" href="shadcn-data-table-export-to-pdf.html">
-          <div class="thumb"><img src="img/pdf-report.png" alt="A PDF report titled Payments with Collected and Failed totals above a table of payments" loading="lazy"></div>
-          <div class="body"><span class="tag">Guide</span><h3>shadcn data table export to PDF</h3><p>An export menu on the shadcn payments table, then a PDF report with a title, headline numbers and page setup.</p></div>
-        </a></div>
-</main>
 <footer class="site">
   <div class="wrap">
     <div class="cols">
@@ -163,24 +128,6 @@
     root.dataset.theme = dark ? 'light' : 'dark'
     try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
   }
-</script>
-<script>
-  for (const b of document.querySelectorAll('.editor .copy')) {
-    b.addEventListener('click', () => {
-      const code = b.closest('.editor').querySelector('code').innerText
-      navigator.clipboard?.writeText(code).then(() => { b.textContent = 'Copied'; setTimeout(() => (b.textContent = 'Copy'), 1400) })
-    })
-  }
-  // Mark the section being read in the table of contents.
-  const links = [...document.querySelectorAll('.toc a')]
-  const heads = links.map((a) => document.getElementById(a.hash.slice(1))).filter(Boolean)
-  const mark = () => {
-    let cur = heads[0]
-    for (const h of heads) if (h.getBoundingClientRect().top < 120) cur = h
-    for (const a of links) a.classList.toggle('on', a.hash === '#' + cur?.id)
-  }
-  addEventListener('scroll', mark, { passive: true })
-  mark()
 </script>
 </body>
 </html>

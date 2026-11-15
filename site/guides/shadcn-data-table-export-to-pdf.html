@@ -14,6 +14,7 @@
 <meta property="og:url" content="https://rowpine.com/guides/shadcn-data-table-export-to-pdf.html">
 <meta property="og:image" content="https://rowpine.com/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="text/markdown" href="shadcn-data-table-export-to-pdf.md">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,56 +22,12 @@
   try { const t = localStorage.getItem('rowpine-theme'); if (t) document.documentElement.dataset.theme = t } catch {}
 </script>
 <link rel="stylesheet" href="../site.css">
-<style>
-  .guide-head { padding: 56px 0 40px; border-bottom: 1px solid var(--line); background: var(--bg-soft); }
-  .crumbs { font-size: 14px; color: var(--muted); margin: 0 0 16px; }
-  .crumbs a { color: var(--muted); text-decoration: none; }
-  .crumbs a:hover { color: var(--fg); }
-  .guide-head h1 { font-size: 44px; line-height: 1.1; font-weight: 650; letter-spacing: -0.035em; margin: 0 0 14px; max-width: 860px; }
-  .guide-head .lead { font-size: 18.5px; color: var(--muted); max-width: 760px; margin: 0 0 18px; }
-  .byline { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px; color: var(--muted); }
-  .byline span + span::before { content: ""; display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: currentColor; margin-right: 18px; vertical-align: middle; opacity: .6; }
-  .guide { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 64px; padding: 48px 24px 88px; }
-  .guide article { min-width: 0; max-width: 760px; font-size: 16.5px; line-height: 1.75; }
-  .guide article > p, .guide article li { color: color-mix(in srgb, var(--fg) 82%, var(--muted)); }
-  .guide article h2 { font-size: 27px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 650; margin: 52px 0 12px; scroll-margin-top: 88px; }
-  .guide article h3 { font-size: 19px; font-weight: 600; margin: 32px 0 8px; scroll-margin-top: 88px; }
-  .guide article h2 + p, .guide article h3 + p { margin-top: 0; }
-  .guide article :not(pre) > code { font-size: .86em; background: var(--bg-soft); border: 1px solid var(--line); padding: .08em .38em; border-radius: 5px; }
-  .guide article .editor { margin: 20px 0 26px; }
-  .guide article pre.code { font-size: 13.5px; line-height: 1.65; }
-  .guide article .copy { margin-left: auto; border: 1px solid #2a3d32; background: transparent; color: #a9c2b3; font: 500 12px/1 "Geist Mono", ui-monospace, monospace; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
-  .guide article .copy:hover { color: #fff; border-color: #4a6b58; }
-  .guide article figure { margin: 26px 0 30px; }
-  .guide article figure img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; box-shadow: var(--shadow-sm); }
-  .guide article figcaption { color: var(--muted); font-size: 14px; margin-top: 10px; }
-  .guide article table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 16px 0 24px; display: block; overflow-x: auto; }
-  .guide article th, .guide article td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .guide article th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
-  .guide article blockquote { margin: 22px 0; padding: 14px 18px; border-left: 3px solid var(--brand); background: var(--accent-soft); border-radius: 0 8px 8px 0; }
-  .guide article blockquote p { margin: 0; color: var(--fg); }
-  .toc { position: sticky; top: 88px; align-self: start; font-size: 14px; }
-  .toc b { display: block; font: 600 11.5px/1 "Geist Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 12px; }
-  .toc a { display: block; color: var(--muted); text-decoration: none; padding: 5px 0 5px 12px; border-left: 2px solid var(--line); line-height: 1.4; }
-  .toc a:hover { color: var(--fg); border-left-color: var(--line-strong); }
-  .toc a.on { color: var(--brand); border-left-color: var(--brand); font-weight: 600; }
-  .try { margin: 56px 0 0; padding: 28px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg-soft); display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; }
-  .try h2 { margin: 0 0 6px !important; font-size: 22px !important; }
-  .try p { margin: 0; color: var(--muted); font-size: 15px; }
-  .try .buttons { margin: 0; }
-  .more-guides { margin-top: 48px; }
-  .more-guides h2 { font-size: 20px !important; margin: 0 0 14px !important; }
-  .more-guides .cards { grid-template-columns: repeat(2, 1fr); }
-  .guide-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 48px 24px 96px; }
-  @media (max-width: 1000px) { .guide { grid-template-columns: minmax(0, 1fr); } .toc { display: none; } .guide-list { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 640px) {
-    .guide-head h1 { font-size: 32px; } .guide { padding: 32px 16px 64px; } .guide article h2 { font-size: 23px; }
-    .try { grid-template-columns: 1fr; } .more-guides .cards, .guide-list { grid-template-columns: 1fr; } .guide-list { padding: 32px 16px 64px; }
-  }</style>
+<link rel="stylesheet" href="../docs.css">
 <script src="../analytics.js" defer></script>
+<script src="../docs.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"shadcn data table export to PDF","description":"Add PDF export to the shadcn/ui data table from the payments example, then turn it into a report with a title, headline numbers and a watermark.","datePublished":"2026-11-15","dateModified":"2026-11-15","image":"https://rowpine.com/guides/img/pdf-report.png","mainEntityOfPage":"https://rowpine.com/guides/shadcn-data-table-export-to-pdf.html","author":{"@type":"Organization","name":"jQWidgets LTD","url":"https://rowpine.com"},"publisher":{"@type":"Organization","name":"jQWidgets LTD"},"proficiencyLevel":"Intermediate"}</script>
 </head>
-<body>
+<body id="top">
 <header class="top">
   <div class="wrap">
     <a class="brand" href="../" aria-label="Rowpine home">
@@ -78,42 +35,45 @@
       Rowpine <span class="for">for TanStack Table</span>
     </a>
     <nav class="main" aria-label="Main">
-      <a href="../examples/">Demos</a>
+      <a href="../examples/" class="hide-xs">Demos</a>
       <a href="../docs/">Docs</a>
       <a href="../guides/" class="hide-sm" aria-current="page">Guides</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../license.html" class="hide-sm">License</a>
     </nav>
     <div class="actions">
+      <button type="button" class="search-btn" data-open-search aria-label="Search docs, guides and API"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs</span><kbd>Ctrl K</kbd></button>
       <a class="icon-btn hide-sm" href="https://github.com/rowpine/rowpine" aria-label="Rowpine on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
       <button class="icon-btn" type="button" aria-label="Switch light and dark theme" onclick="toggleTheme()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
       <a class="btn sm primary" href="../pricing.html" data-umami-event="Header buy">Buy a license</a>
     </div>
   </div>
 </header>
-<main>
-<div class="guide-head">
-  <div class="wrap">
-    <p class="crumbs"><a href="./">Guides</a> / PDF</p>
+<script src="../search.js" defer></script>
+<button type="button" class="dnav-toggle" aria-controls="docs-nav" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
+<div class="docs">
+  <nav class="dnav" id="docs-nav" aria-label="Documentation">
+    <div class="dnav-top"><a class="dnav-home" href="../docs/">Documentation</a><span class="ver" title="Documented package version">v1.0.2</span></div>
+    <div class="dnav-group"><h2>Getting started</h2><a href="../docs/">Overview</a><a href="../docs/installation.html">Installation</a><a href="../docs/add-an-export-menu.html">Add an export menu</a><a href="../docs/license-keys.html">License keys</a><a href="../docs/column-settings.html">Column settings for exports</a><a href="../docs/your-own-export-buttons.html">Export from your own buttons</a></div><div class="dnav-group"><h2>Excel</h2><a href="../docs/export-to-excel.html">Export to Excel</a><a href="../docs/which-rows-are-exported.html">Which rows are exported</a><a href="../docs/number-and-date-formats.html">Number and date formats</a><a href="../docs/cell-colors.html">Cell colors</a><a href="../docs/hidden-and-excluded-columns.html">Hidden and excluded columns</a><a href="../docs/pinned-columns-frozen-panes.html">Pinned columns become frozen panes</a><a href="../docs/grouped-rows-as-outlines.html">Grouped rows become Excel outlines</a><a href="../docs/subtotal-formulas.html">Group totals as SUBTOTAL formulas</a><a href="../docs/tree-data.html">Tree data</a><a href="../docs/tree-data-in-excel.html">Tree data in Excel</a><a href="../docs/headers-and-widths.html">Headers and column widths</a></div><div class="dnav-group"><h2>PDF</h2><a href="../docs/export-to-pdf.html">Export to PDF</a><a href="../docs/pdf-page-setup.html">PDF page setup</a><a href="../docs/pdf-title-kpis-watermark.html">Title, headline numbers and watermark</a><a href="../docs/pdf-grouped-rows.html">Groups in a PDF</a></div><div class="dnav-group"><h2>CSV</h2><a href="../docs/csv-export.html">CSV export</a></div><div class="dnav-group"><h2>Pivot</h2><a href="../docs/pivot-basics.html">Pivot tables</a><a href="../docs/aggregations.html">Aggregations</a><a href="../docs/subtotals-and-grand-totals.html">Subtotals and grand totals</a><a href="../docs/expand-and-collapse.html">Expand and collapse groups</a><a href="../docs/pivot-designer.html">Pivot designer</a><a href="../docs/fields-and-wells.html">Fields and wells</a><a href="../docs/pivot-filters.html">Filters in the pivot designer</a><a href="../docs/presets-and-saved-views.html">Presets and saved views</a><a href="../docs/exporting-a-pivot.html">Export a pivot</a></div><div class="dnav-group"><h2>Guides</h2><a href="../guides/">All guides</a><a href="../guides/export-tanstack-table-to-excel-with-grouped-rows.html">Export TanStack Table to Excel with grouped rows</a><a href="../guides/tanstack-table-pivot-table.html">TanStack Table pivot table</a><a href="../guides/shadcn-data-table-export-to-pdf.html" aria-current="page">shadcn data table export to PDF</a></div><div class="dnav-group"><h2>API reference</h2><a href="../docs/api-export.html">Export functions</a><a href="../docs/api-columns.html">Column settings</a><a href="../docs/api-pivot.html">Pivot</a><a href="../docs/api-designer.html">Pivot designer state</a><a href="../docs/api-license.html">License</a><a href="../docs/api-advanced.html">Low-level API</a><a href="../docs/api-components.html">Components</a></div><div class="dnav-group"><h2>Resources</h2><a href="../docs/changelog.html">Changelog</a><a href="../docs/troubleshooting.html">Troubleshooting</a><a href="../docs/support.html">Support</a><a href="../security.html">Security</a><a href="../license.html">License</a><a href="../examples/">Live demos</a></div>
+  </nav>
+  <main class="dmain">
+<article class="doc">
+    <div class="crumbs"><a href="../docs/">Docs</a><a href="./">Guides</a><span>PDF</span></div>
     <h1>shadcn data table export to PDF</h1>
     <p class="lead">Add PDF export to the shadcn/ui data table from the payments example, then turn it into a report with a title, headline numbers and a watermark.</p>
-    <div class="byline"><span>November 15, 2026</span><span>6 min read</span><span>TanStack Table v9 and v8</span></div>
-  </div>
-</div>
-<div class="wrap guide">
-  <article>
-<p>The shadcn/ui <a href="https://ui.shadcn.com/docs/components/data-table">Data Table guide</a> builds a payments table with TanStack Table: sorting, an email filter, a column toggle, row selection and pagination. It stops before export. This guide picks up there and adds:</p>
+    <div class="dmeta"><div class="facts"><span>Updated November 15, 2026</span><span>6 min read</span><span>Tested with rowpine 1.0.2, TanStack Table 9.3.1 and 8.21.3, React 19.3.1</span></div><div class="acts"><button type="button" class="act" data-copy-md="shadcn-data-table-export-to-pdf.md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy as Markdown</span></button><a class="act" href="https://github.com/rowpine/rowpine/blob/main/guides/shadcn-data-table-export-to-pdf.md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>Edit on GitHub</span></a></div></div>
+    <p>The shadcn/ui <a href="https://ui.shadcn.com/docs/components/data-table">Data Table guide</a> builds a payments table with TanStack Table: sorting, an email filter, a column toggle, row selection and pagination. It stops before export. This guide picks up there and adds:</p>
 <ul>
 <li>an Export menu with PDF, Excel and CSV;</li>
 <li>a &quot;Download report&quot; button that prints a title, headline numbers and a watermark above the table.</li>
 </ul>
 <figure><img src="img/pdf-report.png" alt="A PDF report titled Payments with Collected and Failed totals above a table of payments" loading="lazy"><figcaption>The report: title, subtitle, two headline numbers, and every payment on Letter pages with the header repeated.</figcaption></figure>
 <p>The files and names match the shadcn guide: <code>data-table-features.ts</code>, <code>columns.tsx</code>, <code>data-table.tsx</code> and the page. The shadcn guide uses TanStack Table v9, and so does this one; <a href="#on-tanstack-table-v8">v8 notes</a> are at the end.</p>
-<h2 id="install">Install</h2>
-<div class="editor"><div class="editor-bar"><span class="on">terminal</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">npm</span> install rowpine
+<h2 id="install">Install<a class="anchor" href="#install" aria-label="Link to this section">#</a></h2>
+<div class="editor"><div class="editor-bar"><span class="on">Terminal</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">npm</span> install rowpine
 <span class="k">npx</span> shadcn add https://rowpine.com/r/export-menu.json</code></pre></div>
 <p><code>rowpine</code> builds the files in the browser. The export menu lands in <code>components/export-menu.tsx</code> as source, styled by your theme.</p>
-<h2 id="let-columns-carry-export-settings">Let columns carry export settings</h2>
+<h2 id="let-columns-carry-export-settings">Let columns carry export settings<a class="anchor" href="#let-columns-carry-export-settings" aria-label="Link to this section">#</a></h2>
 <p>Rowpine reads per-column settings from <code>meta.rowpine</code>. Add one line to the features object from the shadcn guide so TypeScript knows about them:</p>
 <div class="editor"><div class="editor-bar"><span class="on">data-table-features.ts</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">import</span> {
   columnFilteringFeature,
@@ -149,7 +109,7 @@
 
 <span class="k">export</span> <span class="k">type</span> DataTableFeatures = <span class="k">typeof</span> features</code></pre></div>
 <p>The rest of the file is the shadcn guide&#39;s, unchanged.</p>
-<h2 id="set-up-the-amount-column">Set up the amount column</h2>
+<h2 id="set-up-the-amount-column">Set up the amount column<a class="anchor" href="#set-up-the-amount-column" aria-label="Link to this section">#</a></h2>
 <p>Most columns export as they are. <code>status</code> and <code>email</code> have string headers and plain values, and the select and actions columns are display columns with no accessor, so Rowpine leaves them out of the file on its own.</p>
 <p><strong>The amount column</strong> has a JSX header, which cannot be printed, and a cell that formats the number in JSX. Give the file a header and the text to print:</p>
 <div class="editor"><div class="editor-bar"><span class="on">columns.tsx</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>columnHelper.accessor(<span class="s">&quot;amount&quot;</span>, {
@@ -173,7 +133,7 @@
   },
 },</code></pre></div>
 <p><code>format</code> only changes the text in the PDF and CSV. The table on screen renders as before.</p>
-<h2 id="add-the-export-menu">Add the export menu</h2>
+<h2 id="add-the-export-menu">Add the export menu<a class="anchor" href="#add-the-export-menu" aria-label="Link to this section">#</a></h2>
 <p>In <code>data-table.tsx</code>, import the menu and put it in the toolbar next to the Columns button:</p>
 <div class="editor"><div class="editor-bar"><span class="on">data-table.tsx</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">import</span> { ExportMenu } <span class="k">from</span> <span class="s">&quot;@/components/export-menu&quot;</span>
 
@@ -187,7 +147,7 @@
 <li><strong>Selected rows, when asked.</strong> Once rows are selected, the menu shows a &quot;Selected rows only&quot; option.</li>
 <li><strong>Pages that read on paper.</strong> The header row repeats on every page, rows are striped, and the footer has the date and &quot;Page 1 of 2&quot;.</li>
 </ul>
-<h2 id="turn-it-into-a-report">Turn it into a report</h2>
+<h2 id="turn-it-into-a-report">Turn it into a report<a class="anchor" href="#turn-it-into-a-report" aria-label="Link to this section">#</a></h2>
 <p>A report needs more than the table. <code>exportPdf</code> takes the same table plus options for the page. Give <code>DataTable</code> an optional <code>report</code> prop and a button that uses it:</p>
 <div class="editor"><div class="editor-bar"><span class="on">data-table.tsx</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">import</span> * <span class="k">as</span> React <span class="k">from</span> <span class="s">&quot;react&quot;</span>
 <span class="k">import</span> {
@@ -253,7 +213,7 @@
   )
 }</code></pre></div>
 <figure><img src="img/pdf-table.png" alt="The data table with a Download report button and an Export menu in the toolbar" loading="lazy"><figcaption>The toolbar with both: the menu for quick exports, and the report button.</figcaption></figure>
-<table>
+<div class="tw"><table>
 <thead>
 <tr>
 <th>Option</th>
@@ -292,12 +252,12 @@
 <td><code>rows</code></td>
 <td><code>&quot;all&quot;</code> (default), <code>&quot;page&quot;</code> or <code>&quot;selected&quot;</code>.</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <p>Because the button passes the live table, the report follows the screen like the menu does: type in the email filter and the report lists only the matches.</p>
-<h2 id="wide-tables-and-other-languages">Wide tables and other languages</h2>
+<h2 id="wide-tables-and-other-languages">Wide tables and other languages<a class="anchor" href="#wide-tables-and-other-languages" aria-label="Link to this section">#</a></h2>
 <p>Past 8 columns the page turns landscape, the text shrinks down to three quarters of its size if needed, and after that the columns split across pages with the first column repeated. <code>fit</code> and <code>repeatColumns</code> change this; see <a href="../docs/pdf-page-setup.html">PDF page setup</a>.</p>
 <p>The default font, Roboto, has no Chinese, Japanese, Korean, Arabic, Hebrew, Thai or Indic letters. For those, pass a font that covers them: <a href="../docs/export-to-pdf.html#languages">Export to PDF</a> shows how.</p>
-<h2 id="on-tanstack-table-v8">On TanStack Table v8</h2>
+<h2 id="on-tanstack-table-v8">On TanStack Table v8<a class="anchor" href="#on-tanstack-table-v8" aria-label="Link to this section">#</a></h2>
 <p>Older versions of the shadcn guide used <code>useReactTable</code>. Rowpine reads that table the same way: pass it to <code>ExportMenu</code> or <code>exportPdf</code> unchanged. The one difference is typing <code>meta.rowpine</code>, which v8 does through module augmentation:</p>
 <div class="editor"><div class="editor-bar"><span class="on">tanstack.d.ts</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="c">// v8 types column meta through module augmentation.</span>
 <span class="k">declare</span> <span class="k">module</span> <span class="s">&quot;@tanstack/react-table&quot;</span> {
@@ -305,30 +265,35 @@
     rowpine?: RowpineColumnMeta&lt;TData&gt;
   }
 }</code></pre></div>
-<h2 id="if-typescript-rejects-the-table">If TypeScript rejects the table</h2>
+<h2 id="if-typescript-rejects-the-table">If TypeScript rejects the table<a class="anchor" href="#if-typescript-rejects-the-table" aria-label="Link to this section">#</a></h2>
 <p>With <code>rowpine</code> 1.0.1 and earlier, a v9 table without the grouping feature, like the shadcn one, fails to type-check with &quot;not assignable to type TableLike&quot;, and checkbox and actions columns need <code>meta: { rowpine: { exclude: true } }</code>. Version 1.0.2 fixes both:</p>
-<div class="editor"><div class="editor-bar"><span class="on">terminal</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">npm</span> install rowpine@latest</code></pre></div>
-<h2 id="license">License</h2>
+<div class="editor"><div class="editor-bar"><span class="on">Terminal</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">npm</span> install rowpine@latest</code></pre></div>
+<h2 id="license">License<a class="anchor" href="#license" aria-label="Link to this section">#</a></h2>
 <p>CSV export is free. PDF and Excel run without a key, with one notice line in each file; a <a href="../pricing.html">license</a> removes it and is a one-time payment per developer with a year of updates. For a longer report, see the <a href="../examples/#/demo/month-end-pdf">Month-end PDF demo</a>: receivables grouped by status, headline numbers, Letter landscape.</p>
 
     <div class="try">
       <div><h2>Try it in your project</h2><p>Everything runs without a license key; Excel and PDF files carry one notice line until you add one.</p></div>
       <div class="buttons"><a class="btn primary" href="../docs/installation.html" data-umami-event="Guide install">Install Rowpine</a><a class="btn secondary" href="../examples/">Live demos</a></div>
     </div>
-    <section class="more-guides" aria-label="More guides" style="padding:0">
-      <h2>More guides</h2>
-      <div class="cards"><a class="card" href="export-tanstack-table-to-excel-with-grouped-rows.html">
-          <div class="thumb"><img src="img/excel-file.png" alt="An exported workbook with Europe and its products as outline levels and a SUBTOTAL formula in the formula bar" loading="lazy"></div>
-          <div class="body"><span class="tag">Guide</span><h3>Export TanStack Table to Excel with grouped rows</h3><p>Groups become Excel outline levels and group totals become SUBTOTAL formulas, from the table you already render.</p></div>
-        </a><a class="card" href="tanstack-table-pivot-table.html">
-          <div class="thumb"><img src="img/pivot-table.png" alt="A pivot of revenue with regions and countries down the side and quarters across" loading="lazy"></div>
-          <div class="body"><span class="tag">Guide</span><h3>TanStack Table pivot table</h3><p>A cross-tab from flat rows, a pivot designer for end users, and an Excel export with outline levels.</p></div>
-        </a></div>
-    </section>
+    <div class="feedback" data-feedback>
+    <span>Was this page helpful?</span>
+    <button type="button" data-answer="yes" data-umami-event="Docs feedback" data-umami-event-page="guide:shadcn-data-table-export-to-pdf" data-umami-event-answer="yes">Yes</button>
+    <button type="button" data-answer="no" data-umami-event="Docs feedback" data-umami-event-page="guide:shadcn-data-table-export-to-pdf" data-umami-event-answer="no">No</button>
+    <span class="fb-thanks" hidden>Thanks. To tell us more, write to <a href="mailto:info@jqwidgets.com?subject=Rowpine%20docs%3A%20guide%3Ashadcn-data-table-export-to-pdf">info@jqwidgets.com</a>.</span>
+  </div>
+    <nav class="pager" aria-label="Previous and next"><a class="pg prev" href="../guides/tanstack-table-pivot-table.html"><span>Previous</span><b>TanStack Table pivot table</b></a><span></span></nav>
+    <h2 style="margin-top:44px">More guides</h2>
+    <div class="guide-cards"><a class="card" href="export-tanstack-table-to-excel-with-grouped-rows.html">
+        <div class="thumb"><img src="img/excel-file.png" alt="An exported workbook with Europe and its products as outline levels and a SUBTOTAL formula in the formula bar" loading="lazy"></div>
+        <div class="body"><span class="tag">Excel</span><h3>Export TanStack Table to Excel with grouped rows</h3><p>Groups become Excel outline levels and group totals become SUBTOTAL formulas, from the table you already render.</p></div>
+      </a><a class="card" href="tanstack-table-pivot-table.html">
+        <div class="thumb"><img src="img/pivot-table.png" alt="A pivot of revenue with regions and countries down the side and quarters across" loading="lazy"></div>
+        <div class="body"><span class="tag">Pivot</span><h3>TanStack Table pivot table</h3><p>A cross-tab from flat rows, a pivot designer for end users, and an Excel export with outline levels.</p></div>
+      </a></div>
   </article>
-  <nav class="toc" aria-label="On this page"><b>On this page</b><a href="#install">Install</a><a href="#let-columns-carry-export-settings">Let columns carry export settings</a><a href="#set-up-the-amount-column">Set up the amount column</a><a href="#add-the-export-menu">Add the export menu</a><a href="#turn-it-into-a-report">Turn it into a report</a><a href="#wide-tables-and-other-languages">Wide tables and other languages</a><a href="#on-tanstack-table-v8">On TanStack Table v8</a><a href="#if-typescript-rejects-the-table">If TypeScript rejects the table</a><a href="#license">License</a></nav>
+  </main>
+  <aside class="dtoc" aria-label="On this page"><b>On this page</b><a href="#install" class="l2">Install</a><a href="#let-columns-carry-export-settings" class="l2">Let columns carry export settings</a><a href="#set-up-the-amount-column" class="l2">Set up the amount column</a><a href="#add-the-export-menu" class="l2">Add the export menu</a><a href="#turn-it-into-a-report" class="l2">Turn it into a report</a><a href="#wide-tables-and-other-languages" class="l2">Wide tables and other languages</a><a href="#on-tanstack-table-v8" class="l2">On TanStack Table v8</a><a href="#if-typescript-rejects-the-table" class="l2">If TypeScript rejects the table</a><a href="#license" class="l2">License</a><a class="totop" href="#top">Back to top</a></aside>
 </div>
-</main>
 <footer class="site">
   <div class="wrap">
     <div class="cols">
@@ -382,24 +347,6 @@
     root.dataset.theme = dark ? 'light' : 'dark'
     try { localStorage.setItem('rowpine-theme', root.dataset.theme) } catch {}
   }
-</script>
-<script>
-  for (const b of document.querySelectorAll('.editor .copy')) {
-    b.addEventListener('click', () => {
-      const code = b.closest('.editor').querySelector('code').innerText
-      navigator.clipboard?.writeText(code).then(() => { b.textContent = 'Copied'; setTimeout(() => (b.textContent = 'Copy'), 1400) })
-    })
-  }
-  // Mark the section being read in the table of contents.
-  const links = [...document.querySelectorAll('.toc a')]
-  const heads = links.map((a) => document.getElementById(a.hash.slice(1))).filter(Boolean)
-  const mark = () => {
-    let cur = heads[0]
-    for (const h of heads) if (h.getBoundingClientRect().top < 120) cur = h
-    for (const a of links) a.classList.toggle('on', a.hash === '#' + cur?.id)
-  }
-  addEventListener('scroll', mark, { passive: true })
-  mark()
 </script>
 </body>
 </html>
