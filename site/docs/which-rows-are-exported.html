@@ -109,8 +109,8 @@
 </tbody></table>
 <pre><code class="language-ts">await exportXlsx(table, { rows: &quot;selected&quot; })
 </code></pre>
-<p><code>ExportMenu</code> adds a &quot;Selected rows only&quot; checkbox when rows are selected. A selection column is usually a display column with checkboxes; mark it <code>exclude</code> so it stays out of the file:</p>
-<pre><code class="language-ts">helper.display({ id: &quot;select&quot;, meta: { rowpine: { exclude: true } }, cell: ... })
+<p><code>ExportMenu</code> adds a &quot;Selected rows only&quot; checkbox when rows are selected. A selection column is usually a display column with checkboxes. Display columns have no accessor, so Rowpine leaves them out of the file on its own:</p>
+<pre><code class="language-ts">helper.display({ id: &quot;select&quot;, cell: ... }) // not exported: no accessor
 </code></pre>
 
   <p><a class="live" href="../examples/#/04-selected-rows">Live example and source</a></p>

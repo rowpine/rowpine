@@ -97,7 +97,7 @@
     <p class="crumbs"><a href="./">Guides</a> / Excel</p>
     <h1>Export TanStack Table to Excel with grouped rows</h1>
     <p class="lead">Group a TanStack Table by two columns and export it to a real .xlsx file where the groups are Excel outline levels and the group totals are SUBTOTAL formulas.</p>
-    <div class="byline"><span>November 15, 2026</span><span>6 min read</span><span>TanStack Table v9 and v8</span></div>
+    <div class="byline"><span>November 15, 2026</span><span>7 min read</span><span>TanStack Table v9 and v8</span></div>
   </div>
 </div>
 <div class="wrap guide">
@@ -388,7 +388,7 @@
 <h2 id="when-something-looks-wrong">When something looks wrong</h2>
 <p><strong>A group row has an empty cell where a total should be.</strong> The column has no numeric <code>aggregationFn</code>. Columns without one are left empty on group rows, the same as on screen.</p>
 <p><strong>The header in the file is a column id.</strong> The column&#39;s <code>header</code> is a function or JSX, which cannot be written to a file. Set <code>meta.rowpine.header</code> to the text you want.</p>
-<p><strong>A checkbox or actions column is in the file.</strong> Display columns are exported like any other. Add <code>meta: { rowpine: { exclude: true } }</code> to them.</p>
+<p><strong>A column should stay on screen only.</strong> Add <code>meta: { rowpine: { exclude: true } }</code> to it, for example an internal id. Checkbox and actions columns need nothing: columns without an accessor are left out on their own.</p>
 <p><strong>Dates are text in Excel.</strong> Only <code>Date</code> values become Excel dates. If your data has ISO strings, convert them in the accessor, <code>accessorFn: (r) =&gt; new Date(r.date)</code>, and set <code>numFmt: &quot;yyyy-mm-dd&quot;</code>.</p>
 <h2 id="license">License</h2>
 <p>CSV export is free. Excel, PDF and pivot tables run without a key, with one notice line in each file; a <a href="../pricing.html">license</a> removes it and is a one-time payment per developer with a year of updates. The live <a href="../examples/#/demo/orders-to-excel">Orders to Excel demo</a> shows the same export with sorting, hidden columns and pinned columns.</p>

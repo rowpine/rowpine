@@ -34,27 +34,13 @@ Rowpine reads per-column settings from `meta.rowpine`. Add one line to the featu
 
 The rest of the file is the shadcn guide's, unchanged.
 
-## Tell Rowpine about four columns
+## Set up the amount column
 
-Most columns export as they are: `status` and `email` have string headers and plain values. Four need a word.
-
-**The select column** holds checkboxes, not data. Leave it out of the file:
-
-<!-- code: pdf/columns.tsx#select title="columns.tsx" -->
+Most columns export as they are. `status` and `email` have string headers and plain values, and the select and actions columns are display columns with no accessor, so Rowpine leaves them out of the file on its own.
 
 **The amount column** has a JSX header, which cannot be printed, and a cell that formats the number in JSX. Give the file a header and the text to print:
 
-<!-- code: pdf/columns.tsx#amount -->
-
-**The actions column** is a menu. Leave it out too:
-
-```tsx
-columnHelper.display({
-  id: "actions",
-  cell: ({ row }) => { /* the dropdown menu, unchanged */ },
-  meta: { rowpine: { exclude: true } },
-}),
-```
+<!-- code: pdf/columns.tsx#amount title="columns.tsx" -->
 
 **The status column** is optional. Its values are lowercase; `format` capitalizes them in the PDF and `cellStyle` prints failed payments in bold red:
 
@@ -133,7 +119,7 @@ Older versions of the shadcn guide used `useReactTable`. Rowpine reads that tabl
 
 ## If TypeScript rejects the table
 
-With `rowpine` 1.0.1 and earlier, a v9 table without the grouping feature, like the shadcn one, fails to type-check with "not assignable to type TableLike". Version 1.0.2 fixes it:
+With `rowpine` 1.0.1 and earlier, a v9 table without the grouping feature, like the shadcn one, fails to type-check with "not assignable to type TableLike", and checkbox and actions columns need `meta: { rowpine: { exclude: true } }`. Version 1.0.2 fixes both:
 
 ```bash
 npm install rowpine@latest

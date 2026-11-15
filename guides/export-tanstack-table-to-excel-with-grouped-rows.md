@@ -132,7 +132,7 @@ The file is the same: two outline levels and the same `SUBTOTAL` formulas.
 
 **The header in the file is a column id.** The column's `header` is a function or JSX, which cannot be written to a file. Set `meta.rowpine.header` to the text you want.
 
-**A checkbox or actions column is in the file.** Display columns are exported like any other. Add `meta: { rowpine: { exclude: true } }` to them.
+**A column should stay on screen only.** Add `meta: { rowpine: { exclude: true } }` to it, for example an internal id. Checkbox and actions columns need nothing: columns without an accessor are left out on their own.
 
 **Dates are text in Excel.** Only `Date` values become Excel dates. If your data has ISO strings, convert them in the accessor, `accessorFn: (r) => new Date(r.date)`, and set `numFmt: "yyyy-mm-dd"`.
 

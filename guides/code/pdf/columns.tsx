@@ -47,8 +47,6 @@ export const columns = columnHelper.columns([
     ),
     enableSorting: false,
     enableHiding: false,
-    // Checkboxes are not data: keep this column out of the PDF.
-    meta: { rowpine: { exclude: true } },
   }),
   // #endregion select
   columnHelper.accessor("status", {
@@ -102,7 +100,6 @@ export const columns = columnHelper.columns([
         </DropdownMenu>
       )
     },
-    meta: { rowpine: { exclude: true } },
   }),
   // #endregion actions
 ])

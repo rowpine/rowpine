@@ -62,40 +62,13 @@ export type DataTableFeatures = typeof features
 
 The rest of the file is the shadcn guide's, unchanged.
 
-## Tell Rowpine about four columns
+## Set up the amount column
 
-Most columns export as they are: `status` and `email` have string headers and plain values. Four need a word.
-
-**The select column** holds checkboxes, not data. Leave it out of the file:
-
-```tsx title="columns.tsx"
-columnHelper.display({
-  id: "select",
-  header: ({ table }) => (
-    <Checkbox
-      checked={table.getIsAllPageRowsSelected()}
-      indeterminate={table.getIsSomePageRowsSelected() && !table.getIsAllPageRowsSelected()}
-      onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-      aria-label="Select all"
-    />
-  ),
-  cell: ({ row }) => (
-    <Checkbox
-      checked={row.getIsSelected()}
-      onCheckedChange={(value) => row.toggleSelected(!!value)}
-      aria-label="Select row"
-    />
-  ),
-  enableSorting: false,
-  enableHiding: false,
-  // Checkboxes are not data: keep this column out of the PDF.
-  meta: { rowpine: { exclude: true } },
-}),
-```
+Most columns export as they are. `status` and `email` have string headers and plain values, and the select and actions columns are display columns with no accessor, so Rowpine leaves them out of the file on its own.
 
 **The amount column** has a JSX header, which cannot be printed, and a cell that formats the number in JSX. Give the file a header and the text to print:
 
-```tsx
+```tsx title="columns.tsx"
 columnHelper.accessor("amount", {
   header: () => <div className="text-right">Amount</div>,
   cell: ({ row }) => {
@@ -108,16 +81,6 @@ columnHelper.accessor("amount", {
       format: (v) => usd.format(v as number), // the text the PDF prints
     },
   },
-}),
-```
-
-**The actions column** is a menu. Leave it out too:
-
-```tsx
-columnHelper.display({
-  id: "actions",
-  cell: ({ row }) => { /* the dropdown menu, unchanged */ },
-  meta: { rowpine: { exclude: true } },
 }),
 ```
 
@@ -270,7 +233,7 @@ declare module "@tanstack/react-table" {
 
 ## If TypeScript rejects the table
 
-With `rowpine` 1.0.1 and earlier, a v9 table without the grouping feature, like the shadcn one, fails to type-check with "not assignable to type TableLike". Version 1.0.2 fixes it:
+With `rowpine` 1.0.1 and earlier, a v9 table without the grouping feature, like the shadcn one, fails to type-check with "not assignable to type TableLike", and checkbox and actions columns need `meta: { rowpine: { exclude: true } }`. Version 1.0.2 fixes both:
 
 ```bash
 npm install rowpine@latest

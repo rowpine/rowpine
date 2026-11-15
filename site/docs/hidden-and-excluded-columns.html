@@ -89,10 +89,12 @@
 <ul>
 <li>A column hidden with TanStack&#39;s column visibility is left out. In the image, Country is hidden, so the file has no Country column.</li>
 <li>Columns pinned to the start come first, then the rest, then columns pinned to the end, as on screen.</li>
-<li>A column with <code>exclude: true</code> never goes to a file, even when it is visible. Use it for selection checkboxes, action buttons and internal ids:</li>
+<li>Display columns, the ones without an accessor such as selection checkboxes and row actions, are left out: they have no value to write.</li>
+<li>A column with <code>exclude: true</code> never goes to a file, even when it is visible. Use it for internal ids and other data columns that should stay on screen only:</li>
 </ul>
 <pre><code class="language-ts">helper.accessor(&quot;id&quot;, { header: &quot;Internal id&quot;, meta: { rowpine: { exclude: true } } })
 </code></pre>
+<p><code>exclude: false</code> keeps a display column in the file.</p>
 <p>If a column&#39;s <code>header</code> is a function (an icon, a sort button), set the file&#39;s header text with <code>meta.rowpine.header</code>; otherwise the column id is used.</p>
 
   <p><a class="live" href="../examples/#/03-columns">Live example and source</a></p>

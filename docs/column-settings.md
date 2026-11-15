@@ -30,7 +30,7 @@ helper.accessor("amount", {
 | `cellStyle` | Excel, PDF | `{ fill, color, bold }` for a cell. See [cell colors](cell-colors.html). |
 | `width` | Excel | Width in pixels. Default: the column's TanStack size. |
 | `align` | Excel, PDF | `left`, `center` or `right`. Default: right for numbers. |
-| `exclude` | all | Never export this column. |
+| `exclude` | all | Never export this column. Display columns (no accessor) are excluded unless this is `false`. |
 
 With TanStack v9, type `meta` by adding a column meta slot to your features:
 

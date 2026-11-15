@@ -97,7 +97,7 @@
     <p class="crumbs"><a href="./">Guides</a> / PDF</p>
     <h1>shadcn data table export to PDF</h1>
     <p class="lead">Add PDF export to the shadcn/ui data table from the payments example, then turn it into a report with a title, headline numbers and a watermark.</p>
-    <div class="byline"><span>November 15, 2026</span><span>7 min read</span><span>TanStack Table v9 and v8</span></div>
+    <div class="byline"><span>November 15, 2026</span><span>6 min read</span><span>TanStack Table v9 and v8</span></div>
   </div>
 </div>
 <div class="wrap guide">
@@ -149,33 +149,10 @@
 
 <span class="k">export</span> <span class="k">type</span> DataTableFeatures = <span class="k">typeof</span> features</code></pre></div>
 <p>The rest of the file is the shadcn guide&#39;s, unchanged.</p>
-<h2 id="tell-rowpine-about-four-columns">Tell Rowpine about four columns</h2>
-<p>Most columns export as they are: <code>status</code> and <code>email</code> have string headers and plain values. Four need a word.</p>
-<p><strong>The select column</strong> holds checkboxes, not data. Leave it out of the file:</p>
-<div class="editor"><div class="editor-bar"><span class="on">columns.tsx</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>columnHelper.display({
-  id: <span class="s">&quot;select&quot;</span>,
-  header: ({ table }) =&gt; (
-    <span class="t">&lt;Checkbox</span>
-      checked={table.getIsAllPageRowsSelected()}
-      indeterminate={table.getIsSomePageRowsSelected() &amp;&amp; !table.getIsAllPageRowsSelected()}
-      onCheckedChange={(value) =&gt; table.toggleAllPageRowsSelected(!!value)}
-      aria-label=<span class="s">&quot;Select all&quot;</span>
-    /&gt;
-  ),
-  cell: ({ row }) =&gt; (
-    <span class="t">&lt;Checkbox</span>
-      checked={row.getIsSelected()}
-      onCheckedChange={(value) =&gt; row.toggleSelected(!!value)}
-      aria-label=<span class="s">&quot;Select row&quot;</span>
-    /&gt;
-  ),
-  enableSorting: <span class="k">false</span>,
-  enableHiding: <span class="k">false</span>,
-  <span class="c">// Checkboxes are not data: keep this column out of the PDF.</span>
-  meta: { rowpine: { exclude: <span class="k">true</span> } },
-}),</code></pre></div>
+<h2 id="set-up-the-amount-column">Set up the amount column</h2>
+<p>Most columns export as they are. <code>status</code> and <code>email</code> have string headers and plain values, and the select and actions columns are display columns with no accessor, so Rowpine leaves them out of the file on its own.</p>
 <p><strong>The amount column</strong> has a JSX header, which cannot be printed, and a cell that formats the number in JSX. Give the file a header and the text to print:</p>
-<div class="editor"><div class="editor-bar"><span class="on">tsx</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>columnHelper.accessor(<span class="s">&quot;amount&quot;</span>, {
+<div class="editor"><div class="editor-bar"><span class="on">columns.tsx</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>columnHelper.accessor(<span class="s">&quot;amount&quot;</span>, {
   header: () =&gt; &lt;div className=<span class="s">&quot;text-right&quot;</span>&gt;Amount&lt;/div&gt;,
   cell: ({ row }) =&gt; {
     <span class="k">const</span> formatted = usd.format(row.getValue(<span class="s">&quot;amount&quot;</span>))
@@ -187,12 +164,6 @@
       format: (v) =&gt; usd.format(v <span class="k">as</span> number), <span class="c">// the text the PDF prints</span>
     },
   },
-}),</code></pre></div>
-<p><strong>The actions column</strong> is a menu. Leave it out too:</p>
-<div class="editor"><div class="editor-bar"><span class="on">tsx</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>columnHelper.display({
-  id: <span class="s">&quot;actions&quot;</span>,
-  cell: ({ row }) =&gt; { <span class="c">/* the dropdown menu, unchanged */</span> },
-  meta: { rowpine: { exclude: <span class="k">true</span> } },
 }),</code></pre></div>
 <p><strong>The status column</strong> is optional. Its values are lowercase; <code>format</code> capitalizes them in the PDF and <code>cellStyle</code> prints failed payments in bold red:</p>
 <div class="editor"><div class="editor-bar"><span class="on">tsx</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code>meta: {
@@ -335,7 +306,7 @@
   }
 }</code></pre></div>
 <h2 id="if-typescript-rejects-the-table">If TypeScript rejects the table</h2>
-<p>With <code>rowpine</code> 1.0.1 and earlier, a v9 table without the grouping feature, like the shadcn one, fails to type-check with &quot;not assignable to type TableLike&quot;. Version 1.0.2 fixes it:</p>
+<p>With <code>rowpine</code> 1.0.1 and earlier, a v9 table without the grouping feature, like the shadcn one, fails to type-check with &quot;not assignable to type TableLike&quot;, and checkbox and actions columns need <code>meta: { rowpine: { exclude: true } }</code>. Version 1.0.2 fixes both:</p>
 <div class="editor"><div class="editor-bar"><span class="on">terminal</span><button type="button" class="copy" aria-label="Copy code">Copy</button></div><pre class="code"><code><span class="k">npm</span> install rowpine@latest</code></pre></div>
 <h2 id="license">License</h2>
 <p>CSV export is free. PDF and Excel run without a key, with one notice line in each file; a <a href="../pricing.html">license</a> removes it and is a one-time payment per developer with a year of updates. For a longer report, see the <a href="../examples/#/demo/month-end-pdf">Month-end PDF demo</a>: receivables grouped by status, headline numbers, Letter landscape.</p>
@@ -355,7 +326,7 @@
         </a></div>
     </section>
   </article>
-  <nav class="toc" aria-label="On this page"><b>On this page</b><a href="#install">Install</a><a href="#let-columns-carry-export-settings">Let columns carry export settings</a><a href="#tell-rowpine-about-four-columns">Tell Rowpine about four columns</a><a href="#add-the-export-menu">Add the export menu</a><a href="#turn-it-into-a-report">Turn it into a report</a><a href="#wide-tables-and-other-languages">Wide tables and other languages</a><a href="#on-tanstack-table-v8">On TanStack Table v8</a><a href="#if-typescript-rejects-the-table">If TypeScript rejects the table</a><a href="#license">License</a></nav>
+  <nav class="toc" aria-label="On this page"><b>On this page</b><a href="#install">Install</a><a href="#let-columns-carry-export-settings">Let columns carry export settings</a><a href="#set-up-the-amount-column">Set up the amount column</a><a href="#add-the-export-menu">Add the export menu</a><a href="#turn-it-into-a-report">Turn it into a report</a><a href="#wide-tables-and-other-languages">Wide tables and other languages</a><a href="#on-tanstack-table-v8">On TanStack Table v8</a><a href="#if-typescript-rejects-the-table">If TypeScript rejects the table</a><a href="#license">License</a></nav>
 </div>
 </main>
 <footer class="site">

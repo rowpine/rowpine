@@ -16,10 +16,10 @@ The `rows` option changes that:
 await exportXlsx(table, { rows: "selected" })
 ```
 
-`ExportMenu` adds a "Selected rows only" checkbox when rows are selected. A selection column is usually a display column with checkboxes; mark it `exclude` so it stays out of the file:
+`ExportMenu` adds a "Selected rows only" checkbox when rows are selected. A selection column is usually a display column with checkboxes. Display columns have no accessor, so Rowpine leaves them out of the file on its own:
 
 ```ts
-helper.display({ id: "select", meta: { rowpine: { exclude: true } }, cell: ... })
+helper.display({ id: "select", cell: ... }) // not exported: no accessor
 ```
 
 Live example: https://rowpine.com/examples/#/04-selected-rows
