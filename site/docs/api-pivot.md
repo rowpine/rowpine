@@ -1,4 +1,4 @@
-# Pivot (rowpine 1.0.2)
+# Pivot (rowpine 1.0.3)
 
 Build a pivot from flat rows: the config, the measures, and the result you render or export.
 
@@ -81,7 +81,7 @@ A pivot row with its children attached.
 
 A generated column: an accessor leaf or a header group. Fits TanStack's `ColumnDef<PivotTreeRow>`.
 ```ts
-type PivotColumnDef = { id: string; header: string; accessorFn: (row: PivotTreeRow) => unknown; size?: number; meta: PivotColumnMeta; } | { id: string; header: string; columns: PivotColumnDef[]; meta: PivotColumnMeta; }
+type PivotColumnDef = { id: string; header: string; accessorFn: (row: PivotTreeRow) => unknown; /** Value columns: the cell text, from the measure's `format` or a default number format. */ cell?: (ctx: { getValue(): unknown; }) => string; size?: number; meta: PivotColumnMeta; } | { id: string; header: string; columns: PivotColumnDef[]; meta: PivotColumnMeta; }
 ```
 
 ## PivotColumnMeta (type)

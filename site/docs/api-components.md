@@ -1,4 +1,4 @@
-# Components (rowpine 1.0.2)
+# Components (rowpine 1.0.3)
 
 The shadcn registry items: an export menu, a pivot table and a pivot designer. Their source is in your project after npx shadcn add.
 

@@ -1,4 +1,4 @@
-# Pivot designer state (rowpine 1.0.2)
+# Pivot designer state (rowpine 1.0.3)
 
 The fields, layouts and presets behind the pivot designer, and the pure functions that change a layout.
 

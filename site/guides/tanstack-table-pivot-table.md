@@ -218,7 +218,7 @@ export function useRevenuePivotTable() {
 }
 ```
 
-Render the result as any tree table: `row.depth` for the indent, `row.getToggleExpandedHandler()` on the first cell. Register more features, such as sorting, the same way as for any TanStack table. The [pivot in your own table example](../examples/#/12-pivot-in-tanstack) has the full component.
+Render the result as any tree table: `row.depth` for the indent, `row.getToggleExpandedHandler()` on the first cell. The value columns come with a `cell` that formats each number, so `<table.FlexRender cell={cell} />` shows `4,701.35`, not `4701.349999999999`; give the measure a `format` for currency (rowpine 1.0.3 and later). Register more features, such as sorting, the same way as for any TanStack table. The [pivot in your own table example](../examples/#/12-pivot-in-tanstack) has the full component.
 
 ## License
 

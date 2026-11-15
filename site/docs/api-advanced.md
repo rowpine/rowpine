@@ -1,4 +1,4 @@
-# Low-level API (rowpine 1.0.2)
+# Low-level API (rowpine 1.0.3)
 
 The pieces the exporters are built from: reading a table into a sheet, and building files without saving them.
 

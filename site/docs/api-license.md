@@ -1,4 +1,4 @@
-# License (rowpine 1.0.2)
+# License (rowpine 1.0.3)
 
 Set the license key and read what it covers. The check runs in the browser and makes no network calls.
 

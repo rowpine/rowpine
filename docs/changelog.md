@@ -6,6 +6,12 @@ description: What changed in each version of the rowpine package.
 ---
 Every version of the `rowpine` npm package, newest first. The components from the shadcn registry are source in your project and change only when you add them again.
 
+## 1.0.3
+
+Released 2026-11-15.
+
+- **Fixed:** a pivot from `createPivot` rendered in your own TanStack table showed raw numbers, such as `4701.349999999999`. The value columns now carry a `cell` that formats them with the measure's `format`, or rounds to two decimals with thousands separators. The `PivotTable` component and the exports were not affected.
+
 ## 1.0.2
 
 Released 2026-11-15.

@@ -56,7 +56,7 @@
 <!-- guides:end -->
 
 <!-- api:start -->
-## API reference (rowpine 1.0.2)
+## API reference (rowpine 1.0.3)
 
 - [Export functions](https://rowpine.com/docs/api-export.md): Write a TanStack table to Excel, PDF or CSV, the options each export takes, and the colors from your theme.
 - [Column settings](https://rowpine.com/docs/api-columns.md): Per-column export settings, read from meta.rowpine on your TanStack column definitions.
