@@ -65,6 +65,7 @@
     <nav class="main" aria-label="Main">
       <a href="../examples/">Demos</a>
       <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../guides/" class="hide-sm">Guides</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../license.html" class="hide-sm">License</a>
     </nav>
@@ -91,7 +92,7 @@ await exportPdf(table, { fileName: &quot;orders&quot;, title: &quot;Orders&quot;
 </code></pre>
 <p>Wide tables fit the page: with more than 8 columns the page turns landscape, the text shrinks down to three quarters of its size if needed, and past that the columns split over several pages with the first column repeated. <code>fit</code> and <code>repeatColumns</code> change this; see <a href="pdf-page-setup.html">page setup</a>.</p>
 <p>Cell text comes from each column&#39;s <code>meta.rowpine.format</code>, else numbers and dates in the browser&#39;s locale. See <a href="number-and-date-formats.html">number and date formats</a>.</p>
-<h2>Languages</h2>
+<h2 id="languages">Languages</h2>
 <p>The default font, Roboto, has no Chinese, Japanese, Korean, Arabic, Hebrew, Thai or Indic letters. For those, pass a font that covers them and Latin:</p>
 <pre><code class="language-ts">await exportPdf(table, {
   font: { name: &quot;Noto&quot;, normal: notoRegularBase64, bold: notoBoldBase64 },
@@ -116,6 +117,7 @@ await exportPdf(table, { fileName: &quot;orders&quot;, title: &quot;Orders&quot;
       <div>
         <h4>Product</h4>
         <a href="../examples/">Demos</a>
+        <a href="../guides/">Guides</a>
         <a href="../pricing.html">Pricing</a>
         <a href="../license.html">License</a>
         <a href="../security.html">Security</a>

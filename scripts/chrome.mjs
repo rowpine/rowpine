@@ -17,6 +17,7 @@ const MOON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 const NAV = [
   ['examples/', 'Demos', 'demos'],
   ['docs/', 'Docs', 'docs'],
+  ['guides/', 'Guides', 'guides'],
   ['pricing.html', 'Pricing', 'pricing'],
   ['license.html', 'License', 'license'],
 ]
@@ -28,7 +29,7 @@ export const THEME_HEAD = `<script>
 
 export function header({ base = '', current = '' } = {}) {
   const links = NAV.map(([href, label, key]) => {
-    const cls = key === 'license' ? ' class="hide-sm"' : ''
+    const cls = key === 'license' || key === 'guides' ? ' class="hide-sm"' : ''
     const cur = key === current ? ' aria-current="page"' : ''
     return `<a href="${base}${href}"${cls}${cur}>${label}</a>`
   }).join('\n      ')
@@ -62,6 +63,7 @@ export function footer({ base = '' } = {}) {
       <div>
         <h4>Product</h4>
         ${a('examples/', 'Demos')}
+        ${a('guides/', 'Guides')}
         ${a('pricing.html', 'Pricing')}
         ${a('license.html', 'License')}
         ${a('security.html', 'Security')}

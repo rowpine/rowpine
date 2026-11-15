@@ -72,6 +72,11 @@ const CSS = `
     article h1 { font-size:26px; }
   }`
 
+// Headings get ids so other pages can link to a section.
+const withIds = (html) =>
+  html.replace(/<h([23])>([\s\S]*?)<\/h\1>/g, (_, n, text) =>
+    `<h${n} id="${text.toLowerCase().replace(/<[^>]+>/g, '').replace(/&[a-z]+;/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}">${text}</h${n}>`)
+
 function sidebar(current) {
   return SECTIONS.map((s) => {
     const items = topics.filter((t) => t.section === s)
@@ -131,7 +136,7 @@ topics.forEach((t, i) => {
     <img src="img/${t.image}" alt="${esc(t.alt)}" loading="lazy">
     <figcaption>${esc(t.alt)}. <a href="../examples/#/${t.example}">Open the live example</a></figcaption>
   </figure>
-  ${marked.parse(t.body)}
+  ${withIds(marked.parse(t.body))}
   <p><a class="live" href="../examples/#/${t.example}">Live example and source</a></p>
   <nav class="pager" aria-label="Previous and next topic">
     <span>${prev ? `<a href="${prev.slug}.html">&larr; ${esc(prev.title)}</a>` : ''}</span>

@@ -29,6 +29,7 @@ Keep `config` stable (module scope or `useMemo`); `usePivot` recomputes when it 
 | `rows` | Fields down the side, outermost first. |
 | `cols` | Fields across the top, outermost first. |
 | `values` | Measures: `field`, `agg`, `label`, `format`. Several measures sit side by side. |
+| `rowHeader` | Header of the first column. Default: the row fields joined with ` / `. |
 | `rowSubtotals` | Group rows carry subtotals. Default true. |
 | `grandTotalRow`, `grandTotalCol` | Grand totals. Default true. |
 | `rowSort`, `colSort` | `(a, b, level) => number` to order the values on an axis. Default: alphabetical, numbers in order. |

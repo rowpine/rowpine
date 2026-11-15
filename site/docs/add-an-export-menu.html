@@ -65,6 +65,7 @@
     <nav class="main" aria-label="Main">
       <a href="../examples/">Demos</a>
       <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../guides/" class="hide-sm">Guides</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../license.html" class="hide-sm">License</a>
     </nav>
@@ -92,7 +93,7 @@ const table = useTable({ features, columns, data })
 &lt;ExportMenu table={table} fileName=&quot;orders&quot; pdfTitle=&quot;Orders&quot; /&gt;
 </code></pre>
 <p>The menu offers Excel, PDF and CSV. Each file holds what the user is looking at: the visible columns in their order, every row that passes the current filter (on every page, not just the one on screen), in the current sort, with groups in place.</p>
-<h2>Props</h2>
+<h2 id="props">Props</h2>
 <table>
 <thead>
 <tr>
@@ -152,6 +153,7 @@ const table = useTable({ features, columns, data })
       <div>
         <h4>Product</h4>
         <a href="../examples/">Demos</a>
+        <a href="../guides/">Guides</a>
         <a href="../pricing.html">Pricing</a>
         <a href="../license.html">License</a>
         <a href="../security.html">Security</a>

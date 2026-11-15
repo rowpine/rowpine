@@ -65,6 +65,7 @@
     <nav class="main" aria-label="Main">
       <a href="../examples/">Demos</a>
       <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../guides/" class="hide-sm">Guides</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../license.html" class="hide-sm">License</a>
     </nav>
@@ -112,7 +113,7 @@ await exportXlsx(table, { fileName: &quot;orders&quot;, sheetName: &quot;Orders&
 </tr>
 </tbody></table>
 <p>Plus the shared options: <code>fileName</code>, <code>rows</code>, <code>rowStyle</code>, <code>download</code>.</p>
-<h2>Dates stored as strings</h2>
+<h2 id="dates-stored-as-strings">Dates stored as strings</h2>
 <p>A date only becomes an Excel date when the cell value is a <code>Date</code>. If your data has ISO strings, convert them in the accessor (<code>accessorFn: (r) =&gt; new Date(r.date)</code>), or they export as text.</p>
 
   <p><a class="live" href="../examples/#/01-export-menu">Live example and source</a></p>
@@ -132,6 +133,7 @@ await exportXlsx(table, { fileName: &quot;orders&quot;, sheetName: &quot;Orders&
       <div>
         <h4>Product</h4>
         <a href="../examples/">Demos</a>
+        <a href="../guides/">Guides</a>
         <a href="../pricing.html">Pricing</a>
         <a href="../license.html">License</a>
         <a href="../security.html">Security</a>

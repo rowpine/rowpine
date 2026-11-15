@@ -65,6 +65,7 @@
     <nav class="main" aria-label="Main">
       <a href="../examples/">Demos</a>
       <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../guides/" class="hide-sm">Guides</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../license.html" class="hide-sm">License</a>
     </nav>
@@ -90,13 +91,13 @@ npx shadcn add https://rowpine.com/r/export-menu.json
 npx shadcn add https://rowpine.com/r/pivot.json
 </code></pre>
 <p><code>export-menu</code> installs <code>components/export-menu.tsx</code>. <code>pivot</code> installs <code>components/pivot-table.tsx</code> and <code>components/pivot-designer.tsx</code>. Both pull in the shadcn components they use (button, dropdown-menu, table, popover and so on) if you do not have them yet.</p>
-<h2>Requirements</h2>
+<h2 id="requirements">Requirements</h2>
 <ul>
 <li>React 18 or 19 and a shadcn/ui project. Both shadcn bases work: Base UI, the default for new projects, and Radix.</li>
 <li>TanStack Table v8 (<code>useReactTable</code>) or v9 (<code>useTable</code>). Rowpine reads the table you pass it and does not add TanStack as a dependency, so installing it never changes your TanStack version.</li>
 </ul>
 <p>The Excel writer (JSZip) and the PDF writer (pdfmake) load the first time someone exports, so they do not add to your initial bundle.</p>
-<h2>Next</h2>
+<h2 id="next">Next</h2>
 <p>Add the <a href="add-an-export-menu.html">export menu</a> to a table, then set your <a href="license-keys.html">license key</a>.</p>
 
   <p><a class="live" href="../examples/#/01-export-menu">Live example and source</a></p>
@@ -116,6 +117,7 @@ npx shadcn add https://rowpine.com/r/pivot.json
       <div>
         <h4>Product</h4>
         <a href="../examples/">Demos</a>
+        <a href="../guides/">Guides</a>
         <a href="../pricing.html">Pricing</a>
         <a href="../license.html">License</a>
         <a href="../security.html">Security</a>

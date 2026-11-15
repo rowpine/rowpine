@@ -65,6 +65,7 @@
     <nav class="main" aria-label="Main">
       <a href="../examples/">Demos</a>
       <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../guides/" class="hide-sm">Guides</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../license.html" class="hide-sm">License</a>
     </nav>
@@ -90,9 +91,9 @@
 
 setLicenseKey(import.meta.env.VITE_ROWPINE_KEY)
 </code></pre>
-<h2>Without a key</h2>
+<h2 id="without-a-key">Without a key</h2>
 <p>Nothing is blocked. Exports and pivots work, the Excel and PDF files carry one notice line at the end (the image shows it on row 6), and the browser console logs a message once per page load.</p>
-<h2>How a key works</h2>
+<h2 id="how-a-key-works">How a key works</h2>
 <p>A key is checked in the browser against a public key in the package. It never calls a server.</p>
 <p>A key covers every Rowpine version released during its year of updates, and keeps working with those versions for good. A version released after the update year still runs; it shows the notice until you renew. To check what a key covers:</p>
 <pre><code class="language-ts">import { getLicenseStatus } from &quot;rowpine&quot;
@@ -120,6 +121,7 @@ const status = await getLicenseStatus()
       <div>
         <h4>Product</h4>
         <a href="../examples/">Demos</a>
+        <a href="../guides/">Guides</a>
         <a href="../pricing.html">Pricing</a>
         <a href="../license.html">License</a>
         <a href="../security.html">Security</a>

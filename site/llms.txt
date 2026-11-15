@@ -43,3 +43,11 @@
 - [Presets and saved views](https://rowpine.com/docs/presets-and-saved-views.md): A designer layout is plain JSON:
 - [Export a pivot](https://rowpine.com/docs/exporting-a-pivot.md): A pivot exports like any table. pivot.table is a table view of the pivot for the exporters:
 <!-- docs:end -->
+
+<!-- guides:start -->
+## Guides
+
+- [Export TanStack Table to Excel with grouped rows](https://rowpine.com/guides/export-tanstack-table-to-excel-with-grouped-rows.md): Groups become Excel outline levels and group totals become SUBTOTAL formulas, from the table you already render.
+- [TanStack Table pivot table](https://rowpine.com/guides/tanstack-table-pivot-table.md): A cross-tab from flat rows, a pivot designer for end users, and an Excel export with outline levels.
+- [shadcn data table export to PDF](https://rowpine.com/guides/shadcn-data-table-export-to-pdf.md): An export menu on the shadcn payments table, then a PDF report with a title, headline numbers and page setup.
+<!-- guides:end -->

@@ -65,6 +65,7 @@
     <nav class="main" aria-label="Main">
       <a href="../examples/">Demos</a>
       <a href="../docs/" aria-current="page">Docs</a>
+      <a href="../guides/" class="hide-sm">Guides</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../license.html" class="hide-sm">License</a>
     </nav>
@@ -100,7 +101,7 @@ const pivot = usePivot(orders, config)
 &lt;PivotTable pivot={pivot} /&gt;
 </code></pre>
 <p>Keep <code>config</code> stable (module scope or <code>useMemo</code>); <code>usePivot</code> recomputes when it changes.</p>
-<h2>Config</h2>
+<h2 id="config">Config</h2>
 <table>
 <thead>
 <tr>
@@ -119,6 +120,10 @@ const pivot = usePivot(orders, config)
 <tr>
 <td><code>values</code></td>
 <td>Measures: <code>field</code>, <code>agg</code>, <code>label</code>, <code>format</code>. Several measures sit side by side.</td>
+</tr>
+<tr>
+<td><code>rowHeader</code></td>
+<td>Header of the first column. Default: the row fields joined with <code>/</code>.</td>
 </tr>
 <tr>
 <td><code>rowSubtotals</code></td>
@@ -152,6 +157,7 @@ const pivot = usePivot(orders, config)
       <div>
         <h4>Product</h4>
         <a href="../examples/">Demos</a>
+        <a href="../guides/">Guides</a>
         <a href="../pricing.html">Pricing</a>
         <a href="../license.html">License</a>
         <a href="../security.html">Security</a>
