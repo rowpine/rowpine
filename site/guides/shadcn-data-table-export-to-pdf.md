@@ -115,7 +115,8 @@ Pick PDF and the browser saves `payments.pdf`. What it holds:
 - **Every filtered row, not just the page.** The table shows 10 payments per page; the PDF has all 60. Type in the email filter first and the PDF has only the matches, in the current sort.
 - **The visible columns, in order.** Hide a column with the Columns menu and it leaves the PDF too.
 - **Selected rows, when asked.** Once rows are selected, the menu shows a "Selected rows only" option.
-- **Pages that read on paper.** The header row repeats on every page, rows are striped, and the footer has the date and "Page 1 of 2".
+- **Your table's colors.** The menu reads your shadcn theme, so the PDF has the same plain header, row lines and muted group rows as the table on screen.
+- **Pages that read on paper.** The header row repeats on every page, and the footer has the date and "Page 1 of 2".
 
 ## Turn it into a report
 
@@ -132,7 +133,7 @@ import {
   type SortingState,
 } from "@tanstack/react-table"
 import { FileText } from "lucide-react"
-import { exportPdf, type PdfTableExportOptions } from "rowpine"
+import { exportPdf, exportThemeFromPage, type PdfTableExportOptions } from "rowpine"
 
 import { ExportMenu } from "@/components/export-menu"
 ```
@@ -149,7 +150,7 @@ interface DataTableProps<TData extends RowData> {
 ```tsx
 // in the toolbar
 {report && (
-  <Button variant="outline" onClick={() => exportPdf(table, report)}>
+  <Button variant="outline" onClick={() => exportPdf(table, { ...exportThemeFromPage().pdf, ...report })}>
     <FileText />
     Download report
   </Button>
@@ -188,7 +189,6 @@ export default function PaymentsPage() {
             },
           ],
           pageSize: "LETTER",
-          headerColor: "#18181b",
           watermark: "INTERNAL",
         }}
       />
@@ -206,11 +206,11 @@ export default function PaymentsPage() {
 | `watermark` | Large faint text on every page, or `{ text, color, opacity }`. |
 | `pageSize` | `A4` (default), `A3`, `A5`, `LETTER` or `LEGAL`. |
 | `pageOrientation` | `portrait` or `landscape`. Tables with more than 8 columns turn landscape on their own. |
-| `headerColor` | Fill of the header row. |
+| `headerColor` | Fill of the header row. Default none, as in the table. |
 | `logo` | An image data URL above the title. |
 | `rows` | `"all"` (default), `"page"` or `"selected"`. |
 
-Because the button passes the live table, the report follows the screen like the menu does: type in the email filter and the report lists only the matches.
+`exportThemeFromPage()` gives the report the same colors as the table, as the menu does. Because the button passes the live table, the report also follows the screen: type in the email filter and the report lists only the matches.
 
 ## Wide tables and other languages
 

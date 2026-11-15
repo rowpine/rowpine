@@ -28,7 +28,7 @@
 - [Tree data](https://rowpine.com/docs/tree-data.md): Rows nested with getSubRows export with their hierarchy.
 - [Tree data in Excel](https://rowpine.com/docs/tree-data-in-excel.md): In Excel, tree rows get one outline level per depth. In the image, Platform, Web and Data are level 1 under Engineering, and Analytics and Pipelines are level 2 under Data.
 - [Headers and column widths](https://rowpine.com/docs/headers-and-widths.md): The header row is built from your column definitions:
-- [Export to PDF](https://rowpine.com/docs/export-to-pdf.md): exportPdf lays the table out on pages: the header row repeats on every page, rows are striped, and the footer shows the date and "Page X of Y".
+- [Export to PDF](https://rowpine.com/docs/export-to-pdf.md): exportPdf lays the table out on pages: the header row repeats on every page, rows are separated by light lines, and the footer shows the date and "Page X of Y". The PDF looks like a shadcn/ui table:
 - [PDF page setup](https://rowpine.com/docs/pdf-page-setup.md): Page size, orientation, margins and how a wide table fits the page are all options of exportPdf.
 - [Title, headline numbers and watermark](https://rowpine.com/docs/pdf-title-kpis-watermark.md): A PDF report usually needs more than the table. These options go above it:
 - [Groups in a PDF](https://rowpine.com/docs/pdf-grouped-rows.md): Grouped tables print their group rows bold on a light fill, with their aggregates, above the rows they group. Nested groups and tree rows are indented in the first column, one step per level.
@@ -58,7 +58,7 @@
 <!-- api:start -->
 ## API reference (rowpine 1.0.2)
 
-- [Export functions](https://rowpine.com/docs/api-export.md): Write a TanStack table to Excel, PDF or CSV, and the options each export takes.
+- [Export functions](https://rowpine.com/docs/api-export.md): Write a TanStack table to Excel, PDF or CSV, the options each export takes, and the colors from your theme.
 - [Column settings](https://rowpine.com/docs/api-columns.md): Per-column export settings, read from meta.rowpine on your TanStack column definitions.
 - [Pivot](https://rowpine.com/docs/api-pivot.md): Build a pivot from flat rows: the config, the measures, and the result you render or export.
 - [Pivot designer state](https://rowpine.com/docs/api-designer.md): The fields, layouts and presets behind the pivot designer, and the pure functions that change a layout.

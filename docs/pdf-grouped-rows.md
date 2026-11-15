@@ -21,5 +21,5 @@ helper.accessor("amount", {
 Set the group row fill with `subtotalColor`:
 
 ```ts
-await exportPdf(table, { subtotalColor: "#eef2f0" })
+await exportPdf(table, { subtotalColor: "#eef2f0" }) // default #f4f4f5, or your theme's --muted
 ```

@@ -231,7 +231,7 @@ Useful options:
 | `fileName` | File name without the extension. |
 | `sheetName` | Worksheet name. Default `Sheet1`. |
 | `rows` | `"all"` (default), `"page"` for the current page only, or `"selected"` for selected rows. |
-| `groupFill` | Fill color of the group rows. |
+| `groupFill` | Fill color of the group rows. The export menu uses your theme's muted color. |
 | `download` | `false` to get the `Blob` back without saving it, for example to upload it. |
 
 ## TanStack Table v8

@@ -3,10 +3,10 @@ title: Export to PDF
 section: PDF
 order: 17
 image: export-to-pdf.png
-alt: The first page of an exported orders PDF with a dark header row and striped rows
+alt: The first page of an exported orders PDF with a plain header row and light row lines
 example: 01-export-menu
 ---
-`exportPdf` lays the table out on pages: the header row repeats on every page, rows are striped, and the footer shows the date and "Page X of Y".
+`exportPdf` lays the table out on pages: the header row repeats on every page, rows are separated by light lines, and the footer shows the date and "Page X of Y". The PDF looks like a shadcn/ui table: no header fill, no stripes, group rows in the muted gray. See [colors](#colors) to match your own theme.
 
 ```ts
 import { exportPdf } from "rowpine"
@@ -29,3 +29,20 @@ await exportPdf(table, {
 ```
 
 Each file is the font's base64 data or a URL.
+
+## Colors
+
+`ExportMenu` reads your shadcn/ui theme from the page (`--foreground`, `--muted` and `--border`) and gives the PDF and Excel files the same colors as the table. Pass `theme="none"` to keep rowpine's defaults.
+
+From your own buttons, read the theme with `exportThemeFromPage` and spread it into the options:
+
+```ts
+import { exportPdf, exportThemeFromPage, exportXlsx } from "rowpine"
+
+const theme = exportThemeFromPage()
+await exportPdf(table, { ...theme.pdf, title: "Orders" })
+await exportXlsx(table, { ...theme.xlsx, fileName: "orders" })
+```
+
+A dark theme is not copied: files print on white, so the light defaults read better. Any color option you pass, such as `headerColor`, wins over the theme. See [PDF page setup](pdf-page-setup.html) for the full list.
+

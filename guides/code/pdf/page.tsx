@@ -28,7 +28,6 @@ export default function PaymentsPage() {
             },
           ],
           pageSize: "LETTER",
-          headerColor: "#18181b",
           watermark: "INTERNAL",
         }}
       />

@@ -11,8 +11,8 @@ export const API_PAGES = [
   {
     slug: 'api-export',
     title: 'Export functions',
-    lead: 'Write a TanStack table to Excel, PDF or CSV, and the options each export takes.',
-    names: ['exportXlsx', 'exportPdf', 'exportCsv', 'tableToCsv', 'XlsxExportOptions', 'PdfTableExportOptions', 'PdfExportOptions', 'CsvExportOptions', 'RowScope', 'PdfPageSize', 'PdfFont', 'saveBlob'],
+    lead: 'Write a TanStack table to Excel, PDF or CSV, the options each export takes, and the colors from your theme.',
+    names: ['exportXlsx', 'exportPdf', 'exportCsv', 'tableToCsv', 'XlsxExportOptions', 'PdfTableExportOptions', 'PdfExportOptions', 'CsvExportOptions', 'RowScope', 'PdfPageSize', 'PdfFont', 'saveBlob', 'exportThemeFromPage', 'exportThemeFrom', 'ExportTheme', 'ThemeColors', 'luminance'],
   },
   {
     slug: 'api-columns',

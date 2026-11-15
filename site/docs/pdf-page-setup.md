@@ -26,6 +26,6 @@ await exportPdf(table, {
 | `showPageNumbers` | The date and page footer. Default true. |
 | `labels` | `{ page: (p, n) => string, date: (d) => string }` for another language. |
 
-Colors: `headerColor`, `headerTextColor`, `zebra`, `zebraColor`, `textColor`, `borderColor`, and `subtotalColor` for group rows.
+Colors: `headerColor` (default none), `headerTextColor`, `textColor`, `borderColor`, `subtotalColor` for group rows, `zebra` and `zebraColor` for stripes (off by default), and `verticalLines` for lines between columns (off by default). The defaults look like a shadcn/ui table; [export to PDF](export-to-pdf.html#colors) shows how to take your theme's colors instead.
 
 Live example: https://rowpine.com/examples/#/07-pdf-report

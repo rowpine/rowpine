@@ -11,7 +11,7 @@ import {
   type SortingState,
 } from "@tanstack/react-table"
 import { FileText } from "lucide-react"
-import { exportPdf, type PdfTableExportOptions } from "rowpine"
+import { exportPdf, exportThemeFromPage, type PdfTableExportOptions } from "rowpine"
 
 import { ExportMenu } from "@/components/export-menu"
 // #endregion imports
@@ -95,7 +95,7 @@ export function DataTable<TData extends RowData>({
           </DropdownMenuContent>
         </DropdownMenu>
         {report && (
-          <Button variant="outline" onClick={() => exportPdf(table, report)}>
+          <Button variant="outline" onClick={() => exportPdf(table, { ...exportThemeFromPage().pdf, ...report })}>
             <FileText />
             Download report
           </Button>

@@ -18,7 +18,7 @@ await exportXlsx(table, { fileName: "orders", sheetName: "Orders" })
 | Option | What it does |
 |---|---|
 | `sheetName` | Worksheet name. Default `Sheet1`. |
-| `groupFill` | Fill of group rows. Default `#eef2f0`. |
+| `groupFill` | Fill of group rows. Default `#f4f4f5`; `ExportMenu` uses your theme's `--muted`. |
 
 Plus the shared options: `fileName`, `rows`, `rowStyle`, `download`.
 

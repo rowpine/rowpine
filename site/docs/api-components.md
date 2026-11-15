@@ -10,7 +10,7 @@ are ignored. A "Selected rows only" checkbox appears when the table has
 selected rows, or as `allowSelectedOnly` says.
 ```ts
 ExportMenu(
-  { table, fileName, pdfTitle, formats, rowStyle, allowSelectedOnly, onError, label, className, }: ExportMenuProps,
+  { table, fileName, pdfTitle, formats, rowStyle, allowSelectedOnly, onError, label, className, theme, pdfOptions, xlsxOptions, }: ExportMenuProps,
 ) => any
 ```
 - `__0`: `ExportMenuProps` See `ExportMenuProps`.
@@ -28,6 +28,10 @@ Props of `ExportMenu`.
 - `onError` (optional): `((error: unknown) => void)` Called when an export fails. Default: console.error.
 - `label` (optional): `string` Button text. Default 'Export'.
 - `className` (optional): `string` Classes added to the trigger button.
+- `theme` (optional): `"page" | "none"` Colors for the Excel and PDF files. "page" (default) reads your shadcn/ui
+theme, so the files look like the table; "none" keeps rowpine's defaults.
+- `pdfOptions` (optional): `PdfTableExportOptions` More PDF options, such as `pageSize` or `kpis`. They win over the theme colors.
+- `xlsxOptions` (optional): `XlsxExportOptions` More Excel options, such as `sheetName`. They win over the theme colors.
 
 ## PivotTable (component)
 

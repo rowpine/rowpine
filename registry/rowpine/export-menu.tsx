@@ -5,10 +5,13 @@ import { ChevronDown, Download, FileSpreadsheet, FileText, Sheet } from "lucide-
 import {
   exportCsv,
   exportPdf,
+  exportThemeFromPage,
   exportXlsx,
   type CellStyle,
+  type PdfTableExportOptions,
   type RowScope,
   type TableLike,
+  type XlsxExportOptions,
 } from "rowpine"
 
 import { cn } from "@/lib/utils"
@@ -46,6 +49,15 @@ export type ExportMenuProps = {
   label?: string
   /** Classes added to the trigger button. */
   className?: string
+  /**
+   * Colors for the Excel and PDF files. "page" (default) reads your shadcn/ui
+   * theme, so the files look like the table; "none" keeps rowpine's defaults.
+   */
+  theme?: "page" | "none"
+  /** More PDF options, such as `pageSize` or `kpis`. They win over the theme colors. */
+  pdfOptions?: PdfTableExportOptions
+  /** More Excel options, such as `sheetName`. They win over the theme colors. */
+  xlsxOptions?: XlsxExportOptions
 }
 
 const ITEMS: Record<Format, { label: string; icon: React.ComponentType<{ className?: string }> }> = {
@@ -71,6 +83,9 @@ export function ExportMenu({
   onError = (e) => console.error(e),
   label = "Export",
   className,
+  theme = "page",
+  pdfOptions,
+  xlsxOptions,
 }: ExportMenuProps) {
   const [busy, setBusy] = React.useState<Format | null>(null)
   const [selectedOnly, setSelectedOnly] = React.useState(false)
@@ -82,8 +97,9 @@ export function ExportMenu({
     if (busy) return
     setBusy(format)
     try {
-      if (format === "xlsx") await exportXlsx(table, { fileName, rows, rowStyle })
-      else if (format === "pdf") await exportPdf(table, { fileName, rows, rowStyle, title: pdfTitle })
+      const colors = theme === "page" ? exportThemeFromPage() : { pdf: {}, xlsx: {} }
+      if (format === "xlsx") await exportXlsx(table, { ...colors.xlsx, fileName, rows, rowStyle, ...xlsxOptions })
+      else if (format === "pdf") await exportPdf(table, { ...colors.pdf, fileName, rows, rowStyle, title: pdfTitle, ...pdfOptions })
       else await exportCsv(table, { fileName, rows })
     } catch (error) {
       onError(error)
