@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="site.css">
 <script src="analytics.js" defer></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Rowpine","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Pivot tables, a pivot designer, and Excel and PDF export for TanStack Table and shadcn/ui.","url":"https://rowpine.com/","publisher":{"@type":"Organization","name":"jQWidgets LTD"},"offers":[{"@type":"Offer","name":"Developer","price":"149.00","priceCurrency":"USD"},{"@type":"Offer","name":"Team","price":"499.00","priceCurrency":"USD"}]}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Rowpine","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Pivot tables, a pivot designer, and Excel and PDF export for TanStack Table and shadcn/ui.","url":"https://rowpine.com/","publisher":{"@type":"Organization","name":"jQWidgets LTD"},"offers":[{"@type":"Offer","name":"Indie","price":"29.00","priceCurrency":"USD"},{"@type":"Offer","name":"Developer","price":"149.00","priceCurrency":"USD"},{"@type":"Offer","name":"Team","price":"499.00","priceCurrency":"USD"}]}
 </script>
 </head>
 <body>
@@ -75,17 +75,36 @@
   .home pre.code .k { color: var(--brand); font-weight: 500; }
   .home pre.code .s { color: #9a4b16; }
   :root[data-theme="dark"] .home pre.code .s { color: #f0b183; }
+  .wrap-wide { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .try h2 { margin-top: 44px; }
+  .try > p { max-width: 720px; }
+  .live-demo { margin: 18px 0 0; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; background: #fff; }
+  .live-demo iframe { display: block; width: 100%; height: 640px; border: 0; background: #fff; }
+  .try .caption { margin-top: 10px; font-size: 15px; color: var(--muted); }
 </style>
 <main class="home">
   <article class="wrap-narrow">
     <h1>Excel, PDF and pivot tables for TanStack Table</h1>
     <p class="lede">Rowpine is an npm package. You give it your TanStack Table instance (v8 or v9) and it writes an Excel, PDF or CSV file of the table as the user has it on screen: their filters, sort order, grouped rows, hidden and pinned columns. It also has a pivot engine and a pivot designer for shadcn/ui.</p>
-    <p>CSV export is free. Excel, PDF and the pivot work without a license key too, and each file gets one notice line at the bottom. A license removes that line: <a href="pricing.html">$149 per developer</a>, paid once.</p>
+    <p>CSV export is free. Excel, PDF and the pivot work without a license key too, and each file gets one notice line at the bottom. A license removes that line, paid once: <a href="pricing.html">$29</a> if you work on your own or your company earns under $1M a year, $149 per developer otherwise.</p>
     <div class="row-actions">
       <code class="cmd">npm install rowpine</code>
       <a class="btn primary" href="examples/">Try the demos</a>
       <a class="btn ghost" href="docs/">Docs</a>
     </div>
+  </article>
+
+  <section class="try wrap-wide" aria-labelledby="try">
+    <h2 id="try">Try it</h2>
+    <p>This is the pivot designer running on this page, not a video. Follow the balloons, or drag the fields yourself.</p>
+    <figure class="live-demo">
+      <iframe id="tour" src="examples/tour.html" title="Live pivot designer with a guided tour" loading="eager"></iframe>
+      <noscript><img src="docs/img/fields-and-wells.png" alt="The Rowpine pivot designer: a field list, Filters, Columns, Rows and Values wells, and a pivot of sales by region, country and quarter" width="984" height="736"></noscript>
+    </figure>
+    <p class="caption">The same component with its source is in the <a href="examples/#/09-pivot-designer">demos</a>.</p>
+  </section>
+
+  <article class="wrap-narrow">
 
     <h2 id="excel">What the Excel file looks like</h2>
     <figure class="shot">
@@ -116,11 +135,11 @@
     </ul>
 
     <h2 id="who">Who makes it</h2>
-    <p>Rowpine is made by jQWidgets LTD. We have built data grids since 2011, starting with jqxGrid, and our components are used by more than 5,000 customers. The export and pivot code in Rowpine started in our Svelte grid, <a href="https://svgrid.com/">SvGrid</a>; Rowpine is that code for TanStack Table.</p>
-    <p>Questions and bug reports go to <a href="mailto:info@jqwidgets.com">info@jqwidgets.com</a> or <a href="https://github.com/rowpine/rowpine/issues">GitHub issues</a>, and the people who write the code answer them. The <a href="docs/changelog.html">changelog</a> lists every release and what it fixed.</p>
+    <p>I'm Boyko Markov, and I make Rowpine at jQWidgets LTD. We have built data grids since 2011, starting with jqxGrid, and our components are used by more than 5,000 customers. The export and pivot code in Rowpine started in jqxGrid; Rowpine is that code for TanStack Table.</p>
+    <p>Questions and bug reports go to <a href="mailto:support@jqwidgets.com?subject=Rowpine">support@jqwidgets.com</a> or <a href="https://github.com/rowpine/rowpine/issues">GitHub issues</a>, and the people who write the code answer them. The <a href="docs/changelog.html">changelog</a> lists every release and what it fixed.</p>
 
     <h2 id="price">Price</h2>
-    <p>Free for CSV, and free to try everything else with the notice line. Developer: $149 once, for one developer. Team: $499 once, for up to 10 developers in one company. Both include a year of updates, and the versions released in that year are yours to keep. Use it in any number of apps, with no fees for your users. Details are on the <a href="pricing.html">pricing page</a> and in the <a href="license.html">license</a>.</p>
+    <p>Free for CSV, and free to try everything else with the notice line. Indie: $29 once, for one developer working on their own or at a company with under $1M yearly revenue. Developer: $149 once, for one developer. Team: $499 once, for up to 10 developers in one company. All three include a year of updates, and the versions released in that year are yours to keep. Use it in any number of apps, with no fees for your users. Details are on the <a href="pricing.html">pricing page</a> and in the <a href="license.html">license</a>.</p>
   </article>
 </main>
 
@@ -180,5 +199,12 @@
   }
 </script>
 <!-- /footer -->
+<script>
+  // The tour page reports its height so the frame never needs a scrollbar.
+  addEventListener('message', (e) => {
+    if (e.origin !== location.origin || e.data?.type !== 'rowpine-tour-height') return
+    document.getElementById('tour').style.height = Math.max(400, Math.ceil(e.data.height)) + 'px'
+  })
+</script>
 </body>
 </html>

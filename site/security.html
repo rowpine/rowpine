@@ -16,17 +16,13 @@
 <link rel="stylesheet" href="site.css">
 <script src="analytics.js" defer></script>
 <style>
-  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 8px; }
-  .fact { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; background: var(--surface); }
-  .fact b { display: block; font-size: 28px; font-weight: 650; letter-spacing: -0.03em; line-height: 1.1; color: var(--fg); }
-  .fact span { color: var(--muted); font-size: 14px; }
   .prose table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 12px 0 8px; }
   .prose th, .prose td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
   .prose th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
   .prose td { color: var(--muted); }
   .prose td:first-child { color: var(--fg); font-family: "Geist Mono", ui-monospace, monospace; font-size: 13.5px; white-space: nowrap; }
   .prose ul { padding-left: 20px; }
-  @media (max-width: 640px) { .facts { grid-template-columns: 1fr; } .prose td:first-child { white-space: normal; } }
+  @media (max-width: 640px) { .prose td:first-child { white-space: normal; } }
 </style>
 </head>
 <body>
@@ -58,20 +54,13 @@
 <main>
   <div class="page-head">
     <div class="wrap">
-      <span class="label">Security</span>
       <h1>Security and data handling</h1>
-      <p class="lead">The facts a vendor review asks for, in one page. Each one can be checked in the published package.</p>
+      <p class="lead">What the package does with your data, what it depends on, and how the license check works. You can check each point in the published package.</p>
     </div>
   </div>
   <div class="prose">
-    <div class="facts">
-      <div class="fact"><b>0</b><span>network calls from the package</span></div>
-      <div class="fact"><b>3</b><span>runtime dependencies</span></div>
-      <div class="fact"><b>0</b><span>install scripts</span></div>
-    </div>
-
     <h2>Where your data goes</h2>
-    <p>Nowhere. Excel, PDF and CSV files are built in the user's browser from the rows the table already holds, and saved with the browser's own download. The <code>rowpine</code> package has no telemetry and makes <b>no network calls</b>, including for the license check.</p>
+    <p>It stays in the browser. Excel, PDF and CSV files are built in the user's browser from the rows the table already holds, and saved with the browser's own download. The <code>rowpine</code> package has no telemetry and makes no network calls, including for the license check.</p>
 
     <h2>Runtime dependencies</h2>
     <p>Three, as listed in the package's <code>package.json</code>. The two file writers are loaded with a dynamic import on the first Excel or PDF export, so a page that never exports never loads them.</p>
@@ -96,7 +85,7 @@
     <p>rowpine.com is a static site on GitHub Pages and counts visits with cookieless analytics. See the <a href="privacy.html">privacy page</a>.</p>
 
     <h2>Reporting a vulnerability</h2>
-    <p>Write to <a href="mailto:info@jqwidgets.com?subject=Rowpine%20security">info@jqwidgets.com</a> with "Rowpine security" in the subject. Please include the version, the steps to reproduce, and what an attacker could do. Do not open a public issue for a security report.</p>
+    <p>Write to <a href="mailto:support@jqwidgets.com?subject=Rowpine%20security">support@jqwidgets.com</a> with "Rowpine security" in the subject. Please include the version, the steps to reproduce, and what an attacker could do. Do not open a public issue for a security report.</p>
 
     <h2>Company</h2>
     <p>Rowpine is a brand of jQWidgets LTD, which publishes the package on npm and sells the licenses.</p>

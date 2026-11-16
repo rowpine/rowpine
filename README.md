@@ -86,7 +86,7 @@ There are also [16 feature examples](https://rowpine.com/examples/#/01-export-me
 
 ## Pricing
 
-CSV export is free. Pivots and Excel and PDF export come in one Pro license: $149 per developer or $499 for a team of up to 10, paid once, with a year of updates. You keep every version released in that year. Without a key everything still runs, and Excel and PDF files carry one notice line. See [pricing](https://rowpine.com/pricing.html) and the [license](https://rowpine.com/license.html).
+CSV export is free. Pivots and Excel and PDF export come in one Pro license: $29 per developer for freelancers and companies under $1M revenue, $149 per developer otherwise, or $499 for a team of up to 10, paid once, with a year of updates. You keep every version released in that year. Without a key everything still runs, and Excel and PDF files carry one notice line. See [pricing](https://rowpine.com/pricing.html) and the [license](https://rowpine.com/license.html).
 
 ## This repository
 

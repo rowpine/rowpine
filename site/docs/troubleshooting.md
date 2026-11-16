@@ -1,6 +1,6 @@
 # Troubleshooting
 
-The problems people run into most, and what to change. If yours is not here, write to [info@jqwidgets.com](mailto:info@jqwidgets.com?subject=Rowpine) with the version from `package.json` and what you expected.
+The problems people run into most, and what to change. If yours is not here, write to [support@jqwidgets.com](mailto:support@jqwidgets.com?subject=Rowpine) with the version from `package.json` and what you expected.
 
 ## TypeScript says the table is not assignable to TableLike
 

@@ -13,6 +13,7 @@ Questions and bug reports are answered by the engineers who write Rowpine.
 | For | Where |
 |---|---|
 | Bugs and questions about using Rowpine | [GitHub issues](https://github.com/rowpine/rowpine/issues). Anyone can read them, so leave out private data. |
+| Bug reports with private details, and email support for Developer and Team licenses | [support@jqwidgets.com](mailto:support@jqwidgets.com?subject=Rowpine) |
 | Licenses, purchases, invoices and anything private | [info@jqwidgets.com](mailto:info@jqwidgets.com?subject=Rowpine) |
 | Security vulnerabilities | The [security page](../security.html) says how to report one. Do not open a public issue. |
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rowpine pricing - pay once, keep what you get</title>
-<meta name="description" content="Rowpine pricing: CSV export is free. Pivot tables, the pivot designer and Excel and PDF export are a one-time license per developer with a year of updates.">
+<title>Rowpine pricing</title>
+<meta name="description" content="Rowpine pricing: CSV export is free. Pivot tables, the pivot designer and Excel and PDF export are a one-time license per developer with a year of updates: $29 for freelancers and companies under $1M revenue, $149 otherwise.">
 <meta property="og:title" content="Rowpine pricing">
 <meta property="og:description" content="CSV export is free. Pivot tables and Excel and PDF export: one-time per developer with a year of updates.">
 <meta property="og:url" content="https://rowpine.com/pricing.html">
@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="site.css">
 <script src="analytics.js" defer></script>
 <style>
-  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
-  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; display: flex; flex-direction: column; }
+  .plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: stretch; }
+  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px; display: flex; flex-direction: column; }
   .plan.featured { border-color: var(--brand); box-shadow: var(--shadow), 0 0 0 1px var(--brand); }
   .plan h2 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
   .plan .who { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
@@ -44,7 +44,8 @@
   .faq summary { cursor: pointer; font-weight: 700; font-size: 17px; }
   .faq p { color: var(--muted); margin: 10px 0 0; }
   pre.install { background: #0c1611; color: #d4e6da; border-radius: 8px; padding: 12px 14px; font-size: 13px; overflow-x: auto; margin: 0 0 24px; }
-  @media (max-width: 920px) { .plans { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } .terms { min-height: 0; } }
+  @media (max-width: 1100px) { .plans { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .plans { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } .terms { min-height: 0; } }
 </style>
 </head>
 <body>
@@ -76,9 +77,8 @@
 <main>
   <div class="page-head center">
     <div class="wrap">
-      <span class="label">Pricing</span>
-      <h1>Pay once, keep what you get</h1>
-      <p class="lead">One payment per developer covers every Rowpine version released in the next twelve months. Those versions are yours to keep. Renew only if you want the next year of updates.</p>
+      <h1>Pricing</h1>
+      <p class="lead">CSV export is free. Excel, PDF and the pivot also work without a key, and each file then gets one notice line at the bottom. A license removes that line. You pay once per developer, and you keep every version released in the year after you buy. If you work on your own or your company earns under $1M a year, the Indie license is $29.</p>
     </div>
   </div>
 
@@ -93,10 +93,37 @@
           <ul>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>CSV export from any TanStack table</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Filtered and sorted rows, visible columns</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Try every Pro feature: it runs, with a notice line</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Excel, PDF and the pivot too, with a notice line in the file</li>
           </ul>
           <pre class="install">npm install rowpine</pre>
           <a class="btn ghost" href="docs/installation.html">Install</a>
+        </div>
+
+        <div class="plan">
+          <h2>Indie</h2>
+          <p class="who">For one developer, if you earn under $1M a year</p>
+          <div class="amount">$29 <small>one-time</small></div>
+          <p class="terms">Includes a year of updates. Renew updates for $15.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Excel, PDF and the pivot designer, every feature</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>For freelancers, and companies with under $1M yearly revenue</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Support through GitHub issues</li>
+          </ul>
+          <form class="buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="info@jqwidgets.com">
+            <input type="hidden" name="item_name" value="Rowpine Indie License (1 developer, 1 year of updates, revenue under USD 1M)">
+            <input type="hidden" name="item_number" value="RP-INDIE">
+            <input type="hidden" name="amount" value="29.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="no_shipping" value="1">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="cn" value="Company name and the developer email for the license key">
+            <input type="hidden" name="charset" value="utf-8">
+            <input type="hidden" name="return" value="https://rowpine.com/thanks.html">
+            <input type="hidden" name="cancel_return" value="https://rowpine.com/pricing.html">
+            <button type="submit" class="btn primary" data-umami-event="Checkout Indie">Buy for $29</button>
+          </form>
         </div>
 
         <div class="plan featured">
@@ -161,6 +188,21 @@
         <form class="buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="business" value="info@jqwidgets.com">
+            <input type="hidden" name="item_name" value="Rowpine Indie License renewal (1 more year of updates)">
+            <input type="hidden" name="item_number" value="RP-INDIE-RENEW">
+            <input type="hidden" name="amount" value="15.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="no_shipping" value="1">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="cn" value="Company name and the developer email for the license key">
+            <input type="hidden" name="charset" value="utf-8">
+            <input type="hidden" name="return" value="https://rowpine.com/thanks.html">
+            <input type="hidden" name="cancel_return" value="https://rowpine.com/pricing.html">
+            <button type="submit" class="btn ghost" data-umami-event="Checkout Indie renewal">Indie, $15</button>
+          </form>
+        <form class="buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="info@jqwidgets.com">
             <input type="hidden" name="item_name" value="Rowpine Developer License renewal (1 more year of updates)">
             <input type="hidden" name="item_number" value="RP-DEV-RENEW">
             <input type="hidden" name="amount" value="75.00">
@@ -189,45 +231,21 @@
             <button type="submit" class="btn ghost" data-umami-event="Checkout Team renewal">Team, $249</button>
           </form>
       </div>
-    </div>
-  </section>
-
-  <section id="compare" style="padding-top:24px">
-    <div class="wrap">
-      <span class="label">Compare plans</span>
-      <h2>What each plan includes</h2>
-      <p class="sub">Every plan runs every feature. A license removes the notice line from Excel and PDF files and covers a year of new versions.</p>
-      <div class="cmp-wrap">
-        <table class="cmp plans-cmp">
-          <thead><tr><th scope="col"><span class="sr-only">Feature</span></th><th scope="col">Free</th><th scope="col" class="us">Developer</th><th scope="col">Team</th></tr></thead>
-          <tbody>
-            <tr class="grp"><th scope="row" colspan="4">Export</th></tr>
-            <tr><th scope="row">CSV export</th><td data-l="Free" class="yes">Included</td><td data-l="Developer" class="us yes">Included</td><td data-l="Team" class="yes">Included</td></tr>
-            <tr><th scope="row">Excel export with outlines, SUBTOTAL formulas and frozen panes</th><td data-l="Free" class="part">With a notice line</td><td data-l="Developer" class="us yes">Included</td><td data-l="Team" class="yes">Included</td></tr>
-            <tr><th scope="row">PDF export with title, headline numbers and page setup</th><td data-l="Free" class="part">With a notice line</td><td data-l="Developer" class="us yes">Included</td><td data-l="Team" class="yes">Included</td></tr>
-            <tr class="grp"><th scope="row" colspan="4">Pivot</th></tr>
-            <tr><th scope="row">Pivot tables, eight aggregations and your own</th><td data-l="Free" class="part">With a notice line</td><td data-l="Developer" class="us yes">Included</td><td data-l="Team" class="yes">Included</td></tr>
-            <tr><th scope="row">Pivot designer for end users</th><td data-l="Free" class="part">With a notice line</td><td data-l="Developer" class="us yes">Included</td><td data-l="Team" class="yes">Included</td></tr>
-            <tr class="grp"><th scope="row" colspan="4">License</th></tr>
-            <tr><th scope="row">Developers covered</th><td data-l="Free" class="plain">Anyone</td><td data-l="Developer" class="us plain">1</td><td data-l="Team" class="plain">Up to 10, one company</td></tr>
-            <tr><th scope="row">Apps, end users and servers</th><td data-l="Free" class="plain">Unlimited</td><td data-l="Developer" class="us plain">Unlimited</td><td data-l="Team" class="plain">Unlimited</td></tr>
-            <tr><th scope="row">New versions</th><td data-l="Free" class="plain">All, with the notice line</td><td data-l="Developer" class="us plain">One year, kept for good</td><td data-l="Team" class="plain">One year, kept for good</td></tr>
-            <tr><th scope="row">Renewal for the next year</th><td data-l="Free" class="plain">-</td><td data-l="Developer" class="us plain">$75</td><td data-l="Team" class="plain">$249</td></tr>
-            <tr><th scope="row">Price</th><td data-l="Free" class="plain"><span><b>$0</b></span></td><td data-l="Developer" class="us plain"><span><b>$149</b> one-time</span></td><td data-l="Team" class="plain"><span><b>$499</b> one-time</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note" style="margin-top:20px">Buying for a company? Questions about the terms, or a quote for your purchasing team: <a href="mailto:info@jqwidgets.com?subject=Rowpine%20purchase">info@jqwidgets.com</a>.</p>
+      <p class="note">Buying for a company? Questions about the terms, or a quote for your purchasing team: <a href="mailto:info@jqwidgets.com?subject=Rowpine%20purchase">info@jqwidgets.com</a>.</p>
     </div>
   </section>
 
   <section class="soft">
     <div class="wrap">
-      <div class="center"><span class="label">FAQ</span><h2>Questions</h2></div>
+      <div class="center"><h2>Questions</h2></div>
       <div class="faq">
         <details open>
           <summary>Who needs a license?</summary>
           <p>Each developer who writes code that uses Rowpine's Pro features. The people who use your app do not, and there is no limit on apps, users or servers.</p>
+        </details>
+        <details>
+          <summary>Who can buy the Indie license?</summary>
+          <p>A developer working on their own account, or a company whose yearly revenue, with its affiliates, was under USD 1,000,000 in the 12 months before the order. Placing an Indie order confirms that. It includes everything in Developer; questions go through GitHub issues instead of email. If your company grows past $1M, move to Developer when you next renew updates.</p>
         </details>
         <details>
           <summary>What happens after the year of updates?</summary>

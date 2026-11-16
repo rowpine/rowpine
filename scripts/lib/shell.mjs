@@ -57,7 +57,7 @@ export function feedback(page) {
     <span>Was this page helpful?</span>
     <button type="button" data-answer="yes" data-umami-event="Docs feedback" data-umami-event-page="${esc(page)}" data-umami-event-answer="yes">Yes</button>
     <button type="button" data-answer="no" data-umami-event="Docs feedback" data-umami-event-page="${esc(page)}" data-umami-event-answer="no">No</button>
-    <span class="fb-thanks" hidden>Thanks. To tell us more, write to <a href="mailto:info@jqwidgets.com?subject=Rowpine%20docs%3A%20${encodeURIComponent(page)}">info@jqwidgets.com</a>.</span>
+    <span class="fb-thanks" hidden>Thanks. To tell us more, write to <a href="mailto:support@jqwidgets.com?subject=Rowpine%20docs%3A%20${encodeURIComponent(page)}">support@jqwidgets.com</a>.</span>
   </div>`
 }
 
