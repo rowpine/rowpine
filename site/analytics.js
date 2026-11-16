@@ -4,7 +4,7 @@
 // visitor sends Do Not Track or Global Privacy Control.
 // Buttons with a data-umami-event attribute are counted as events.
 ;(function () {
-  var WEBSITE_ID = '' // the Umami website id for rowpine.com
+  var WEBSITE_ID = 'ef21e002-21ff-4220-b71c-48d3d256b031' // the Umami website id for rowpine.com
   if (!WEBSITE_ID || location.hostname !== 'rowpine.com') return
   var nav = navigator
   if (nav.doNotTrack === '1' || window.doNotTrack === '1' || nav.globalPrivacyControl) return
