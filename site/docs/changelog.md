@@ -2,6 +2,14 @@
 
 Every version of the `rowpine` npm package, newest first. The components from the shadcn registry are source in your project and change only when you add them again.
 
+## 1.0.4
+
+Released 2026-11-17.
+
+- **Fixed:** the console warning without a license key linked to a homepage section that no longer exists. It links to the [pricing page](../pricing.html) now.
+- **Changed:** `LicenseInfo.plan` can be `"indie"`, for keys from the [Indie license](../pricing.html).
+- **Changed:** the package README installs the components with `npx shadcn add @rowpine/export-menu` and `@rowpine/pivot`. Rowpine is in the [shadcn registry directory](https://ui.shadcn.com/docs/directory), so no setup in `components.json` is needed.
+
 ## 1.0.3
 
 Released 2026-11-15.

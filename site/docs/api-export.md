@@ -1,4 +1,4 @@
-# Export functions (rowpine 1.0.3)
+# Export functions (rowpine 1.0.4)
 
 Write a TanStack table to Excel, PDF or CSV, the options each export takes, and the colors from your theme.
 

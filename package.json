@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "marked": "^18.2.0",
-    "rowpine": "^1.0.3",
+    "rowpine": "^1.0.4",
     "typescript": "^5.9.3"
   }
 }

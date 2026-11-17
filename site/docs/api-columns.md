@@ -1,4 +1,4 @@
-# Column settings (rowpine 1.0.3)
+# Column settings (rowpine 1.0.4)
 
 Per-column export settings, read from meta.rowpine on your TanStack column definitions.
 

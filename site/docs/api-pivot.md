@@ -1,4 +1,4 @@
-# Pivot (rowpine 1.0.3)
+# Pivot (rowpine 1.0.4)
 
 Build a pivot from flat rows: the config, the measures, and the result you render or export.
 

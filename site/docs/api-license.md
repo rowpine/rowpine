@@ -1,4 +1,4 @@
-# License (rowpine 1.0.3)
+# License (rowpine 1.0.4)
 
 Set the license key and read what it covers. The check runs in the browser and makes no network calls.
 
@@ -38,7 +38,7 @@ type LicenseStatus = { licensed: true; payload: LicensePayload; buildDate: strin
 What a license key holds: the signed JSON payload between the two dots.
 - `v`: `1` Payload format version. A key with any other value is 'invalid'.
 - `sub`: `string` Licensee name or company.
-- `plan`: `"developer" | "team"` The plan the key was issued for. Recorded in the key; the check does not read it.
+- `plan`: `"indie" | "developer" | "team"` The plan the key was issued for. Recorded in the key; the check does not read it.
 - `seats`: `number` Number of seats. Recorded in the key; the check does not count them.
 - `upd`: `string` Last day of the update period, YYYY-MM-DD.
 - `iat`: `string` Issue date, YYYY-MM-DD.
