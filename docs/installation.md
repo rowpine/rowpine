@@ -10,11 +10,13 @@ Rowpine has two parts. The `rowpine` npm package does the work: it reads your Ta
 
 ```bash
 npm install rowpine
-npx shadcn add https://rowpine.com/r/export-menu.json
-npx shadcn add https://rowpine.com/r/pivot.json
+npx shadcn add @rowpine/export-menu
+npx shadcn add @rowpine/pivot
 ```
 
 `export-menu` installs `components/export-menu.tsx`. `pivot` installs `components/pivot-table.tsx` and `components/pivot-designer.tsx`. Both pull in the shadcn components they use (button, dropdown-menu, table, popover and so on) if you do not have them yet.
+
+Rowpine is listed in the [shadcn registry directory](https://ui.shadcn.com/docs/directory), so the CLI finds `@rowpine` without any setup in `components.json`. If an older shadcn CLI does not recognize the name, use the full URL instead: `npx shadcn add https://rowpine.com/r/export-menu.json` (and `pivot.json`).
 
 ## Requirements
 

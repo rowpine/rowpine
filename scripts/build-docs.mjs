@@ -231,7 +231,7 @@ const home = `<div class="dhero">
   </div>
   <div class="doc">
     <h2 id="quick-start">Quick start<a class="anchor" href="#quick-start" aria-label="Link to this section">#</a></h2>
-    ${codeBlock('npm install rowpine\nnpx shadcn add https://rowpine.com/r/export-menu.json', 'bash')}
+    ${codeBlock('npm install rowpine\nnpx shadcn add @rowpine/export-menu', 'bash')}
     ${codeBlock('import { ExportMenu } from "@/components/export-menu"\n\n<ExportMenu table={table} fileName="orders" />', 'tsx', 'orders-table.tsx')}
     <p>That gives your table an Excel, PDF and CSV menu. <a href="installation.html">Installation</a> covers the details, and <a href="license-keys.html">license keys</a> what changes when you buy.</p>
   </div>

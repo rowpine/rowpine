@@ -35,8 +35,8 @@ The `rowpine` package has the pivot engine. The `pivot` registry item installs t
 
 ```bash
 npm install rowpine @tanstack/react-table
-npx shadcn add https://rowpine.com/r/pivot.json
-npx shadcn add https://rowpine.com/r/export-menu.json
+npx shadcn add @rowpine/pivot
+npx shadcn add @rowpine/export-menu
 ```
 
 The examples use orders with a region, country, customer, product, quarter, quantity and amount. Any array of objects works; the [Excel guide](export-tanstack-table-to-excel-with-grouped-rows.html#the-data) shows the data.

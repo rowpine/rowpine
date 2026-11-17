@@ -27,7 +27,7 @@ You need a React project with shadcn/ui and TanStack Table. Rowpine is the packa
 ```bash
 npm install rowpine @tanstack/react-table
 npx shadcn add table
-npx shadcn add https://rowpine.com/r/export-menu.json
+npx shadcn add @rowpine/export-menu
 ```
 
 ## The data

@@ -2,7 +2,7 @@
 
 > Pivot tables, a pivot designer, and Excel and PDF export for TanStack Table (v8 and v9) and shadcn/ui data tables. It works from the table instance the app already has.
 
-- Install: `npm install rowpine`, then `npx shadcn add https://rowpine.com/r/export-menu.json` and `npx shadcn add https://rowpine.com/r/pivot.json`.
+- Install: `npm install rowpine`, then `npx shadcn add @rowpine/export-menu` and `npx shadcn add @rowpine/pivot` (the @rowpine namespace is in the shadcn directory; the full URLs https://rowpine.com/r/export-menu.json and https://rowpine.com/r/pivot.json also work).
 - Export: `<ExportMenu table={table} />`, or `exportXlsx(table)`, `exportPdf(table)`, `exportCsv(table)` from "rowpine". Files match the screen: visible columns in order, filtered and sorted rows, groups as Excel outlines with SUBTOTAL formulas, pinned columns frozen.
 - Pivot: `createPivot(data, config)` from "rowpine", or `usePivot` / `<PivotTable>` / `<PivotDesigner>` from the registry items.
 - Per-column export settings go in `meta.rowpine` (numFmt, format, cellStyle, width, align, header, exclude).

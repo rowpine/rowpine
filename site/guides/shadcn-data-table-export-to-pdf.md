@@ -15,7 +15,7 @@ The files and names match the shadcn guide: `data-table-features.ts`, `columns.t
 
 ```bash
 npm install rowpine
-npx shadcn add https://rowpine.com/r/export-menu.json
+npx shadcn add @rowpine/export-menu
 ```
 
 `rowpine` builds the files in the browser. The export menu lands in `components/export-menu.tsx` as source, styled by your theme.

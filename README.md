@@ -13,8 +13,8 @@ TanStack Table can group rows, but it has no pivot, and exporting means writing 
 
 ```bash
 npm install rowpine
-npx shadcn add https://rowpine.com/r/export-menu.json
-npx shadcn add https://rowpine.com/r/pivot.json
+npx shadcn add @rowpine/export-menu
+npx shadcn add @rowpine/pivot
 ```
 
 The first line is the engine (file writers and pivot). The other two copy the export menu, the pivot table and the pivot designer into your project as source, so they pick up your theme. Works with TanStack Table v8 (`useReactTable`) and v9 (`useTable`), and with shadcn/ui on Base UI or Radix.
